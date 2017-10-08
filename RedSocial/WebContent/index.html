@@ -1,1 +1,25 @@
-HOLA MUNDO
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HOLA MUNDO</title>
+</head>
+<body>
+<h1>Ejemplo lista de usuarios (spring(MVC) - MongoDB(mLab))</h1>
+¿Que desea realizar con su lista de usuarios? <br/> <br/>
+<form action="mostrar.do" method="post"> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consultar mi lista -  
+<input type=submit value="Consultar"/>	
+<br/> <br/>
+</form>
+<form action="anadir.do" method="post"> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Añadir <input type="text" name="txtUserAdd" onFocus="if(this.value!='')this.value=''"/> a mis usuarios -
+<input type=submit value="Añadir"/>
+<br/> <br/>
+</form>
+<form action="eliminar.do" method="post"> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eliminar <input type="text" name="txtUserDel" onFocus="if(this.value!='')this.value=''"/> de mis usuarios -
+<input type=submit value="Eliminar"/>
+</form>
+</body>
+</html>
