@@ -34,7 +34,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	public void insert (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
-		bso.append("pwd", new BsonString(DigestUtils.md5Hex("1234")));
+		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
 
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
@@ -44,7 +44,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	public void insert (Usuario usuario, String pwd){
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
-		bso.append("pwd", new BsonString(pwd));
+		bso.append("pwd", new BsonString(DigestUtils.md5Hex(pwd)));
 
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
@@ -56,7 +56,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 		BsonDocument criterio = new BsonDocument();
 		criterio.append("nombre", new BsonString(nombre));
-		criterio.append("pwd", new BsonString(pwd));
+		criterio.append("pwd", new BsonString(DigestUtils.md5Hex(pwd)));
 		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
 		BsonDocument usuario = resultado.first();
 		if (usuario==null)

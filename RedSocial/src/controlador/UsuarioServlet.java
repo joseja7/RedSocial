@@ -33,12 +33,12 @@ public class UsuarioServlet {
 		String pwd1=request.getParameter("txtUserPWD1");
 		
 		if(!pwd.equals(pwd1))
-			System.out.println("A TOMAR POR CULO");
+			response.getOutputStream().println("El usuario "+usuario.getNombre()+" ya se encuentra en la lista.");
 			
 		else {
+			usuario.setClave(pwd);
 			String listaUsuario="";
 			listaUsuario = usuarioDao.show();
-			
 			if (listaUsuario.contains(usuario.getNombre())) {
 				response.getOutputStream().println("El usuario "+usuario.getNombre()+" ya se encuentra en la lista.");
 			}
