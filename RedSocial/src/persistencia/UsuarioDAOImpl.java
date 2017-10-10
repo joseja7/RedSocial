@@ -91,6 +91,16 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		usuarios.findOneAndUpdate(usuario, actualizacion);
 	}
 	
+	public void select(String nombre) throws Exception{
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(nombre));
+		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
+		BsonDocument usuario = resultado.first();
+		if (usuario==null)
+			throw new Exception("Usuario no registrado.");
+	}
 	public String selectPwd(String nombre) throws Exception{
 		
 		BsonValue pwd;

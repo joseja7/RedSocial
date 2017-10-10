@@ -25,6 +25,20 @@
 			<h1> Iniciar Sesion</h1>
 		</div>
 	</div>
+	<form action="login.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	
+		<div class="row">
+			<label for="usr">Usuario:</label>
+			<input type="text" class="form-control" id="usr" name="txtUserAdd" onFocus="if(this.value!='')this.value=''"/>
+		</div>
+		<div class="form-group">
+		  	<label for="pwd">Password:</label>
+		  	<input type="password" class="form-control" id="pwd" name="txtUserPWD">
+		</div>	
+		<div class="row">
+			<button type="submit" class="btn btn-primary btn-md" value="Añadir">Iniciar Sesion</button>	
+		</div>
+	</form>
 	<div class="row">
 		<div class="col-md-3 col-md-offset-3"> 	
 			<a href="crearCuenta.html"><button type="button" class="btn btn-primary">Crear cuenta</button></a>

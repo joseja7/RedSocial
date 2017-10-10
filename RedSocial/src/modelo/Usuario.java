@@ -1,9 +1,11 @@
 package modelo;
 
+import persistencia.UsuarioDAOImpl;
+
 public class Usuario {
 	private String nombre;
 	private String clave;
-	
+	UsuarioDAOImpl usuarioDao;
 	//Constructor de pass
 	public Usuario(String nombre, String clave) {
 		this.nombre=nombre;
@@ -19,7 +21,6 @@ public class Usuario {
 	public Usuario() {
 		super();
 	}	
-	
 	//Get atributos
 	public String getNombre() {
 		return this.nombre;

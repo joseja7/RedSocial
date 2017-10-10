@@ -3,10 +3,12 @@ package controlador;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import modelo.Manager;
 import modelo.Usuario;
 import persistencia.UsuarioDAOImpl;
 
@@ -33,21 +35,39 @@ public class UsuarioServlet {
 		String pwd1=request.getParameter("txtUserPWD1");
 		
 		if(!pwd.equals(pwd1))
-			response.getOutputStream().println("El usuario "+usuario.getNombre()+" ya se encuentra en la lista.");
+			response.getOutputStream().println("Error al registrar al usuario "+usuario.getNombre());
 			
 		else {
 			usuario.setClave(pwd);
-			String listaUsuario="";
-			listaUsuario = usuarioDao.show();
-			if (listaUsuario.contains(usuario.getNombre())) {
-				response.getOutputStream().println("El usuario "+usuario.getNombre()+" ya se encuentra en la lista.");
-			}
-			
-			else {
+			try {
+				usuarioDao.select(usuario.getNombre());
+				response.getOutputStream().println("Error al registrar al usuario "+usuario.getNombre());
+			}catch(Exception e) {
 				usuarioDao.insert(usuario);
 				response.getOutputStream().println("El usuario "+usuario.getNombre()+" ha sido añadido a su lista.");
 			}
 		}
+	}
+	
+	@RequestMapping("login.do")
+	public void login(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		//operacionesDao.connect();
+		Usuario usuario = new Usuario();
+		usuario.setNombre(request.getParameter("txtUserAdd"));
+		String pwd=request.getParameter("txtUserPWD");
+		usuario.setClave(pwd);
+		try {
+			if (!DigestUtils.md5Hex(pwd).equals(usuarioDao.selectPwd(usuario.getNombre()))) {
+				response.getOutputStream().println("Nombre o password incorrectos");
+			}	
+			else {
+				Manager.get().login(usuario);
+				response.getOutputStream().println("Bienvenido "+usuario.getNombre()+" .");
+			}
+		}catch (Exception e) {
+			response.getOutputStream().println("Nombre o password incorrectos");
+		}
+		
 	}
 	
 	@RequestMapping("eliminar.do")
