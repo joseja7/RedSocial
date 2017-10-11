@@ -58,14 +58,14 @@ public class UsuarioServlet {
 		usuario.setClave(pwd);
 		try {
 			if (!DigestUtils.md5Hex(pwd).equals(usuarioDao.selectPwd(usuario.getNombre()))) {
-				response.getOutputStream().println("Nombre o password incorrectos");
+				//response.getOutputStream().println("Nombre o password incorrectos");
 			}	
 			else {
 				Manager.get().login(usuario);
-				response.getOutputStream().println("Bienvenido "+usuario.getNombre()+" .");
+				//response.getOutputStream().println("Bienvenido "+usuario.getNombre()+" .");
 			}
 		}catch (Exception e) {
-			response.getOutputStream().println("Nombre o password incorrectos");
+			//response.getOutputStream().println("Nombre o password incorrectos");
 		}
 		
 	}
