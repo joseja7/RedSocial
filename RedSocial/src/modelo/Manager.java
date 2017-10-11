@@ -22,4 +22,8 @@ public class Manager {
 		this.activos.put(usuario.getNombre(), usuario);
 		System.out.println(activos.toString());
 	}
+	public void logout(Usuario usuario) {
+	    this.activos.remove(usuario.getNombre(), usuario);
+	    System.out.println(activos.toString());
+	}
 }
