@@ -22,22 +22,22 @@ formatter.scenario({
 });
 formatter.step({
   "line": 6,
-  "name": "Usuario en pagina de borrado",
+  "name": "Usuario en pagina de \"borrado\"",
   "keyword": "Given "
 });
 formatter.step({
   "line": 7,
-  "name": "Password1 y Password2 coinciden",
+  "name": "\"password\" y \"passwordConf\" coinciden",
   "keyword": "When "
 });
 formatter.step({
   "line": 8,
-  "name": "Mensaje de exito",
+  "name": "Mensaje de \"exito\"",
   "keyword": "Then "
 });
 formatter.step({
   "line": 9,
-  "name": "Envio a la pagina de inicio",
+  "name": "Envio a la pagina de \"inicio\"",
   "keyword": "And "
 });
 formatter.step({
@@ -45,21 +45,60 @@ formatter.step({
   "name": "Delete usuario de la base de datos",
   "keyword": "And "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "borrado",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Usuario_en_pagina_de(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 1177304400,
+  "status": "passed"
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "password",
+      "offset": 1
+    },
+    {
+      "val": "passwordConf",
+      "offset": 14
+    }
+  ],
+  "location": "annotation.y_coinciden(String,String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 4237300,
+  "error_message": "junit.framework.ComparisonFailure: expected:\u003cpassword[]\u003e but was:\u003cpassword[Conf]\u003e\r\n\tat junit.framework.Assert.assertEquals(Assert.java:85)\r\n\tat junit.framework.Assert.assertEquals(Assert.java:91)\r\n\tat cucumberJava.annotation.y_coinciden(annotation.java:18)\r\n\tat ✽.When \"password\" y \"passwordConf\" coinciden(cucumberJava\\BorradoCuenta.feature:7)\r\n",
+  "status": "failed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "exito",
+      "offset": 12
+    }
+  ],
+  "location": "annotation.Mensaje_de(String)"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "inicio",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Envio_a_la_pagina_de(String)"
+});
+formatter.result({
+  "status": "skipped"
 });
 formatter.match({});
 formatter.result({
@@ -81,30 +120,61 @@ formatter.scenario({
 });
 formatter.step({
   "line": 14,
-  "name": "Usuario en pagina de borrado",
+  "name": "Usuario en pagina de \"borrado\"",
   "keyword": "Given "
 });
 formatter.step({
   "line": 15,
-  "name": "Password1 y Password2 no coinciden",
+  "name": "\"password\" y \"passwordConf\" no coinciden",
   "keyword": "When "
 });
 formatter.step({
   "line": 16,
-  "name": "Mensaje de error",
+  "name": "Mensaje de \"error\"",
   "keyword": "Then "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "borrado",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Usuario_en_pagina_de(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 34200,
+  "status": "passed"
 });
-formatter.match({});
+formatter.match({
+  "arguments": [
+    {
+      "val": "password",
+      "offset": 1
+    },
+    {
+      "val": "passwordConf",
+      "offset": 14
+    }
+  ],
+  "location": "annotation.y_no_coinciden(String,String)"
+});
 formatter.result({
-  "status": "undefined"
+  "duration": 117900,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "error",
+      "offset": 12
+    }
+  ],
+  "location": "annotation.Mensaje_de(String)"
+});
+formatter.result({
+  "duration": 137300,
+  "status": "passed"
 });
 formatter.uri('cucumberJava\CreacionUsuario.feature');
 formatter.feature({
@@ -130,27 +200,27 @@ formatter.scenario({
 });
 formatter.step({
   "line": 7,
-  "name": "Usuario en pagina de creacion",
+  "name": "Usuario en pagina de \"creacion\"",
   "keyword": "Given "
 });
 formatter.step({
   "line": 8,
-  "name": "Nombre correcto",
+  "name": "\"Nombre\" correcto",
   "keyword": "When "
 });
 formatter.step({
   "line": 9,
-  "name": "email correcto",
+  "name": "\"email\" correcto",
   "keyword": "And "
 });
 formatter.step({
   "line": 10,
-  "name": "ambas password coinciden",
+  "name": "\"password\" y \"passwordConf\" coinciden",
   "keyword": "And "
 });
 formatter.step({
   "line": 11,
-  "name": "Mensaje de validacion",
+  "name": "Mensaje de \"validacion\"",
   "keyword": "Then "
 });
 formatter.step({
@@ -158,25 +228,72 @@ formatter.step({
   "name": "insertar usuario en base de datos",
   "keyword": "And "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "creacion",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Usuario_en_pagina_de(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 5819500,
+  "status": "passed"
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "Nombre",
+      "offset": 1
+    }
+  ],
+  "location": "annotation.correcto(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 199700,
+  "error_message": "cucumber.runtime.PendingException: TODO: implement me\r\n\tat cucumberJava.annotation.correcto(annotation.java:39)\r\n\tat ✽.When \"Nombre\" correcto(cucumberJava\\CreacionUsuario.feature:8)\r\n",
+  "status": "pending"
 });
-formatter.match({});
+formatter.match({
+  "arguments": [
+    {
+      "val": "email",
+      "offset": 1
+    }
+  ],
+  "location": "annotation.correcto(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "password",
+      "offset": 1
+    },
+    {
+      "val": "passwordConf",
+      "offset": 14
+    }
+  ],
+  "location": "annotation.y_coinciden(String,String)"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "validacion",
+      "offset": 12
+    }
+  ],
+  "location": "annotation.Mensaje_de(String)"
+});
+formatter.result({
+  "status": "skipped"
 });
 formatter.match({});
 formatter.result({
@@ -198,30 +315,61 @@ formatter.scenario({
 });
 formatter.step({
   "line": 17,
-  "name": "Usuario en pagina de creacion",
+  "name": "Usuario en pagina de \"creacion\"",
   "keyword": "Given "
 });
 formatter.step({
   "line": 18,
-  "name": "Password1 y Password2 no coinciden",
+  "name": "\"password\" y \"passwordConf\" no coinciden",
   "keyword": "When "
 });
 formatter.step({
   "line": 19,
-  "name": "Mensaje de error",
+  "name": "Mensaje de \"error\"",
   "keyword": "Then "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "creacion",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Usuario_en_pagina_de(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 44700,
+  "status": "passed"
 });
-formatter.match({});
+formatter.match({
+  "arguments": [
+    {
+      "val": "password",
+      "offset": 1
+    },
+    {
+      "val": "passwordConf",
+      "offset": 14
+    }
+  ],
+  "location": "annotation.y_no_coinciden(String,String)"
+});
 formatter.result({
-  "status": "undefined"
+  "duration": 34900,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "error",
+      "offset": 12
+    }
+  ],
+  "location": "annotation.Mensaje_de(String)"
+});
+formatter.result({
+  "duration": 98300,
+  "status": "passed"
 });
 formatter.uri('cucumberJava\Desconexion.feature');
 formatter.feature({
@@ -247,39 +395,75 @@ formatter.scenario({
 });
 formatter.step({
   "line": 6,
-  "name": "Usuario en pagina de inicio",
+  "name": "Usuario en pagina de \"home\"",
   "keyword": "Given "
 });
 formatter.step({
   "line": 7,
-  "name": "Usuario selecciona desconectar",
+  "name": "Usuario selecciona \"desconectar\"",
   "keyword": "When "
 });
 formatter.step({
   "line": 8,
-  "name": "Mensaje de exito",
+  "name": "Mensaje de \"exito\"",
   "keyword": "Then "
 });
 formatter.step({
   "line": 9,
-  "name": "Envio a la pagina de inicio",
+  "name": "Envio a la pagina de \"inicio\"",
   "keyword": "And "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "home",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Usuario_en_pagina_de(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 11571000,
+  "status": "passed"
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "desconectar",
+      "offset": 20
+    }
+  ],
+  "location": "annotation.Usuario_selecciona(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 137900,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "exito",
+      "offset": 12
+    }
+  ],
+  "location": "annotation.Mensaje_de(String)"
+});
+formatter.result({
+  "duration": 35300,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "inicio",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Envio_a_la_pagina_de(String)"
+});
+formatter.result({
+  "duration": 22500,
+  "status": "passed"
 });
 formatter.uri('cucumberJava\Login.feature');
 formatter.feature({
@@ -305,30 +489,61 @@ formatter.scenario({
 });
 formatter.step({
   "line": 6,
-  "name": "Usuario en pagina de login",
+  "name": "Usuario en pagina de \"login\"",
   "keyword": "Given "
 });
 formatter.step({
   "line": 7,
-  "name": "Pone nombre de usuario y password validos",
+  "name": "Pone nombre de \"usuario\" y \"password\" validos",
   "keyword": "When "
 });
 formatter.step({
   "line": 8,
-  "name": "Entrada al sistema",
+  "name": "llegamos a la pagina inicial y un \"mensaje\" de bienvenida",
   "keyword": "Then "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "login",
+      "offset": 22
+    }
+  ],
+  "location": "annotation.Usuario_en_pagina_de(String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 6668200,
+  "status": "passed"
 });
-formatter.match({});
+formatter.match({
+  "arguments": [
+    {
+      "val": "usuario",
+      "offset": 16
+    },
+    {
+      "val": "password",
+      "offset": 28
+    }
+  ],
+  "location": "annotation.Pone_nombre_de_y_validos(String,String)"
+});
 formatter.result({
-  "status": "undefined"
+  "duration": 143100,
+  "error_message": "java.lang.Error: Unresolved compilation problem: \n\tUserDAO cannot be resolved\n\r\n\tat cucumberJava.annotation.Pone_nombre_de_y_validos(annotation.java:49)\r\n\tat ✽.When Pone nombre de \"usuario\" y \"password\" validos(cucumberJava\\Login.feature:7)\r\n",
+  "status": "failed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "mensaje",
+      "offset": 35
+    }
+  ],
+  "location": "annotation.llegamos_a_la_pagina_inicial_y_un_de_bienvenida(String)"
+});
+formatter.result({
+  "status": "skipped"
 });
 formatter.scenario({
   "line": 11,
@@ -346,70 +561,60 @@ formatter.scenario({
 });
 formatter.step({
   "line": 12,
-  "name": "Usuario en pagina de login",
+  "name": "Usuario en pagina de \"login\"",
   "keyword": "Given "
 });
 formatter.step({
   "line": 13,
-  "name": "Pone nombre de usuario y/o password invalidos",
+  "name": "Pone nombre de \"usuario\" y/o \"password\" invalidos",
   "keyword": "When "
 });
 formatter.step({
   "line": 14,
-  "name": "Mensaje de error",
+  "name": "Mensaje de \"error\"",
   "keyword": "Then "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.scenario({
-  "line": 17,
-  "name": "Login fallido por usuario inexistente",
-  "description": "",
-  "id": "logeo-al-sistema;login-fallido-por-usuario-inexistente",
-  "type": "scenario",
-  "keyword": "Scenario",
-  "tags": [
+formatter.match({
+  "arguments": [
     {
-      "line": 16,
-      "name": "@Scenario3"
+      "val": "login",
+      "offset": 22
     }
-  ]
+  ],
+  "location": "annotation.Usuario_en_pagina_de(String)"
 });
-formatter.step({
-  "line": 18,
-  "name": "Usuario en pagina de login",
-  "keyword": "Given "
-});
-formatter.step({
-  "line": 19,
-  "name": "Pone nombre de usuario inexistente",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 20,
-  "name": "Mensaje de error",
-  "keyword": "Then "
-});
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 32800,
+  "status": "passed"
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "arguments": [
+    {
+      "val": "usuario",
+      "offset": 16
+    },
+    {
+      "val": "password",
+      "offset": 30
+    }
+  ],
+  "location": "annotation.Pone_nombre_de_y_o_invalidos(String,String)"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 223800,
+  "error_message": "java.lang.Error: Unresolved compilation problem: \n\tUserDAO cannot be resolved\n\r\n\tat cucumberJava.annotation.Pone_nombre_de_y_o_invalidos(annotation.java:59)\r\n\tat ✽.When Pone nombre de \"usuario\" y/o \"password\" invalidos(cucumberJava\\Login.feature:13)\r\n",
+  "status": "failed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "error",
+      "offset": 12
+    }
+  ],
+  "location": "annotation.Mensaje_de(String)"
+});
+formatter.result({
+  "status": "skipped"
 });
 });
