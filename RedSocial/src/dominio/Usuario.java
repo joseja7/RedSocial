@@ -26,4 +26,7 @@ public class Usuario {
 	public boolean login() {
 		return usuarioDAO.login(this);
 	}
+	public void insert() {
+		usuarioDAO.insert(this);
+	}
 }

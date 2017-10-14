@@ -123,5 +123,16 @@ public class usuarioDAO {
 			return false;
 		return true;
 	}
+
+	public static void insert(Usuario usuario) {
+		BsonDocument bso = new BsonDocument();
+		bso.append("nombre", new BsonString(usuario.getNombre()));
+		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getPwd())));
+
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		usuarios.insertOne(bso);
+		
+	}
 	
 }
