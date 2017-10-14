@@ -134,5 +134,14 @@ public class usuarioDAO {
 		usuarios.insertOne(bso);
 		
 	}
+	public static void delete (Usuario usuario) {
+		BsonDocument bso = new BsonDocument();
+		bso.append("nombre", new BsonString(usuario.getNombre()));
+
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		usuarios.deleteOne(bso);
+
+	}
 	
 }

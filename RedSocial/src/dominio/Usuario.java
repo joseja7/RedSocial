@@ -29,4 +29,7 @@ public class Usuario {
 	public void insert() {
 		usuarioDAO.insert(this);
 	}
+	public void delete() {
+		usuarioDAO.delete(this);
+	}
 }
