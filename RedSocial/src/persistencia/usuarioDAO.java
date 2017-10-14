@@ -111,6 +111,19 @@ public class usuarioDAO {
 		String pwdFinal=password.getValue();
 		return pwdFinal;
 	}*/
+	public static Boolean selectNombre(String nombre){
+		
+		BsonValue pwd;
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(nombre));
+		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
+		BsonDocument usuario = resultado.first();
+		if (usuario==null)
+			return false;
+		return true;
+	}
 	public static boolean login(Usuario user) {
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
@@ -125,13 +138,15 @@ public class usuarioDAO {
 	}
 
 	public static void insert(Usuario usuario) {
-		BsonDocument bso = new BsonDocument();
-		bso.append("nombre", new BsonString(usuario.getNombre()));
-		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getPwd())));
-
-		MongoBroker broker = MongoBroker.get();
-		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-		usuarios.insertOne(bso);
+		if(!selectNombre(usuario.getNombre())) {
+			BsonDocument bso = new BsonDocument();
+			bso.append("nombre", new BsonString(usuario.getNombre()));
+			bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getPwd())));
+			
+			MongoBroker broker = MongoBroker.get();
+			MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+			usuarios.insertOne(bso);
+		}
 		
 	}
 	public static void delete (Usuario usuario) {
