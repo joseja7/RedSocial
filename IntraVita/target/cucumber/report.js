@@ -39,7 +39,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_borrado()"
 });
 formatter.result({
-  "duration": 1357129200,
+  "duration": 309078149,
   "status": "passed"
 });
 formatter.match({
@@ -56,15 +56,15 @@ formatter.match({
   "location": "annotation.y_coinciden_y_son_validos(String,String)"
 });
 formatter.result({
-  "duration": 34768900,
-  "error_message": "java.lang.NullPointerException\r\n\tat cucumberJava.annotation.y_coinciden_y_son_validos(annotation.java:118)\r\n\tat ✽.When \"password\" y \"passwordConf\" coinciden y son validos(cucumberJava\\BorradoCuenta.feature:6)\r\n",
-  "status": "failed"
+  "duration": 4049506068,
+  "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_exito_y_delete_del_usuario()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 148079817,
+  "status": "passed"
 });
 formatter.scenario({
   "line": 10,
@@ -99,7 +99,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de()"
 });
 formatter.result({
-  "duration": 35200,
+  "duration": 30789,
   "status": "passed"
 });
 formatter.match({
@@ -116,15 +116,15 @@ formatter.match({
   "location": "annotation.y_no_coinciden_o_son_invalidos(String,String)"
 });
 formatter.result({
-  "duration": 371800,
-  "error_message": "java.lang.NullPointerException\r\n\tat cucumberJava.annotation.y_no_coinciden_o_son_invalidos(annotation.java:140)\r\n\tat ✽.When \"password\" y \"passwordConf\" no coinciden o son invalidos(cucumberJava\\BorradoCuenta.feature:12)\r\n",
-  "status": "failed"
+  "duration": 54849807,
+  "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_error_y_cancelacion_del_borrado()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 22970,
+  "status": "passed"
 });
 formatter.uri('cucumberJava\CreacionUsuario.feature');
 formatter.feature({
@@ -172,7 +172,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 6631400,
+  "duration": 5281182,
   "status": "passed"
 });
 formatter.match({
@@ -185,7 +185,7 @@ formatter.match({
   "location": "annotation.correcto(String)"
 });
 formatter.result({
-  "duration": 156700,
+  "duration": 151506,
   "status": "passed"
 });
 formatter.match({
@@ -202,16 +202,15 @@ formatter.match({
   "location": "annotation.y_coinciden(String,String)"
 });
 formatter.result({
-  "duration": 61200,
+  "duration": 54737,
   "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_validacion_y_usuario_insertado()"
 });
 formatter.result({
-  "duration": 156900,
-  "error_message": "java.lang.NullPointerException\r\n\tat cucumberJava.annotation.Mensaje_de_validacion_y_usuario_insertado(annotation.java:45)\r\n\tat ✽.Then Mensaje de validacion y usuario insertado(cucumberJava\\CreacionUsuario.feature:8)\r\n",
-  "status": "failed"
+  "duration": 575741166,
+  "status": "passed"
 });
 formatter.scenario({
   "line": 12,
@@ -246,7 +245,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 30900,
+  "duration": 60113,
   "status": "passed"
 });
 formatter.match({
@@ -263,7 +262,7 @@ formatter.match({
   "location": "annotation.y_no_coinciden(String,String)"
 });
 formatter.result({
-  "duration": 162700,
+  "duration": 135377,
   "status": "passed"
 });
 formatter.match({
@@ -276,9 +275,8 @@ formatter.match({
   "location": "annotation.Mensaje_de_error(int)"
 });
 formatter.result({
-  "duration": 406400,
-  "error_message": "java.lang.NullPointerException\r\n\tat cucumberJava.annotation.Mensaje_de_error(annotation.java:59)\r\n\tat ✽.Then Mensaje de error2(cucumberJava\\CreacionUsuario.feature:15)\r\n",
-  "status": "failed"
+  "duration": 57605737,
+  "status": "passed"
 });
 formatter.uri('cucumberJava\Login.feature');
 formatter.feature({
@@ -321,7 +319,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 23463700,
+  "duration": 6112018,
   "status": "passed"
 });
 formatter.match({
@@ -338,15 +336,15 @@ formatter.match({
   "location": "annotation.Pone_nombre_de_y_validos(String,String)"
 });
 formatter.result({
-  "duration": 946400,
-  "error_message": "java.lang.NullPointerException\r\n\tat cucumberJava.annotation.Pone_nombre_de_y_validos(annotation.java:78)\r\n\tat ✽.When Pone nombre de \"usuario\" y \"password\" validos(cucumberJava\\Login.feature:7)\r\n",
-  "status": "failed"
+  "duration": 59740496,
+  "status": "passed"
 });
 formatter.match({
   "location": "annotation.llegamos_a_la_pagina_inicial_y_un_mensaje_de_bienvenida()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 62532104,
+  "status": "passed"
 });
 formatter.scenario({
   "line": 11,
@@ -381,7 +379,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 44700,
+  "duration": 24925,
   "status": "passed"
 });
 formatter.match({
@@ -398,15 +396,14 @@ formatter.match({
   "location": "annotation.Pone_nombre_de_y_o_invalidos(String,String)"
 });
 formatter.result({
-  "duration": 67500,
+  "duration": 58159,
   "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_error()"
 });
 formatter.result({
-  "duration": 215400,
-  "error_message": "java.lang.NullPointerException\r\n\tat cucumberJava.annotation.Mensaje_de_error(annotation.java:95)\r\n\tat ✽.Then Mensaje de error(cucumberJava\\Login.feature:14)\r\n",
-  "status": "failed"
+  "duration": 54390404,
+  "status": "passed"
 });
 });

@@ -14,7 +14,7 @@ import com.intravita.proyectointranet.controlador.*;
 
 public class annotation {
 	@Autowired
-	UsuarioDAOImpl usuarioDAO;
+	UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
 	/***
 	 * 
 	 * Tarea de creacion de usuario
@@ -95,7 +95,7 @@ public class annotation {
 
 	@Then("^Mensaje de error$")
 	public void Mensaje_de_error() {
-		assertFalse(usuarioDAO.select(user).getNombre().equals("-"));
+		assertTrue(usuarioDAO.select(user).getNombre().equals("-"));
 	}
 	
 
