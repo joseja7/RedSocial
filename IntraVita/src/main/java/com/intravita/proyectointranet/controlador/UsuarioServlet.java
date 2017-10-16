@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.intravita.proyectointranet.modelo.Administrador;
 import com.intravita.proyectointranet.modelo.Usuario;
+import com.intravita.proyectointranet.persistencia.AdministradorDAOImpl;
 import com.intravita.proyectointranet.persistencia.UsuarioDAOImpl;
 
 
@@ -84,7 +85,7 @@ public class UsuarioServlet {
 			admin.setClave(request.getParameter("txtUsuarioClave"));
 			
 			Administrador existeAdmin=new Administrador();
-			existeAdmin=administradorDao.select();
+			existeAdmin=administradorDao.select(admin);
 			if(existeAdmin.getNombre().equals(admin.getNombre())&& existeAdmin.getClave().equals(admin.getClave())) {
 				System.out.println("Credenciales correctos, iniciando sesion de administrador");
 				cadenaUrl+="inicioAdmin";
