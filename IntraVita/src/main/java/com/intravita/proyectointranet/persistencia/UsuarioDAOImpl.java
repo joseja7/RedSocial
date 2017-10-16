@@ -1,5 +1,7 @@
 package com.intravita.proyectointranet.persistencia;
 
+import java.util.LinkedList;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.BsonDocument;
 import org.bson.BsonString;
@@ -16,52 +18,36 @@ import com.intravita.proyectointranet.persistencia.UsuarioDAO;
 @Component
 public class UsuarioDAOImpl implements UsuarioDAO {
 	
-	public String show () throws Exception{//falta cerrar.... Este metodo equivale a un readAll
-		MongoBroker broker = MongoBroker.get();
-		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-		return usuarios.toString();
-		/*FindIterable <BsonDocument> resultado=usuarios.find();
-		String cadena ="";
-        
-        while (resultado!=null) {
-        	cadena = cadena + resultado.first().toString()+"\n";
-        }
-        
-		return cadena;*/
-		
-    }
 	
-	public void insert (Usuario usuario){
+	public void insert (Usuario usuario) throws Exception{
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
 		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
 
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-		usuarios.insertOne(bso);
+		FindIterable<BsonDocument> resultado=usuarios.find(bso);
+		BsonDocument usuarioBso = resultado.first();
+		if (usuarioBso==null) {
+			usuarios.insertOne(bso);
+		}
 	}
 
-	public void insert (Usuario usuario, String pwd){
-		BsonDocument bso = new BsonDocument();
-		bso.append("nombre", new BsonString(usuario.getNombre()));
-		bso.append("pwd", new BsonString(pwd));
-
-		MongoBroker broker = MongoBroker.get();
-		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-		usuarios.insertOne(bso);
-	}
-
-	public Usuario select(String nombre, String pwd) throws Exception {
+	public Usuario select(Usuario generico) throws Exception {
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 		BsonDocument criterio = new BsonDocument();
-		criterio.append("nombre", new BsonString(nombre));
-		criterio.append("pwd", new BsonString(pwd));
+		criterio.append("nombre", new BsonString(generico.getNombre()));
+		criterio.append("pwd", new BsonString(DigestUtils.md5Hex(generico.getClave())));
 		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
 		BsonDocument usuario = resultado.first();
-		if (usuario==null)
-			throw new Exception("Credenciales incorrectos.");
-		Usuario result = new Usuario(nombre);
+		Usuario result;
+		if (usuario==null) {
+			result=new Usuario("-","-");
+		}
+		else {
+			result = new Usuario(generico.getNombre(),generico.getClave());
+		}
 		return result;
 	}
 	
@@ -107,6 +93,23 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		String pwdFinal=password.getValue();
 		return pwdFinal;
 	}
+	
+	/*public String show () throws Exception{//falta cerrar.... Este metodo equivale a un readAll
+	MongoBroker broker = MongoBroker.get();
+	MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+	return usuarios.toString();
+	/*FindIterable <BsonDocument> resultado=usuarios.find();
+	String cadena ="";
+    
+    while (resultado!=null) {
+    	cadena = cadena + resultado.first().toString()+"\n";
+    }
+    
+	return cadena;
+	
+}*/
+	
+	
 	
 }
 

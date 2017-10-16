@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.intravita.proyectointranet.modelo.Usuario;
 import com.intravita.proyectointranet.persistencia.UsuarioDAOImpl;
 
-import java.io.IOException;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -31,8 +32,6 @@ public class UsuarioServlet {
 	UsuarioDAOImpl usuarioDao;
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioServlet.class);
 	
-	//Selecciona la vista home para render devolviendo su nombre.
-	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -47,83 +46,77 @@ public class UsuarioServlet {
 		
 		return "usuario/inicio";
 	}
+	
+	
 	@RequestMapping(value="/irLogin",method = RequestMethod.GET)
-	public String irLogin(Model model,HttpServletResponse response){
-		return "redirect:login";
+	public ModelAndView irLogin(HttpServletResponse response,HttpServletRequest request){
+		return cambiarVista("usuario/login");
 	}
 	
 	@RequestMapping(value="/irRegistrar",method = RequestMethod.GET)
-	public String irRegistrar(Model model){
-		return "redirect:registrar";
+	public ModelAndView irRegistrar(HttpServletResponse response,HttpServletRequest request){
+		
+		return cambiarVista("usuario/registrar");
 	}
 	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String iniciarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		Usuario usuario = new Usuario();
 		usuario.setNombre(request.getParameter("txtUsuarioNombre"));
 		usuario.setClave(request.getParameter("txtUsuarioClave"));
 		
-		//Usuario seleccionar = usuarioDao.select(usuario.getNombre(), usuario.getClave());
+		System.out.println("----------------");
+		System.out.println(usuario.getNombre());
+		System.out.println(usuario.getClave());
+		System.out.println("----------------");
+		String cadenaUrl="usuario/";
 		
-		/*if(seleccionar!=null) {
-			response.getOutputStream().println("El usuario "+usuario.getNombre()+"iniciará sesión CUANDO ESTÉ IMPLEMENTADO");
-			cambiarVista("home");
-		}
+		Usuario existe =new Usuario();
+		existe=usuarioDao.select(usuario);
 		
-		else {
-			response.getOutputStream().println("El usuario "+usuario.getNombre()+" no está inscrito.");
+		System.out.println("----------------");
+		System.out.println(existe.getNombre());
+		System.out.println(existe.getClave());
+		System.out.println("----------------");
+		
+		if(existe.getNombre().equals(usuario.getNombre())&& existe.getClave().equals(usuario.getClave())) {//esa linea es mentiiiira, hay que hacer bien las comprobaciones de mongo(select y controlador)
+			System.out.println("Credenciales correctos,iniciando sesion");
+			//necesitamos pasar un objeto usuario al interfaz
+			cadenaUrl+="bienvenido";
+		}else {
+			System.out.println("El usuario no existe, credenciales incorrectos");
+			cadenaUrl+="login";
 		}
-		*/
-		return "usuario/login";
+		return cadenaUrl;
 	} 
 	
-	/*@RequestMapping(value="/registrar", method = RequestMethod.GET)
-	public String registrar(HttpServletResponse response, HttpServletRequest request, Model model) throws Exception {
-			Usuario usuario = new Usuario();
-			usuario.setNombre(request.getParameter("txtUsuarioNombre"));
-			usuario.setClave(request.getParameter("txtUsuarioClave"));
-			
-			
-			//Usuario seleccionar = usuarioDao.select(usuario.getNombre(), usuario.getClave());
-			/*if(seleccionar!=null) {
-				response.getOutputStream().println("El usuario "+usuario.getNombre()+"iniciará sesión CUANDO ESTÉ IMPLEMENTADO");
-				//cambiarVista("home"); para cambiar vista suponidamente
-			}
-			
-			else {
-				response.getOutputStream().println("El usuario "+usuario.getNombre()+" no está inscrito.");
-			}*/
-			
-			//return "usuario/registrar";
-			
-	//}
-	
-
-	@RequestMapping(value="/registrar", method = RequestMethod.GET)
+	@RequestMapping(value="/registrar", method = RequestMethod.POST)
 	public String registrar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
 		Usuario usuario = new Usuario();
-		usuario.setNombre(request.getParameter("txtUserAdd"));
+		Usuario existe =new Usuario();
+		usuario.setNombre(request.getParameter("txtUsuarioNombre"));
 		String pwd=request.getParameter("txtUsuarioClave");
 		String pwd1=request.getParameter("txtUsuarioClave1");
 		
-		if(!pwd.equals(pwd1))
-			System.out.println("A TOMAR POR CULO");
-			
-		else {
-			String listaUsuario="";
-			listaUsuario = usuarioDao.show();
-			
-			if (listaUsuario.contains(usuario.getNombre())) {
-				response.getOutputStream().println("El usuario "+usuario.getNombre()+" ya se encuentra en la lista.");
-			}
-			
-			else {
-				usuario.setClave(pwd);
-				usuarioDao.insert(usuario);
-				response.getOutputStream().println("El usuario "+usuario.getNombre()+" ha sido añadido a su lista.");
-			}
+		String cadenaUrl="usuario/";
+		
+		if(pwd.equals(pwd1)) {
+			usuario.setClave(pwd);
 		}
-		return "usuario/registrar";
+		
+		existe=usuarioDao.select(usuario);
+		if(existe.getNombre().equals(usuario.getNombre())) {//esa linea es mentiiiira, hay que hacer bien las comprobaciones de mongo(select y controlador)
+			System.out.println("El usuario ya existe");
+			cadenaUrl+="registrar";
+		}else {
+			usuarioDao.insert(usuario);
+			System.out.println("El usuario no existe, comprobar si se ha creado(mlab)");
+			cadenaUrl+="bienvenido";
+		}
+		
+		
+		
+		return cadenaUrl;
 	}
 	
 	@RequestMapping(value="/eliminar", method = RequestMethod.GET)
@@ -131,11 +124,10 @@ public class UsuarioServlet {
 		Usuario usuario = new Usuario();
 		usuario.setNombre(request.getParameter("txtUserDel"));
 		usuario.getClave();
-		String listaUsuario="";
-		listaUsuario = usuarioDao.show();
 		
-		if (!listaUsuario.contains(usuario.getNombre())) {
+		if (usuarioDao.select(usuario).getNombre()=="") {
 			response.getOutputStream().println("El usuario "+usuario.getNombre()+" no esta en la lista.");
+			//y hacemos para quedarnos en el mismo .jsp y modificar la pagina mediante sus acciones
 		}
 		
 		else {
@@ -147,22 +139,7 @@ public class UsuarioServlet {
 	
 	@RequestMapping(value="/bienvenido", method = RequestMethod.GET)
 	public String bienvenido(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		/*Usuario usuario = new Usuario();
-		usuario.setNombre(request.getParameter("txtUserDel"));
-		usuario.getClave();
-		String listaUsuario="";
-		listaUsuario = usuarioDao.show();
-		
-		if (!listaUsuario.contains(usuario.getNombre())) {
-			response.getOutputStream().println("El usuario "+usuario.getNombre()+" no esta en la lista.");
-		}
-		
-		else {
-			usuarioDao.delete(usuario);
-			response.getOutputStream().println("El usuario "+usuario.getNombre()+" ha sido eliminado a su lista.");
-		}*/
 		return "usuario/bienvenido";
-		
 	}
 	
 	
@@ -172,30 +149,4 @@ public class UsuarioServlet {
 		ModelAndView vista =new ModelAndView(nombreVista);
 		return vista;
 	}
-	
-	/*@RequestMapping(value="/registrar", method = RequestMethod.GET)
-	public String anadir(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		Usuario usuario = new Usuario();
-		usuario.setNombre(request.getParameter("txtUserAdd"));
-		String pwd=request.getParameter("txtUserPWD");
-		String pwd1=request.getParameter("txtUserPWD1");
-		
-		if(!pwd.equals(pwd1))
-			System.out.println("A TOMAR POR CULO");
-			
-		else {
-			String listaUsuario="";
-			listaUsuario = usuarioDao.show();
-			
-			if (listaUsuario.contains(usuario.getNombre())) {
-				response.getOutputStream().println("El usuario "+usuario.getNombre()+" ya se encuentra en la lista.");
-			}
-			
-			else {
-				usuarioDao.insert(usuario);
-				response.getOutputStream().println("El usuario "+usuario.getNombre()+" ha sido añadido a su lista.");
-			}
-		}
-	}
-	*/
 }

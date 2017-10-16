@@ -21,12 +21,12 @@
 	<div class="container">
 
 	
-	<form action="bienvenido" method="get"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<form action="registrar" method="POST"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<!--<form action="anadir.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
 	
 		<div class="row">
 			<label for="usr">Usuario:</label>
-			<input type="text" class="form-control" id="usr" name="txtUssuarioNombre" onFocus="if(this.value!='')this.value=''"/>
+			<input type="text" class="form-control" id="usr" name="txtUsuarioNombre" onFocus="if(this.value!='')this.value=''"/>
 		</div>
 		<div class="form-group">
 		  	<label for="pwd">Contraseña:</label>
