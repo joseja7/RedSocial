@@ -18,8 +18,10 @@ import com.intravita.proyectointranet.persistencia.UsuarioDAO;
 @Component
 public class UsuarioDAOImpl implements UsuarioDAO {
 	
-	
-	public void insert (Usuario usuario) throws Exception{
+	public UsuarioDAOImpl() {
+		super();
+	}
+	public void insert (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
 		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
@@ -33,7 +35,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 
-	public Usuario select(Usuario generico) throws Exception {
+	public Usuario select(Usuario generico) {
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 		BsonDocument criterio = new BsonDocument();
@@ -51,7 +53,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return result;
 	}
 	
-	public void delete (Usuario usuario) throws Exception {
+	public void delete (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
 
@@ -61,7 +63,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	}
 	
-	public void update(String nombre, String pwdAntigua, String pwdNueva) throws Exception{
+	public void update(String nombre, String pwdAntigua, String pwdNueva){
 
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
@@ -70,14 +72,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		criterio.append("pwd", new BsonString(pwdAntigua));
 		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
 		BsonDocument usuario = resultado.first();
-		if (usuario==null)
-			throw new Exception("Falló la actualización de los datos del usuario.");
-
 		BsonDocument actualizacion= new BsonDocument("$set", new BsonDocument("pwd", new BsonString(pwdNueva)));
 		usuarios.findOneAndUpdate(usuario, actualizacion);
 	}
 	
-	public String selectPwd(String nombre) throws Exception{
+	public String selectPwd(String nombre){
 		
 		BsonValue pwd;
 		MongoBroker broker = MongoBroker.get();
@@ -86,8 +85,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		criterio.append("nombre", new BsonString(nombre));
 		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
 		BsonDocument usuario = resultado.first();
-		if (usuario==null)
-			throw new Exception("Usuario no registrado.");
 		pwd=usuario.get("pwd");
 		BsonString password=pwd.asString();
 		String pwdFinal=password.getValue();
