@@ -2,30 +2,52 @@
 <%@ page session="false" %>
 <html>
 <head>
+
+
+	<script src = " https://code.jquery.com/jquery.js "></script>
+	<script src =
+" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	</script>
+	<link rel = "stylesheet" href =
+" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
 	<title>Bienvenido/a</title>
 </head>
 <body>
-<h1>
-	BIENVENIDO A NUESTRA RED SOCIAL  
-</h1>
-
-<P> La hora del servidor es: ${serverTime}. </P>
 
 <div class="container">
-
-	<form action="irLogin" method="get"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<!--<form action="anadir.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
-		<div class="row">
-			<button type="submit" class="btn btn-primary btn-md" value="Entrar">Entrar</button>	
+	<div class="row">
+		<div class="col-md-8 col-md-offset-4">
+			<h1>
+				<span class="glyphicon glyphicon-user"></span>BIENVENIDO
+			</h1>	
 		</div>
-	</form>
 	
-	<form action="irRegistrar" method="get"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<!--<form action="anadir.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
-		<div class="row">
-			<button type="submit" class="btn btn-primary btn-md" value="Registrar">Registrar</button>	
+	</div>
+	
+	<div class="row">
+		<P> La hora del servidor es: ${serverTime}. </P>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2">
+		<form action="irLogin" method="get"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<!--<form action="anadir.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
+		
+				<button type="submit" class="btn btn-info btn-block" value="Entrar">Entrar</button>	
+		
+		</form>
 		</div>
-	</form>
+		<div class="col-md-2">
+		<form action="irRegistrar" method="get"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<!--<form action="anadir.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
+		
+				<button type="submit" class="btn btn-info btn-block" value="Registrar">Registrar</button>	
+		
+		</form>
+		</div>
+	</div>
+	
 </div>
 
 </body>

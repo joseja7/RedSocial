@@ -18,29 +18,44 @@
 </head>
 
 <body>
-	<div class="container">
-
-	
-	<form action="registrar" method="POST"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<!--<form action="anadir.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
-	
-		<div class="row">
-			<label for="usr">Usuario:</label>
-			<input type="text" class="form-control" id="usr" name="txtUsuarioNombre" onFocus="if(this.value!='')this.value=''"/>
-		</div>
-		<div class="form-group">
-		  	<label for="pwd">Contraseña:</label>
-		  	<input type="password" class="form-control" id="pwd" name="txtUsuarioClave">
-		</div>
-		<div class="form-group">
-		  	<label for="pwd1">Confirmar Contraseña:</label>
-		  	<input type="password" class="form-control" id="pwd1" name="txtUsuarioClave1">
-		</div>		
-		<div class="row">
-			<button type="submit" class="btn btn-primary btn-md" value="Registrar">Registrar</button>	
-		</div>
-	</form>
+<div class="container">
+	<div class="row">
 	</div>
+	<form action="registrar" method="POST"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<label for="usr">Usuario:</label>
+				<input type="text" class="form-control" id="usr" name="txtUsuarioNombre" placeholder="usuario" onFocus="if(this.value!='')this.value=''"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<label for="pwd">Contraseña:</label>
+		  		<input type="password" class="form-control" id="pwd" name="txtUsuarioClave" placeholder="password">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+			  	<label for="pwd1">Confirmar Contraseña:</label>
+			  	<input type="password" class="form-control" id="pwd1" name="txtUsuarioClave1" placeholder="confirmacion password">	
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<button type="submit" class="btn btn-info btn-block" value="Registrar">Registrar</button>	
+			</div>
+		</div>		
+	</form>
+
+	<br>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<form action="irLogin" method="get"><button class="btn btn-info btn-block login" type="submit">Login</button></form>
+		</div>
+	</div>
+	
+</div>
 
 </body>
 

@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Esta es la pantalla LOGIN</title>
+<title>LogIn</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link REL=StyleSheet HREF="css/login.css" TYPE="text/css" MEDIA=screen>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -17,28 +17,43 @@
 
 </head>
 <body>
-
-
 <div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h1>
+				Bienvenido a IntraVita
+			</h1>
+		</div>
+	</div>
+    <form action="login" method="post">
+    	<div class="row">
+	 		<div class="col-md-8 col-md-offset-2">
+	 			<label for="usr">Usuario:</label>
+				<input name="txtUsuarioNombre" type="text" class="form-control" id="usr" placeholder="usuario" onFocus="if(this.value!='')this.value=''">
+			</div>  
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<label for="pwd">Contraseña:</label>
+				<input type="password" name="txtUsuarioClave" class="form-control" id="pwd" placeholder="password">
+			</div>	  
+		</div>
+				<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<button class="btn btn-info btn-block login" type="submit">Login</button>
+			</div>	  
+		</div>
+	</form>	
+	<br>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<form action="irRegistrar" method="get"><button class="btn btn-info btn-block login" type="submit">Registrar</button></form>
+		</div>
+	</div>
 
-	
-	<form action="login" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<!--<form action="anadir.do" method="post"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
-	
-		<div class="row">
-			<label for="usr">Usuario:</label>
-			<input type="text" class="form-control" id="usr" name="txtUsuarioNombre" onFocus="if(this.value!='')this.value=''"/>
-		</div>
-		<div class="form-group">
-		  	<label for="pwd">Contraseña</label>
-		  	<input type="password" class="form-control" id="pwd" name="txtUsuarioClave">
-		</div>
-		
-		<div class="row">
-			<button type="submit" class="btn btn-primary btn-md" value="Entrar">Entrar</button>	
-		</div>
-	</form>
 </div>
+
+
 
 
 </body>

@@ -44,7 +44,7 @@ public class UsuarioServlet {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "usuario/inicio";
+		return "usuario/login";
 	}
 	
 	
@@ -65,20 +65,12 @@ public class UsuarioServlet {
 		usuario.setNombre(request.getParameter("txtUsuarioNombre"));
 		usuario.setClave(request.getParameter("txtUsuarioClave"));
 		
-		System.out.println("----------------");
-		System.out.println(usuario.getNombre());
-		System.out.println(usuario.getClave());
-		System.out.println("----------------");
+
 		String cadenaUrl="usuario/";
 		
 		Usuario existe =new Usuario();
 		existe=usuarioDao.select(usuario);
-		
-		System.out.println("----------------");
-		System.out.println(existe.getNombre());
-		System.out.println(existe.getClave());
-		System.out.println("----------------");
-		
+				
 		if(existe.getNombre().equals(usuario.getNombre())&& existe.getClave().equals(usuario.getClave())) {//esa linea es mentiiiira, hay que hacer bien las comprobaciones de mongo(select y controlador)
 			System.out.println("Credenciales correctos,iniciando sesion");
 			//necesitamos pasar un objeto usuario al interfaz
@@ -102,18 +94,17 @@ public class UsuarioServlet {
 		
 		if(pwd.equals(pwd1)) {
 			usuario.setClave(pwd);
-		}
-		
-		existe=usuarioDao.select(usuario);
-		if(existe.getNombre().equals(usuario.getNombre())) {//esa linea es mentiiiira, hay que hacer bien las comprobaciones de mongo(select y controlador)
-			System.out.println("El usuario ya existe");
-			cadenaUrl+="registrar";
+			existe=usuarioDao.select(usuario);
+			if(existe.getNombre().equals(usuario.getNombre())) {
+				System.out.println("Error en las credenciales");
+				cadenaUrl+="registrar";
+			}else {
+				usuarioDao.insert(usuario);
+				cadenaUrl+="login";
+			}
 		}else {
-			usuarioDao.insert(usuario);
-			System.out.println("El usuario no existe, comprobar si se ha creado(mlab)");
-			cadenaUrl+="bienvenido";
+			cadenaUrl+="registrar";
 		}
-		
 		
 		
 		return cadenaUrl;
