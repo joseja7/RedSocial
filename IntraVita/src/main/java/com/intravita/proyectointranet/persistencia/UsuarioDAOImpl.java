@@ -34,7 +34,19 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			usuarios.insertOne(bso);
 		}
 	}
-
+	public void insertSinEncrypt (Usuario usuario){
+		BsonDocument bso = new BsonDocument();
+		bso.append("nombre", new BsonString(usuario.getNombre()));
+		bso.append("pwd", new BsonString(usuario.getClave()));
+		bso.append("email", new BsonString(usuario.getEmail()));
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		FindIterable<BsonDocument> resultado=usuarios.find(bso);
+		BsonDocument usuarioBso = resultado.first();
+		if (usuarioBso==null) {
+			usuarios.insertOne(bso);
+		}
+	}
 	public Usuario select(Usuario generico) {
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
@@ -52,7 +64,33 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 		return result;
 	}
-	
+	public Usuario selectNombre(Usuario generico) {
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(generico.getNombre()));
+		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
+		BsonDocument usuario = resultado.first();
+		Usuario result;
+		if (usuario==null) {
+			result=new Usuario("-","-");
+		}
+		else {
+			BsonValue nombre=usuario.get("nombre");
+			BsonString name=nombre.asString();
+			String nombreFinal=name.getValue();
+			
+			BsonValue pwd=usuario.get("pwd");
+			BsonString password=pwd.asString();
+			String pwdFinal=password.getValue();
+			
+			BsonValue email=usuario.get("email");
+			BsonString correo=email.asString();
+			String emailFinal=correo.getValue();
+			result = new Usuario(nombreFinal, pwdFinal, emailFinal);
+		}
+		return result;
+	}
 	public void delete (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));

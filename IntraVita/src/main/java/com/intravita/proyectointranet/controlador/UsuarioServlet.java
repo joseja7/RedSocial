@@ -31,9 +31,8 @@ import org.springframework.ui.Model;
 public class UsuarioServlet {
 	@Autowired
 	UsuarioDAOImpl usuarioDao;
+	AdministradorDAOImpl administradorDao=new AdministradorDAOImpl();
 	
-	@Autowired
-	AdministradorDAOImpl administradorDao;
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioServlet.class);
 	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -65,12 +64,14 @@ public class UsuarioServlet {
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String iniciarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		String cadenaUrl="usuario/";
 		Usuario usuario = new Usuario();
 		usuario.setNombre(request.getParameter("txtUsuarioNombre"));
 		usuario.setClave(request.getParameter("txtUsuarioClave"));
-		
+		if(usuario.getNombre()=="" || usuario.getClave()=="")
+			return cadenaUrl+="login";
 
-		String cadenaUrl="usuario/";
+
 		
 		Usuario existe =new Usuario();
 		existe=usuarioDao.select(usuario);
@@ -124,6 +125,53 @@ public class UsuarioServlet {
 		}
 		
 		
+		return cadenaUrl;
+	}
+	@RequestMapping(value="/borrar", method = RequestMethod.POST)
+	public String borrar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		Usuario usuario = new Usuario();
+		Usuario existe =new Usuario();
+		usuario.setNombre(request.getParameter("txtUsuarioBorrar"));	
+		String cadenaUrl="usuario/";
+		existe=usuarioDao.selectNombre(usuario);
+		if(existe.getNombre().equals(usuario.getNombre())) {
+			usuarioDao.delete(usuario);
+		}
+		cadenaUrl+="inicioAdmin";		
+		return cadenaUrl;
+	}
+	@RequestMapping(value="/promover", method = RequestMethod.POST)
+	public String promover(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		Usuario usuario = new Usuario();
+		Usuario existe =new Usuario();
+		usuario.setNombre(request.getParameter("txtUsuarioPromover"));	
+		String cadenaUrl="usuario/";
+		existe=usuarioDao.selectNombre(usuario);
+		if(existe.getNombre().equals(usuario.getNombre())) {
+			usuarioDao.delete(usuario);
+			Administrador admin=new Administrador(existe.getNombre(), existe.getClave(), existe.getEmail());
+			System.out.println(admin.getNombre()+admin.getClave()+admin.getEmail());
+			administradorDao.insertSinEncrypt(admin);
+		}
+		cadenaUrl+="inicioAdmin";		
+		return cadenaUrl;
+	}
+	
+	@RequestMapping(value="/degradar", method = RequestMethod.POST)
+	public String degradar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		Administrador admin=new Administrador();
+		Administrador existeAdmin=new Administrador();
+		admin.setNombre(request.getParameter("txtAdminDegradar"));
+		String cadenaUrl="usuario/";
+		
+		existeAdmin=administradorDao.selectNombre(admin);
+		if(existeAdmin.getNombre().equals(admin.getNombre())) {
+			administradorDao.delete(admin);
+			Usuario user= new Usuario(existeAdmin.getNombre(), existeAdmin.getClave(), existeAdmin.getEmail());
+			usuarioDao.insertSinEncrypt(user);
+		}
+		
+		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
 	

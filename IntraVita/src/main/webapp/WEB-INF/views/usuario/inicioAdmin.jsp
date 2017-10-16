@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>LogIn</title>
+<title>Panel administrador</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link REL=StyleSheet HREF="css/login.css" TYPE="text/css" MEDIA=screen>
@@ -26,9 +26,47 @@
 		</div>
 	</div>
 </div>
-
-
-
-
+    <form action="promover" method="post">
+    	<div class="row">
+	 		<div class="col-md-8 col-md-offset-2">
+	 			<label for="usr">Usuario:</label>
+				<input name="txtUsuarioPromover" type="text" class="form-control" id="usr" placeholder="usuario">
+			</div>  
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<button class="btn btn-info btn-block login" type="submit">Promover</button>
+			</div>	  
+		</div>
+	</form>	
+	<br>
+    <form action="degradar" method="post">
+    	<div class="row">
+	 		<div class="col-md-8 col-md-offset-2">
+	 			<label for="usr">Administrador:</label>
+				<input name="txtAdminDegradar" type="text" class="form-control" id="usr" placeholder="administrador">
+			</div>  
+		</div>
+				<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<button class="btn btn-info btn-block login" type="submit">Degradar</button>
+			</div>	  
+		</div>
+	</form>	
+	<br>
+    <form action="borrar" method="post">
+    	<div class="row">
+	 		<div class="col-md-8 col-md-offset-2">
+	 			<label for="usr">Usuario:</label>
+				<input name="txtUsuarioBorrar" type="text" class="form-control" id="usr" placeholder="usuario">
+			</div>  
+		</div>
+				<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<button class="btn btn-info btn-block login" type="submit">Borrar</button>
+			</div>	  
+		</div>
+	</form>	
+	<br>
 </body>
 </html>
