@@ -25,7 +25,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
 		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
-
+		bso.append("email", new BsonString(usuario.getEmail()));
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 		FindIterable<BsonDocument> resultado=usuarios.find(bso);

@@ -39,7 +39,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_borrado()"
 });
 formatter.result({
-  "duration": 309078149,
+  "duration": 892986400,
   "status": "passed"
 });
 formatter.match({
@@ -56,14 +56,14 @@ formatter.match({
   "location": "annotation.y_coinciden_y_son_validos(String,String)"
 });
 formatter.result({
-  "duration": 4049506068,
+  "duration": 4860636000,
   "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_exito_y_delete_del_usuario()"
 });
 formatter.result({
-  "duration": 148079817,
+  "duration": 126363300,
   "status": "passed"
 });
 formatter.scenario({
@@ -99,7 +99,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de()"
 });
 formatter.result({
-  "duration": 30789,
+  "duration": 24500,
   "status": "passed"
 });
 formatter.match({
@@ -116,14 +116,14 @@ formatter.match({
   "location": "annotation.y_no_coinciden_o_son_invalidos(String,String)"
 });
 formatter.result({
-  "duration": 54849807,
+  "duration": 59908700,
   "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_error_y_cancelacion_del_borrado()"
 });
 formatter.result({
-  "duration": 22970,
+  "duration": 21000,
   "status": "passed"
 });
 formatter.uri('cucumberJava\CreacionUsuario.feature');
@@ -172,7 +172,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 5281182,
+  "duration": 6370600,
   "status": "passed"
 });
 formatter.match({
@@ -185,7 +185,7 @@ formatter.match({
   "location": "annotation.correcto(String)"
 });
 formatter.result({
-  "duration": 151506,
+  "duration": 163500,
   "status": "passed"
 });
 formatter.match({
@@ -202,14 +202,14 @@ formatter.match({
   "location": "annotation.y_coinciden(String,String)"
 });
 formatter.result({
-  "duration": 54737,
+  "duration": 50500,
   "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_validacion_y_usuario_insertado()"
 });
 formatter.result({
-  "duration": 575741166,
+  "duration": 297251900,
   "status": "passed"
 });
 formatter.scenario({
@@ -245,7 +245,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 60113,
+  "duration": 27600,
   "status": "passed"
 });
 formatter.match({
@@ -262,7 +262,7 @@ formatter.match({
   "location": "annotation.y_no_coinciden(String,String)"
 });
 formatter.result({
-  "duration": 135377,
+  "duration": 50200,
   "status": "passed"
 });
 formatter.match({
@@ -275,7 +275,7 @@ formatter.match({
   "location": "annotation.Mensaje_de_error(int)"
 });
 formatter.result({
-  "duration": 57605737,
+  "duration": 138364100,
   "status": "passed"
 });
 formatter.uri('cucumberJava\Login.feature');
@@ -319,7 +319,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 6112018,
+  "duration": 4413300,
   "status": "passed"
 });
 formatter.match({
@@ -336,14 +336,14 @@ formatter.match({
   "location": "annotation.Pone_nombre_de_y_validos(String,String)"
 });
 formatter.result({
-  "duration": 59740496,
+  "duration": 69396600,
   "status": "passed"
 });
 formatter.match({
   "location": "annotation.llegamos_a_la_pagina_inicial_y_un_mensaje_de_bienvenida()"
 });
 formatter.result({
-  "duration": 62532104,
+  "duration": 64857300,
   "status": "passed"
 });
 formatter.scenario({
@@ -379,7 +379,7 @@ formatter.match({
   "location": "annotation.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 24925,
+  "duration": 22200,
   "status": "passed"
 });
 formatter.match({
@@ -396,14 +396,14 @@ formatter.match({
   "location": "annotation.Pone_nombre_de_y_o_invalidos(String,String)"
 });
 formatter.result({
-  "duration": 58159,
+  "duration": 49200,
   "status": "passed"
 });
 formatter.match({
   "location": "annotation.Mensaje_de_error()"
 });
 formatter.result({
-  "duration": 54390404,
+  "duration": 58027700,
   "status": "passed"
 });
 });

@@ -87,6 +87,7 @@ public class UsuarioServlet {
 		Usuario usuario = new Usuario();
 		Usuario existe =new Usuario();
 		usuario.setNombre(request.getParameter("txtUsuarioNombre"));
+		usuario.setEmail(request.getParameter("txtEmail"));
 		String pwd=request.getParameter("txtUsuarioClave");
 		String pwd1=request.getParameter("txtUsuarioClave1");
 		

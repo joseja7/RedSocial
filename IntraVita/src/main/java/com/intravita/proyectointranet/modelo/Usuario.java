@@ -3,7 +3,13 @@ package com.intravita.proyectointranet.modelo;
 public class Usuario {
 	private String nombre;
 	private String clave;
+	private String email;
 	
+	public Usuario(String nombre, String clave, String email) {
+		this.nombre=nombre;
+		this.clave=clave;
+		this.email=email;
+	}
 	//Constructor de pass
 	public Usuario(String nombre, String clave) {
 		this.nombre=nombre;
@@ -33,5 +39,11 @@ public class Usuario {
 	}
 	public void setClave(String nuevaClave) {
 		this.clave=nuevaClave;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

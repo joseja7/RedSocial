@@ -30,6 +30,12 @@
 		</div>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
+				<label for="email">Email:</label>
+				<input type="text" class="form-control" id="email" name="txtEmail" placeholder="@alu.uclm.es""/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
 				<label for="pwd">Contraseña:</label>
 		  		<input type="password" class="form-control" id="pwd" name="txtUsuarioClave" placeholder="password">
 			</div>
