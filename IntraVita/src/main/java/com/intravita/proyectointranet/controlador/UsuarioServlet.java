@@ -30,6 +30,9 @@ import org.springframework.ui.Model;
 public class UsuarioServlet {
 	@Autowired
 	UsuarioDAOImpl usuarioDao;
+	
+	@Autowired
+	AdministradorDAOImpl administradorDao;
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioServlet.class);
 	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -71,13 +74,25 @@ public class UsuarioServlet {
 		Usuario existe =new Usuario();
 		existe=usuarioDao.select(usuario);
 				
-		if(existe.getNombre().equals(usuario.getNombre())&& existe.getClave().equals(usuario.getClave())) {//esa linea es mentiiiira, hay que hacer bien las comprobaciones de mongo(select y controlador)
+		if(existe.getNombre().equals(usuario.getNombre())&& existe.getClave().equals(usuario.getClave())) {
 			System.out.println("Credenciales correctos,iniciando sesion");
-			//necesitamos pasar un objeto usuario al interfaz
+
 			cadenaUrl+="bienvenido";
 		}else {
-			System.out.println("El usuario no existe, credenciales incorrectos");
-			cadenaUrl+="login";
+			Administrador admin=new Administrador();
+			admin.setNombre(request.getParameter("txtUsuarioNombre"));
+			admin.setClave(request.getParameter("txtUsuarioClave"));
+			
+			Administrador existeAdmin=new Administrador();
+			existeAdmin=administradorDao.select();
+			if(existeAdmin.getNombre().equals(admin.getNombre())&& existeAdmin.getClave().equals(admin.getClave())) {
+				System.out.println("Credenciales correctos, iniciando sesion de administrador");
+				cadenaUrl+="inicioAdmin";
+			}else {
+				System.out.println("Credenciales incorrectos");
+				cadenaUrl+="login";
+			}
+
 		}
 		return cadenaUrl;
 	} 
