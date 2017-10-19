@@ -11,6 +11,8 @@ public class utilidades {
 	 * @return 
 	 */
 	public static boolean credencialesValidas(String nombre, String email, String pwd1, String pwd2) {
+		if(!nombre.contains("."))
+			return false;
 		if(email.length()<=extensionEmail.length())
 			return false;
 		String extension=email.substring(email.length()-extensionEmail.length(), email.length());

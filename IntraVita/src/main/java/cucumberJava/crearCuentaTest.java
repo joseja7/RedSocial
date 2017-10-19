@@ -31,7 +31,7 @@ public class crearCuentaTest {
 
 	@When("^Nombre, email, password y confirmacion validos$")
 	public void Nombre_email_contrase_a_y_confirmacion_validos() {
-		nombre="fernando";
+		nombre="fernando.cozar";
 		email="fernando@alu.uclm.es";
 		pwd1="1234";
 		pwd2="1234";
@@ -49,7 +49,7 @@ public class crearCuentaTest {
 
 	@When("^Email no tiene extension alu.uclm.es$")
 	public void Email_no_tiene_extension_alu_uclm_es() {
-		nombre="fernando";
+		nombre="fernando.cozar";
 		email="fernando@alu.uclm.ese";
 		pwd1="1234";
 		pwd2="1234";
@@ -62,10 +62,18 @@ public class crearCuentaTest {
 
 	@When("^Password y su confirmacion no coinciden$")
 	public void Contrase_a_y_su_confirmacion_no_coinciden() {
-		nombre="fernando";
+		nombre="fernando.cozar";
 		email="fernando@alu.uclm.es";
 		pwd1="1234";
 		pwd2="12345";
 	}
+	@When("^Nombre no tiene el formato adecuado$")
+	public void Nombre_no_tiene_el_formato_adecuado() {
+		nombre="fernandocozar";
+		email="fernando@alu.uclm.es";
+		pwd1="1234";
+		pwd2="1234";
+	}
+
 
 }
