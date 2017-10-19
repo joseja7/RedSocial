@@ -21,7 +21,31 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	public UsuarioDAOImpl() {
 		super();
 	}
-	public void insert (Usuario usuario){
+	/**
+	 * @method login
+	 * @param usuario
+	 * @return true si login es correcto, false en caso opuesto
+	 */
+	public boolean login(Usuario usuario) {
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(usuario.getNombre()));
+		criterio.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
+		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
+		BsonDocument usuarioBson = resultado.first();
+		if (usuarioBson==null) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * @method insercion de usuarios con y sin encriptar clave
+	 * @param usuario
+	 * @return true si se ha insertado en la bbdd false en caso opuesto
+	 */	
+	public boolean insert (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
 		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
@@ -33,6 +57,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		if (usuarioBso==null) {
 			usuarios.insertOne(bso);
 		}
+		return login(usuario);
 	}
 	public void insertSinEncrypt (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
@@ -47,33 +72,21 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			usuarios.insertOne(bso);
 		}
 	}
-	public Usuario select(Usuario generico) {
+	/***
+	 * @method select con nombre que devuelve todos los datos del usuario
+	 * @param nombre
+	 * @return usuario completo
+	 */
+	public Usuario selectNombre(String nombreParam) {
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 		BsonDocument criterio = new BsonDocument();
-		criterio.append("nombre", new BsonString(generico.getNombre()));
-		criterio.append("pwd", new BsonString(DigestUtils.md5Hex(generico.getClave())));
+		criterio.append("nombre", new BsonString(nombreParam));
 		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
 		BsonDocument usuario = resultado.first();
 		Usuario result;
 		if (usuario==null) {
-			result=new Usuario("-","-");
-		}
-		else {
-			result = new Usuario(generico.getNombre(),generico.getClave());
-		}
-		return result;
-	}
-	public Usuario selectNombre(Usuario generico) {
-		MongoBroker broker = MongoBroker.get();
-		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-		BsonDocument criterio = new BsonDocument();
-		criterio.append("nombre", new BsonString(generico.getNombre()));
-		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
-		BsonDocument usuario = resultado.first();
-		Usuario result;
-		if (usuario==null) {
-			result=new Usuario("-","-");
+			return null;
 		}
 		else {
 			BsonValue nombre=usuario.get("nombre");
@@ -91,6 +104,25 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 		return result;
 	}
+
+	public Usuario select(Usuario generico) {
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(generico.getNombre()));
+		criterio.append("pwd", new BsonString(DigestUtils.md5Hex(generico.getClave())));
+		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
+		BsonDocument usuario = resultado.first();
+		Usuario result;
+		if (usuario==null) {
+			result=new Usuario("-","-");
+		}
+		else {
+			result = new Usuario(generico.getNombre(),generico.getClave());
+		}
+		return result;
+	}
+
 	public void delete (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
@@ -128,22 +160,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		String pwdFinal=password.getValue();
 		return pwdFinal;
 	}
-	
-	/*public String show () throws Exception{//falta cerrar.... Este metodo equivale a un readAll
-	MongoBroker broker = MongoBroker.get();
-	MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-	return usuarios.toString();
-	/*FindIterable <BsonDocument> resultado=usuarios.find();
-	String cadena ="";
-    
-    while (resultado!=null) {
-    	cadena = cadena + resultado.first().toString()+"\n";
-    }
-    
-	return cadena;
-	
-}*/
-	
+
 	
 	
 }

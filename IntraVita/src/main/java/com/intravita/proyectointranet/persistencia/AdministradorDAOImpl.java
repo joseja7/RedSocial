@@ -11,6 +11,36 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
 public class AdministradorDAOImpl {
+	
+	public AdministradorDAOImpl() {
+		super();
+	}
+	
+	/**
+	 * @method login
+	 * @param administrador
+	 * @return true si login es correcto, false en caso opuesto
+	 */
+	public boolean login(Administrador administrador) {
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(administrador.getNombre()));
+		criterio.append("pwd", new BsonString(DigestUtils.md5Hex(administrador.getClave())));
+		FindIterable<BsonDocument> resultado=administradores.find(criterio);
+		BsonDocument administradorBson = resultado.first();
+		if (administradorBson==null) {
+			return false;
+		}
+		return true;
+	}
+	
+	/***
+	 * 
+	 * 
+	 * @param administrador
+	 * @method metodos de insercion con y sin encriptar la password
+	 */
 	 public void insert (Administrador administrador) {
 		  BsonDocument bso = new BsonDocument();
 		  bso.append("nombre", new BsonString(administrador.getNombre()));
@@ -38,7 +68,7 @@ public class AdministradorDAOImpl {
 		   administradores.insertOne(bso);
 		  }
 	 }
-	 
+
 	 public Administrador select(Administrador generico) {
 		  MongoBroker broker = MongoBroker.get();
 		  MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
@@ -76,31 +106,7 @@ public class AdministradorDAOImpl {
 		  administradores.findOneAndUpdate(administrador, actualizacion);
 	 }
 	 
-		public Administrador selectNombre(Administrador generico) {
-			MongoBroker broker = MongoBroker.get();
-			MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
-			BsonDocument criterio = new BsonDocument();
-			criterio.append("nombre", new BsonString(generico.getNombre()));
-			FindIterable<BsonDocument> resultado=administradores.find(criterio);
-			BsonDocument administrador = resultado.first();
-			Administrador result;
-			if (administrador==null) {
-				result=new Administrador("-","-", "-");
-			}
-			else {
-				BsonValue nombre=administrador.get("nombre");
-				BsonString name=nombre.asString();
-				String nombreFinal=name.getValue();
-				
-				BsonValue pwd=administrador.get("pwd");
-				BsonString password=pwd.asString();
-				String pwdFinal=password.getValue();
-				
-				BsonValue email=administrador.get("email");
-				BsonString correo=email.asString();
-				String emailFinal=correo.getValue();
-				result = new Administrador(nombreFinal, pwdFinal, emailFinal);
-			}
-			return result;
-		}
+
+
+
 }

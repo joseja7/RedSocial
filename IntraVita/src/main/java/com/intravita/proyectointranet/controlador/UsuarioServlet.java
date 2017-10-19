@@ -13,7 +13,7 @@ import com.intravita.proyectointranet.modelo.Administrador;
 import com.intravita.proyectointranet.modelo.Usuario;
 import com.intravita.proyectointranet.persistencia.AdministradorDAOImpl;
 import com.intravita.proyectointranet.persistencia.UsuarioDAOImpl;
-
+import com.intravita.proyectointranet.utlidades.utilidades;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -35,7 +35,6 @@ public class UsuarioServlet {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioServlet.class);
 	
-	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -50,7 +49,9 @@ public class UsuarioServlet {
 		return "usuario/login";
 	}
 	
-	
+	/***
+	 * @method metodos de navegacion entre jsp's
+	 */
 	@RequestMapping(value="/irLogin",method = RequestMethod.GET)
 	public ModelAndView irLogin(HttpServletResponse response,HttpServletRequest request){
 		return cambiarVista("usuario/login");
@@ -62,115 +63,101 @@ public class UsuarioServlet {
 		return cambiarVista("usuario/registrar");
 	}
 	
+	/***
+	 * 
+	 *@method ejecucion cuando pulsamos el boton login
+	 *
+	 */
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String iniciarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		String cadenaUrl="usuario/";
-		Usuario usuario = new Usuario();
-		usuario.setNombre(request.getParameter("txtUsuarioNombre"));
-		usuario.setClave(request.getParameter("txtUsuarioClave"));
-		if(usuario.getNombre()=="" || usuario.getClave()=="")
+		String nombre=request.getParameter("txtUsuarioNombre");
+		String clave=request.getParameter("txtUsuarioClave");
+		if(clave=="" || nombre=="")
 			return cadenaUrl+="login";
-
-
+		Administrador administrador= new Administrador();
+		administrador.setNombre(nombre);
+		administrador.setClave(clave);
+		if(administradorDao.login(administrador))
+			return cadenaUrl+="inicioAdmin";
 		
-		Usuario existe =new Usuario();
-		existe=usuarioDao.select(usuario);
-				
-		if(existe.getNombre().equals(usuario.getNombre())&& existe.getClave().equals(usuario.getClave())) {
-			System.out.println("Credenciales correctos,iniciando sesion");
-
-			cadenaUrl+="bienvenido";
-		}else {
-			Administrador admin=new Administrador();
-			admin.setNombre(request.getParameter("txtUsuarioNombre"));
-			admin.setClave(request.getParameter("txtUsuarioClave"));
-			
-			Administrador existeAdmin=new Administrador();
-			existeAdmin=administradorDao.select(admin);
-			if(existeAdmin.getNombre().equals(admin.getNombre())&& existeAdmin.getClave().equals(admin.getClave())) {
-				System.out.println("Credenciales correctos, iniciando sesion de administrador");
-				cadenaUrl+="inicioAdmin";
-			}else {
-				System.out.println("Credenciales incorrectos");
-				cadenaUrl+="login";
-			}
-
-		}
-		return cadenaUrl;
+		Usuario usuario = new Usuario();
+		usuario.setNombre(nombre);
+		usuario.setClave(clave);
+		if(usuarioDao.login(usuario))
+			return cadenaUrl+="bienvenido";
+		return cadenaUrl+="login";
 	} 
-	
+	/***
+	 * 
+	 *@method ejecucion cuando pulsamos el boton de registro
+	 *
+	 */
 	@RequestMapping(value="/registrar", method = RequestMethod.POST)
 	public String registrar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		Usuario usuario = new Usuario();
-		Usuario existe =new Usuario();
-		usuario.setNombre(request.getParameter("txtUsuarioNombre"));
-		usuario.setEmail(request.getParameter("txtEmail"));
-		String pwd=request.getParameter("txtUsuarioClave");
-		String pwd1=request.getParameter("txtUsuarioClave1");
-		
 		String cadenaUrl="usuario/";
+		String nombre=request.getParameter("txtUsuarioNombre");
+		String email=request.getParameter("txtEmail");
+		String pwd1=request.getParameter("txtUsuarioClave");
+		String pwd2=request.getParameter("txtUsuarioClave1");
 		
-		if(pwd.equals(pwd1)) {
-			usuario.setClave(pwd);
-			existe=usuarioDao.select(usuario);
-			if(existe.getNombre().equals(usuario.getNombre())) {
-				System.out.println("Error en las credenciales");
-				cadenaUrl+="registrar";
-			}else {
-				usuarioDao.insert(usuario);
-				cadenaUrl+="login";
-			}
-		}else {
-			cadenaUrl+="registrar";
-		}
+		if(!utilidades.credencialesValidas(nombre, email, pwd1, pwd2))
+			return cadenaUrl+="registrar";
 		
+		Usuario usuario = new Usuario();
+		usuario.setNombre(nombre);
+		usuario.setEmail(email);
+		usuario.setClave(pwd1);
 		
-		return cadenaUrl;
+		if(!usuarioDao.insert(usuario))
+			return cadenaUrl+="registrar";
+		return cadenaUrl+="login";
 	}
+	/***
+	 * 
+	 *@method metodo de borrado de un usuario desde el administrador
+	 *
+	 */
 	@RequestMapping(value="/borrar", method = RequestMethod.POST)
 	public String borrar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		Usuario usuario = new Usuario();
-		Usuario existe =new Usuario();
-		usuario.setNombre(request.getParameter("txtUsuarioBorrar"));	
 		String cadenaUrl="usuario/";
-		existe=usuarioDao.selectNombre(usuario);
-		if(existe.getNombre().equals(usuario.getNombre())) {
-			usuarioDao.delete(usuario);
-		}
+		String nombre=request.getParameter("txtUsuarioBorrar");
+		usuarioDao.delete(new Usuario(nombre));
 		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
+	
+	/***
+	 * 
+	 *@method funcion del administrador de promover un usuario a admin
+	 *
+	 */
 	@RequestMapping(value="/promover", method = RequestMethod.POST)
 	public String promover(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		Usuario usuario = new Usuario();
-		Usuario existe =new Usuario();
-		usuario.setNombre(request.getParameter("txtUsuarioPromover"));	
 		String cadenaUrl="usuario/";
-		existe=usuarioDao.selectNombre(usuario);
-		if(existe.getNombre().equals(usuario.getNombre())) {
-			usuarioDao.delete(usuario);
-			Administrador admin=new Administrador(existe.getNombre(), existe.getClave(), existe.getEmail());
-			System.out.println(admin.getNombre()+admin.getClave()+admin.getEmail());
+		String nombre=request.getParameter("txtUsuarioPromover");
+		Usuario usuario = new Usuario();
+		usuario.setNombre(nombre);	
+		usuario=usuarioDao.selectNombre(nombre);
+		if(usuario!=null) {
+			Administrador admin=new Administrador(usuario.getNombre(), usuario.getClave(), usuario.getEmail());
 			administradorDao.insertSinEncrypt(admin);
 		}
 		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
-	
+	/***
+	 * 
+	 *@method funcion del administrador de degradar un admin a usuario
+	 *
+	 */
 	@RequestMapping(value="/degradar", method = RequestMethod.POST)
 	public String degradar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		Administrador admin=new Administrador();
-		Administrador existeAdmin=new Administrador();
-		admin.setNombre(request.getParameter("txtAdminDegradar"));
 		String cadenaUrl="usuario/";
-		
-		existeAdmin=administradorDao.selectNombre(admin);
-		if(existeAdmin.getNombre().equals(admin.getNombre())) {
-			administradorDao.delete(admin);
-			Usuario user= new Usuario(existeAdmin.getNombre(), existeAdmin.getClave(), existeAdmin.getEmail());
-			usuarioDao.insertSinEncrypt(user);
-		}
-		
+		String nombre=request.getParameter("txtAdminDegradar");
+		Administrador admin=new Administrador();
+		admin.setNombre(nombre);
+		administradorDao.delete(admin);
 		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
