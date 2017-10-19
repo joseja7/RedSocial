@@ -1,132 +1,4 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri('cucumberJava\BorradoCuenta.feature');
-formatter.feature({
-  "line": 1,
-  "name": "Usuario quiere borrar su cuenta",
-  "description": "",
-  "id": "usuario-quiere-borrar-su-cuenta",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "line": 4,
-  "name": "Borrado exitoso de cuenta",
-  "description": "",
-  "id": "usuario-quiere-borrar-su-cuenta;borrado-exitoso-de-cuenta",
-  "type": "scenario",
-  "keyword": "Scenario",
-  "tags": [
-    {
-      "line": 3,
-      "name": "@Scenario1"
-    }
-  ]
-});
-formatter.step({
-  "line": 5,
-  "name": "Usuario en pagina de borrado",
-  "keyword": "Given "
-});
-formatter.step({
-  "line": 6,
-  "name": "\"password\" y \"passwordConf\" coinciden y son validos",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 7,
-  "name": "Mensaje de exito y delete del usuario",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "annotation.Usuario_en_pagina_de_borrado()"
-});
-formatter.result({
-  "duration": 892986400,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
-    {
-      "val": "password",
-      "offset": 1
-    },
-    {
-      "val": "passwordConf",
-      "offset": 14
-    }
-  ],
-  "location": "annotation.y_coinciden_y_son_validos(String,String)"
-});
-formatter.result({
-  "duration": 4860636000,
-  "status": "passed"
-});
-formatter.match({
-  "location": "annotation.Mensaje_de_exito_y_delete_del_usuario()"
-});
-formatter.result({
-  "duration": 126363300,
-  "status": "passed"
-});
-formatter.scenario({
-  "line": 10,
-  "name": "Borrado fallido de cuenta",
-  "description": "",
-  "id": "usuario-quiere-borrar-su-cuenta;borrado-fallido-de-cuenta",
-  "type": "scenario",
-  "keyword": "Scenario",
-  "tags": [
-    {
-      "line": 9,
-      "name": "@Scenario2"
-    }
-  ]
-});
-formatter.step({
-  "line": 11,
-  "name": "Usuario en pagina de",
-  "keyword": "Given "
-});
-formatter.step({
-  "line": 12,
-  "name": "\"password\" y \"passwordConf\" no coinciden o son invalidos",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 13,
-  "name": "Mensaje de error y cancelacion del borrado",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "annotation.Usuario_en_pagina_de()"
-});
-formatter.result({
-  "duration": 24500,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
-    {
-      "val": "password",
-      "offset": 1
-    },
-    {
-      "val": "passwordConf",
-      "offset": 14
-    }
-  ],
-  "location": "annotation.y_no_coinciden_o_son_invalidos(String,String)"
-});
-formatter.result({
-  "duration": 59908700,
-  "status": "passed"
-});
-formatter.match({
-  "location": "annotation.Mensaje_de_error_y_cancelacion_del_borrado()"
-});
-formatter.result({
-  "duration": 21000,
-  "status": "passed"
-});
-formatter.uri('cucumberJava\CreacionUsuario.feature');
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri('cucumberJava\CreacionUsuario.feature');
 formatter.feature({
   "line": 1,
   "name": "Creacion de un nuevo usuario",
@@ -155,127 +27,183 @@ formatter.step({
 });
 formatter.step({
   "line": 6,
-  "name": "\"Nombre\" correcto",
+  "name": "Nombre, email, password y confirmacion validos",
   "keyword": "When "
 });
 formatter.step({
   "line": 7,
-  "name": "\"password\" y \"passwordConf\" coinciden",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 8,
   "name": "Mensaje de validacion y usuario insertado",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "annotation.Usuario_en_pagina_de_creacion()"
+  "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 6370600,
+  "duration": 343614699,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "Nombre",
-      "offset": 1
-    }
-  ],
-  "location": "annotation.correcto(String)"
+  "location": "crearCuentaTest.Nombre_email_contrase_a_y_confirmacion_validos()"
 });
 formatter.result({
-  "duration": 163500,
+  "duration": 2062401,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "password",
-      "offset": 1
-    },
-    {
-      "val": "passwordConf",
-      "offset": 14
-    }
-  ],
-  "location": "annotation.y_coinciden(String,String)"
+  "location": "crearCuentaTest.Mensaje_de_validacion_y_usuario_insertado()"
 });
 formatter.result({
-  "duration": 50500,
-  "status": "passed"
-});
-formatter.match({
-  "location": "annotation.Mensaje_de_validacion_y_usuario_insertado()"
-});
-formatter.result({
-  "duration": 297251900,
+  "duration": 3403286701,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 12,
-  "name": "Creacion incorrecta de cuenta",
+  "line": 11,
+  "name": "Creacion incorrecta de cuenta por email invalido",
   "description": "",
-  "id": "creacion-de-un-nuevo-usuario;creacion-incorrecta-de-cuenta",
+  "id": "creacion-de-un-nuevo-usuario;creacion-incorrecta-de-cuenta-por-email-invalido",
   "type": "scenario",
   "keyword": "Scenario",
   "tags": [
     {
-      "line": 11,
+      "line": 10,
       "name": "@Scenario2"
     }
   ]
 });
 formatter.step({
-  "line": 13,
+  "line": 12,
   "name": "Usuario en pagina de creacion",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 14,
-  "name": "\"password\" y \"passwordConf\" no coinciden",
+  "line": 13,
+  "name": "Email no tiene extension alu.uclm.es",
   "keyword": "When "
 });
 formatter.step({
-  "line": 15,
-  "name": "Mensaje de error2",
+  "line": 14,
+  "name": "Mensaje de error a la creacion",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "annotation.Usuario_en_pagina_de_creacion()"
+  "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 27600,
+  "duration": 17900,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "password",
-      "offset": 1
-    },
-    {
-      "val": "passwordConf",
-      "offset": 14
-    }
-  ],
-  "location": "annotation.y_no_coinciden(String,String)"
+  "location": "crearCuentaTest.Email_no_tiene_extension_alu_uclm_es()"
 });
 formatter.result({
-  "duration": 50200,
+  "duration": 105200,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "2",
-      "offset": 16
-    }
-  ],
-  "location": "annotation.Mensaje_de_error(int)"
+  "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion()"
 });
 formatter.result({
-  "duration": 138364100,
+  "duration": 34400,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 17,
+  "name": "Creacion incorrecta de cuenta por password que no coinciden",
+  "description": "",
+  "id": "creacion-de-un-nuevo-usuario;creacion-incorrecta-de-cuenta-por-password-que-no-coinciden",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 16,
+      "name": "@Scenario3"
+    }
+  ]
+});
+formatter.step({
+  "line": 18,
+  "name": "Usuario en pagina de creacion",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 19,
+  "name": "Password y su confirmacion no coinciden",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 20,
+  "name": "Mensaje de error a la creacion",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
+});
+formatter.result({
+  "duration": 18399,
+  "status": "passed"
+});
+formatter.match({
+  "location": "crearCuentaTest.Contrase_a_y_su_confirmacion_no_coinciden()"
+});
+formatter.result({
+  "duration": 26700,
+  "status": "passed"
+});
+formatter.match({
+  "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion()"
+});
+formatter.result({
+  "duration": 29900,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 23,
+  "name": "Creacion incorrecta de cuenta por nombre invalido",
+  "description": "",
+  "id": "creacion-de-un-nuevo-usuario;creacion-incorrecta-de-cuenta-por-nombre-invalido",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 22,
+      "name": "@Scenario4"
+    }
+  ]
+});
+formatter.step({
+  "line": 24,
+  "name": "Usuario en pagina de creacion",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 25,
+  "name": "Nombre no tiene el formato adecuado",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 26,
+  "name": "Mensaje de error a la creacion",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
+});
+formatter.result({
+  "duration": 26901,
+  "status": "passed"
+});
+formatter.match({
+  "location": "crearCuentaTest.Nombre_no_tiene_el_formato_adecuado()"
+});
+formatter.result({
+  "duration": 31400,
+  "status": "passed"
+});
+formatter.match({
+  "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion()"
+});
+formatter.result({
+  "duration": 24800,
   "status": "passed"
 });
 formatter.uri('cucumberJava\Login.feature');
@@ -307,50 +235,40 @@ formatter.step({
 });
 formatter.step({
   "line": 7,
-  "name": "Pone nombre de \"usuario\" y \"password\" validos",
+  "name": "Credenciales correctas",
   "keyword": "When "
 });
 formatter.step({
   "line": 8,
-  "name": "llegamos a la pagina inicial y un mensaje de bienvenida",
+  "name": "Mensaje de bienvenida al login",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "annotation.Usuario_en_pagina_de_login()"
+  "location": "loginTest.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 4413300,
+  "duration": 6837499,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "usuario",
-      "offset": 16
-    },
-    {
-      "val": "password",
-      "offset": 28
-    }
-  ],
-  "location": "annotation.Pone_nombre_de_y_validos(String,String)"
+  "location": "loginTest.Credenciales_correctas()"
 });
 formatter.result({
-  "duration": 69396600,
+  "duration": 47300,
   "status": "passed"
 });
 formatter.match({
-  "location": "annotation.llegamos_a_la_pagina_inicial_y_un_mensaje_de_bienvenida()"
+  "location": "loginTest.Mensaje_de_bienvenida_al_login()"
 });
 formatter.result({
-  "duration": 64857300,
+  "duration": 144431800,
   "status": "passed"
 });
 formatter.scenario({
   "line": 11,
-  "name": "Login fallido por credenciales invalidas",
+  "name": "Login fallido por nombre invalido",
   "description": "",
-  "id": "logeo-al-sistema;login-fallido-por-credenciales-invalidas",
+  "id": "logeo-al-sistema;login-fallido-por-nombre-invalido",
   "type": "scenario",
   "keyword": "Scenario",
   "tags": [
@@ -367,43 +285,83 @@ formatter.step({
 });
 formatter.step({
   "line": 13,
-  "name": "Pone nombre de \"usuario\" y/o \"password\" invalidos",
+  "name": "Nombre de usuario incorrecto",
   "keyword": "When "
 });
 formatter.step({
   "line": 14,
-  "name": "Mensaje de error",
+  "name": "Mensaje de error al login",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "annotation.Usuario_en_pagina_de_login()"
+  "location": "loginTest.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 22200,
+  "duration": 22000,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
+  "location": "loginTest.Nombre_de_usuario_incorrecto()"
+});
+formatter.result({
+  "duration": 34501,
+  "status": "passed"
+});
+formatter.match({
+  "location": "loginTest.Mensaje_de_error_al_login()"
+});
+formatter.result({
+  "duration": 80170001,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 17,
+  "name": "Login fallido por passoword invalido",
+  "description": "",
+  "id": "logeo-al-sistema;login-fallido-por-passoword-invalido",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
     {
-      "val": "usuario",
-      "offset": 16
-    },
-    {
-      "val": "password",
-      "offset": 30
+      "line": 16,
+      "name": "@Scenario3"
     }
-  ],
-  "location": "annotation.Pone_nombre_de_y_o_invalidos(String,String)"
+  ]
+});
+formatter.step({
+  "line": 18,
+  "name": "Usuario en pagina de login",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 19,
+  "name": "Password incorrecta",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 20,
+  "name": "Mensaje de error al login",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "loginTest.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 49200,
+  "duration": 39801,
   "status": "passed"
 });
 formatter.match({
-  "location": "annotation.Mensaje_de_error()"
+  "location": "loginTest.Contrase_a_incorrecta()"
 });
 formatter.result({
-  "duration": 58027700,
+  "duration": 35199,
+  "status": "passed"
+});
+formatter.match({
+  "location": "loginTest.Mensaje_de_error_al_login()"
+});
+formatter.result({
+  "duration": 126294200,
   "status": "passed"
 });
 });
