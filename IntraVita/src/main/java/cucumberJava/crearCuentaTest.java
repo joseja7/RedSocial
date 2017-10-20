@@ -34,8 +34,8 @@ public class crearCuentaTest {
 	public void Nombre_email_contrase_a_y_confirmacion_validos() {
 		nombre="fernando.cozar";
 		email="fernando@alu.uclm.es";
-		pwd1="1234";
-		pwd2="1234";
+		pwd1="1234Fernando";
+		pwd2="1234Fernando";
 		try {
 			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
 		}catch(Exception e){
@@ -60,16 +60,6 @@ public class crearCuentaTest {
 		pwd2="1234";
 	}
 
-	@Then("^Mensaje de error a la creacion$")
-	public void Mensaje_de_error_a_la_creacion() {
-	
-		try {
-			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
-			assertTrue(false);
-		}catch (Exception e){
-			assertEquals(e.getMessage(), "No coinciden las password");
-		}
-	}
 
 	@When("^Password y su confirmacion no coinciden$")
 	public void Contrase_a_y_su_confirmacion_no_coinciden() {
@@ -85,6 +75,52 @@ public class crearCuentaTest {
 		pwd1="1234";
 		pwd2="1234";
 	}
+	@When("^Password no tiene la seguridad adecuada$")
+	public void Password_no_tiene_la_seguridad_adecuada() {
+		nombre="fernando.cozar";
+		email="fernando@alu.uclm.es";
+		pwd1="1234";
+		pwd2="1234";
+	}
+	@Then("^Mensaje de error a la creacion email invaildo$")
+	public void Mensaje_de_error_a_la_creacion_email_invaildo() {
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+			assertTrue(false);
+		}catch (Exception e){
+			assertEquals(e.getMessage(), "Email invalido");
+		}
+	}
+
+	@Then("^Mensaje de error a la creacion password no coinciden$")
+	public void Mensaje_de_error_a_la_creacion_password_no_coinciden() {
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+			assertTrue(false);
+		}catch (Exception e){
+			assertEquals(e.getMessage(), "No coinciden las password");
+		}
+	}
+
+	@Then("^Mensaje de error a la creacion nombre invalido$")
+	public void Mensaje_de_error_a_la_creacion_nombre_invalido() {
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+			assertTrue(false);
+		}catch (Exception e){
+			assertEquals(e.getMessage(), "Formato nombre invalido");
+		}
+	}
 
 
+
+	@Then("^Mensaje de error a la creacion password poco segura$")
+	public void Mensaje_de_error_a_la_creacion_password_poco_segura() {
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+			assertTrue(false);
+		}catch (Exception e){
+			assertEquals(e.getMessage(), "Password poco segura (minimo 8 caracteres, con numeros y letras)");
+		}
+	}
 }

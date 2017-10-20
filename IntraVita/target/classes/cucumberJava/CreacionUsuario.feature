@@ -25,3 +25,8 @@ Scenario: Creacion incorrecta de cuenta por nombre invalido
 	When Nombre no tiene el formato adecuado
 	Then Mensaje de error a la creacion nombre invalido
 
+@Scenario5
+Scenario: Creacion incorrecta de cuenta por password poco segura
+	Given Usuario en pagina de creacion
+	When Password no tiene la seguridad adecuada
+	Then Mensaje de error a la creacion password poco segura
