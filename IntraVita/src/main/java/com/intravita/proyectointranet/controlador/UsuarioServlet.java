@@ -69,12 +69,14 @@ public class UsuarioServlet {
 	 *
 	 */
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String iniciarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception {
+	public String iniciarSesion(HttpServletResponse response, HttpServletRequest request, Model model) throws Exception {
 		String cadenaUrl="usuario/";
 		String nombre=request.getParameter("txtUsuarioNombre");
 		String clave=request.getParameter("txtUsuarioClave");
-		if(clave=="" || nombre=="")
+		if(clave=="" || nombre=="") {
+			model.addAttribute("alerta", "Por favor rellene los campos" );
 			return cadenaUrl+="login";
+		}
 		Administrador administrador= new Administrador();
 		administrador.setNombre(nombre);
 		administrador.setClave(clave);
@@ -86,6 +88,7 @@ public class UsuarioServlet {
 		usuario.setClave(clave);
 		if(usuarioDao.login(usuario))
 			return cadenaUrl+="bienvenido";
+		model.addAttribute("alerta", "Error en las credenciales" );
 		return cadenaUrl+="login";
 	} 
 	/***
@@ -94,15 +97,19 @@ public class UsuarioServlet {
 	 *
 	 */
 	@RequestMapping(value="/registrar", method = RequestMethod.POST)
-	public String registrar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	public String registrar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
 		String nombre=request.getParameter("txtUsuarioNombre");
 		String email=request.getParameter("txtEmail");
 		String pwd1=request.getParameter("txtUsuarioClave");
 		String pwd2=request.getParameter("txtUsuarioClave1");
 		
-		if(!utilidades.credencialesValidas(nombre, email, pwd1, pwd2))
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+		}catch(Exception e) {
+			model.addAttribute("alerta", e.getMessage());
 			return cadenaUrl+="registrar";
+		}
 		
 		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);

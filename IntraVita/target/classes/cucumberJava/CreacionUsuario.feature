@@ -11,17 +11,17 @@ Scenario: Creacion correcta de cuenta
 Scenario: Creacion incorrecta de cuenta por email invalido
 	Given Usuario en pagina de creacion
 	When Email no tiene extension alu.uclm.es
-	Then Mensaje de error a la creacion
+	Then Mensaje de error a la creacion email invaildo
 	
 @Scenario3
 Scenario: Creacion incorrecta de cuenta por password que no coinciden
 	Given Usuario en pagina de creacion
 	When Password y su confirmacion no coinciden
-	Then Mensaje de error a la creacion
+	Then Mensaje de error a la creacion password no coinciden
 	
 @Scenario4
 Scenario: Creacion incorrecta de cuenta por nombre invalido
 	Given Usuario en pagina de creacion
 	When Nombre no tiene el formato adecuado
-	Then Mensaje de error a la creacion
+	Then Mensaje de error a la creacion nombre invalido
 

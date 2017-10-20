@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Esto es la pantalla REGISTRAT</title>
+		<title>Esto es la pantalla REGISTRAR</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -15,6 +15,8 @@
 
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		
 </head>
 
 <body>
@@ -46,7 +48,27 @@
 			  	<input type="password" class="form-control" id="pwd1" name="txtUsuarioClave1" placeholder="confirmacion password">	
 			</div>
 		</div>
-
+		
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+			<label for="imagen">Avatar:</label>
+			<label class="control-label">Select File</label>
+			<input id="input-b5" name="input-b5[]" type="file" multiple>
+			
+			<script>
+				$(document).on('ready', function() {
+				    $("#input-b5").fileinput({showCaption: false});
+				});
+			</script>
+			
+			<br>
+			<img src="input-b5" width="128px" height="128px" class="img-circle">
+			</div>
+		</div>
+		
+		<br>
+		<br>
+		
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<button type="submit" class="btn btn-info btn-block" value="Registrar">Registrar</button>	
@@ -60,6 +82,12 @@
 			<form action="irLogin" method="get"><button class="btn btn-info btn-block login" type="submit">Login</button></form>
 		</div>
 	</div>
+	
+	<script language="JavaScript" type="text/javascript">
+		alert("${alerta}");
+	</script>
+	
+	
 	
 </div>
 

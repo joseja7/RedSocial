@@ -1,5 +1,6 @@
 package cucumberJava;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -35,7 +36,11 @@ public class crearCuentaTest {
 		email="fernando@alu.uclm.es";
 		pwd1="1234";
 		pwd2="1234";
-		assertTrue(utilidades.credencialesValidas(nombre, email, pwd1, pwd2));
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+		}catch(Exception e){
+			assertTrue(false);
+		}
 		
 		usuario.setNombre(nombre);
 		usuario.setClave(pwd1);
@@ -57,7 +62,13 @@ public class crearCuentaTest {
 
 	@Then("^Mensaje de error a la creacion$")
 	public void Mensaje_de_error_a_la_creacion() {
-		assertFalse(utilidades.credencialesValidas(nombre, email, pwd1, pwd2));
+	
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+			assertTrue(false);
+		}catch (Exception e){
+			assertEquals(e.getMessage(), "No coinciden las password");
+		}
 	}
 
 	@When("^Password y su confirmacion no coinciden$")

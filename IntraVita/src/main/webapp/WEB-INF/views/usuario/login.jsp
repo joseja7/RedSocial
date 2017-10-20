@@ -51,6 +51,10 @@
 		</div>
 	</div>
 
+	<script language="JavaScript" type="text/javascript">
+		alert("${alerta}");
+	</script>
+
 </div>
 
 
