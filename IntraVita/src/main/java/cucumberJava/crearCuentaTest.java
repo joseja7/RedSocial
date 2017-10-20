@@ -123,4 +123,26 @@ public class crearCuentaTest {
 			assertEquals(e.getMessage(), "Password poco segura (minimo 8 caracteres, con numeros y letras)");
 		}
 	}
+	@When("^Nombre que intenta registrar ya existe$")
+	public void Nombre_que_intenta_registrar_ya_existe() {
+		nombre="milhouse.milhouse";
+		email="milhouse@alu.uclm.es";
+		pwd1="1234milhouse";
+		pwd2="1234milhouse";
+		try {
+			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
+		}catch(Exception e){
+			assertTrue(false);
+		}
+		
+		usuario.setNombre(nombre);
+		usuario.setClave(pwd1);
+		usuario.setEmail(email);
+	}
+
+	@Then("^Mensaje de error a la creacion cuenta ya existente$")
+	public void Mensaje_de_error_a_la_creacion_cuenta_ya_existente() {
+		assertFalse(usuarioDao.insert(usuario));
+	}
+
 }

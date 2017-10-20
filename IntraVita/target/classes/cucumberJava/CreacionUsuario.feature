@@ -30,3 +30,9 @@ Scenario: Creacion incorrecta de cuenta por password poco segura
 	Given Usuario en pagina de creacion
 	When Password no tiene la seguridad adecuada
 	Then Mensaje de error a la creacion password poco segura
+	
+@Scenario6
+Scenario: Creacion incorrecta de cuenta cuenta  ya existente
+	Given Usuario en pagina de creacion
+	When Nombre que intenta registrar ya existe
+	Then Mensaje de error a la creacion cuenta ya existente

@@ -39,21 +39,21 @@ formatter.match({
   "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 245045800,
+  "duration": 307747400,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Nombre_email_contrase_a_y_confirmacion_validos()"
 });
 formatter.result({
-  "duration": 414700,
+  "duration": 465400,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Mensaje_de_validacion_y_usuario_insertado()"
 });
 formatter.result({
-  "duration": 3025971700,
+  "duration": 3336544600,
   "status": "passed"
 });
 formatter.scenario({
@@ -89,21 +89,21 @@ formatter.match({
   "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 21400,
+  "duration": 18500,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Email_no_tiene_extension_alu_uclm_es()"
 });
 formatter.result({
-  "duration": 24400,
+  "duration": 89700,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion_email_invaildo()"
 });
 formatter.result({
-  "duration": 72700,
+  "duration": 82900,
   "status": "passed"
 });
 formatter.scenario({
@@ -139,21 +139,21 @@ formatter.match({
   "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 17000,
+  "duration": 18700,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Contrase_a_y_su_confirmacion_no_coinciden()"
 });
 formatter.result({
-  "duration": 34700,
+  "duration": 23600,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion_password_no_coinciden()"
 });
 formatter.result({
-  "duration": 45300,
+  "duration": 55100,
   "status": "passed"
 });
 formatter.scenario({
@@ -189,21 +189,21 @@ formatter.match({
   "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 24800,
+  "duration": 16700,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Nombre_no_tiene_el_formato_adecuado()"
 });
 formatter.result({
-  "duration": 29200,
+  "duration": 20800,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion_nombre_invalido()"
 });
 formatter.result({
-  "duration": 121000,
+  "duration": 36300,
   "status": "passed"
 });
 formatter.scenario({
@@ -239,21 +239,71 @@ formatter.match({
   "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
 });
 formatter.result({
-  "duration": 17800,
+  "duration": 16400,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Password_no_tiene_la_seguridad_adecuada()"
 });
 formatter.result({
-  "duration": 17600,
+  "duration": 18400,
   "status": "passed"
 });
 formatter.match({
   "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion_password_poco_segura()"
 });
 formatter.result({
-  "duration": 39700,
+  "duration": 40100,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 35,
+  "name": "Creacion incorrecta de cuenta cuenta  ya existente",
+  "description": "",
+  "id": "creacion-de-un-nuevo-usuario;creacion-incorrecta-de-cuenta-cuenta--ya-existente",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 34,
+      "name": "@Scenario6"
+    }
+  ]
+});
+formatter.step({
+  "line": 36,
+  "name": "Usuario en pagina de creacion",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 37,
+  "name": "Nombre que intenta registrar ya existe",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 38,
+  "name": "Mensaje de error a la creacion cuenta ya existente",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "crearCuentaTest.Usuario_en_pagina_de_creacion()"
+});
+formatter.result({
+  "duration": 11800,
+  "status": "passed"
+});
+formatter.match({
+  "location": "crearCuentaTest.Nombre_que_intenta_registrar_ya_existe()"
+});
+formatter.result({
+  "duration": 30300,
+  "status": "passed"
+});
+formatter.match({
+  "location": "crearCuentaTest.Mensaje_de_error_a_la_creacion_cuenta_ya_existente()"
+});
+formatter.result({
+  "duration": 59989600,
   "status": "passed"
 });
 formatter.uri('cucumberJava\Login.feature');
@@ -297,21 +347,21 @@ formatter.match({
   "location": "loginTest.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 5688300,
+  "duration": 5398100,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.Credenciales_correctas()"
 });
 formatter.result({
-  "duration": 33800,
+  "duration": 32300,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.Mensaje_de_bienvenida_al_login()"
 });
 formatter.result({
-  "duration": 62192700,
+  "duration": 65449000,
   "status": "passed"
 });
 formatter.scenario({
@@ -347,21 +397,21 @@ formatter.match({
   "location": "loginTest.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 16400,
+  "duration": 15500,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.Nombre_de_usuario_incorrecto()"
 });
 formatter.result({
-  "duration": 31700,
+  "duration": 20900,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.Mensaje_de_error_al_login()"
 });
 formatter.result({
-  "duration": 58616300,
+  "duration": 118104400,
   "status": "passed"
 });
 formatter.scenario({
@@ -397,21 +447,21 @@ formatter.match({
   "location": "loginTest.Usuario_en_pagina_de_login()"
 });
 formatter.result({
-  "duration": 19400,
+  "duration": 33100,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.Contrase_a_incorrecta()"
 });
 formatter.result({
-  "duration": 25600,
+  "duration": 24400,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.Mensaje_de_error_al_login()"
 });
 formatter.result({
-  "duration": 63637600,
+  "duration": 60887300,
   "status": "passed"
 });
 });

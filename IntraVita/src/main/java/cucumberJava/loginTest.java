@@ -30,8 +30,8 @@ public class loginTest {
 
 	@When("^Credenciales correctas$")
 	public void Credenciales_correctas() {
-		nombre="milhouse";
-		pwd="1234";
+		nombre="milhouse.milhouse";
+		pwd="1234milhouse";
 		usuario.setNombre(nombre);
 		usuario.setClave(pwd);
 		
@@ -57,7 +57,7 @@ public class loginTest {
 	
 	@When("^Password incorrecta$")
 	public void Contrase_a_incorrecta() {
-		nombre="milhouse";
+		nombre="milhouse.milhouse";
 		pwd="12345";
 		usuario.setNombre(nombre);
 		usuario.setClave(pwd);

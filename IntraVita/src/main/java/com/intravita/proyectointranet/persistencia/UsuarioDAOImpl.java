@@ -56,8 +56,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		BsonDocument usuarioBso = resultado.first();
 		if (usuarioBso==null) {
 			usuarios.insertOne(bso);
+			return true;
 		}
-		return login(usuario);
+		return false;
 	}
 	public void insertSinEncrypt (Usuario usuario){
 		BsonDocument bso = new BsonDocument();
