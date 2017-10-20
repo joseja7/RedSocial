@@ -17,15 +17,20 @@
 
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<h1>
-				Panel de administrador
-			</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-md-offset-1">
+				<h1>
+					Panel de administrador
+				</h1>
+			</div>
+			<div class="col-md-4 col-md-offset-2">
+				<br>
+				<button type="button" class="btn btn-primary">Cambiar ROL</button>
+			</div>
 		</div>
 	</div>
-</div>
+	
     <form action="promover" method="post">
     	<div class="row">
 	 		<div class="col-md-8 col-md-offset-2">
