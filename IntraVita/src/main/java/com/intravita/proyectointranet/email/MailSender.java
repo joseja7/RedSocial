@@ -28,13 +28,13 @@ public class MailSender {
 		});
 		return session;
 	}
-	public void sendMail(String usuario, String pwd) throws Exception{
+	public void sendMailRecoverPwd(String usuario, String pwd) throws Exception{
 		try {
 
 			Message message = new MimeMessage(getSession());
 			message.setFrom(new InternetAddress(userName));
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(usuario));
-			message.setSubject("DisSW Practica - Recupera tu contraseña");
+			message.setSubject("Servicio atencion al cliente de IntraVita - Recupera tu contraseña");
 			message.setText("La contraseña para acceder a tu cuenta es:"+pwd);
 			Transport.send(message);
 
