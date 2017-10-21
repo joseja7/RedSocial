@@ -2,12 +2,10 @@ package com.intravita.proyectointranet.email;
 
 import java.sql.SQLException;
 import java.util.Properties;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.eclipse.jetty.websocket.api.Session;
 
 public class MailSender {
 	private static String userName = "atencion.cliente.dissw@gmail.com";
