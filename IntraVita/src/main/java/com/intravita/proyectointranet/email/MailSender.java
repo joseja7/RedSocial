@@ -8,9 +8,9 @@ import javax.mail.internet.MimeMessage;
 
 
 public class MailSender {
-	private static String userName = "atencion.cliente.dissw@gmail.com";
-	private static String password = "atencioncliente1234";
-	//Prueba5543165312
+	private static String userName = "customer.service.intravita@gmail.com";
+	private static String password = "customerserviceintravita1234";
+	
 
 	private static Session getSession() throws SQLException{
 		Properties props = new Properties();
