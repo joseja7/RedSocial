@@ -50,6 +50,17 @@
 			<form action="irRegistrar" method="get"><button class="btn btn-info btn-block login" type="submit">Registrar</button></form>
 		</div>
 	</div>
+	<br>
+	
+	<%--
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<form action="irRecuperarCredenciales" method="get"><button class="btn btn-info btn-block login" type="submit">¿Olvido su contraseña?</button></form>
+		</div>
+	</div>
+	--%>
+	
+	<a href="#" onclick="enviar()">¿Olvido su contraseña?</a>
 
 	<script language="JavaScript" type="text/javascript">
 		alert("${alerta}");
