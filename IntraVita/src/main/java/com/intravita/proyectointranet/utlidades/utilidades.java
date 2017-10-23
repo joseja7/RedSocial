@@ -35,6 +35,11 @@ public class utilidades {
 		int posicion2=nombre.lastIndexOf('.');
 		if(posicion!=posicion2)
 			throw new Exception("Formato nombre invalido");
+		palabrasMalas(nombre);
+	}
+	public static void palabrasMalas(String nombre)throws Exception{
+		if(nombre.contains("cabron"))
+			throw new Exception("Formato nombre invalido");
 	}
 	public static void seguridadPassword(String pwd) throws Exception{
 		if(pwd.length()<8)
