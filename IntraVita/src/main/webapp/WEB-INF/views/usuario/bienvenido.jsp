@@ -16,6 +16,11 @@
 <body>
 	<h1> AQUI ESTA EL INICIO DE NUESTRA RED SOCIAL</h1>
 	<form action="usuario" method="get"></form>
+	
+	
+	<form action="logout" method="GET">
+		<button class="btn btn-info btn-block login" type="submit">DESCONEXION</button>
+	</form>
 
 </body>
 </html>

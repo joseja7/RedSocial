@@ -93,6 +93,15 @@ public class UsuarioServlet {
 	} 
 	/***
 	 * 
+	 *@method ejecucion cuando pulsamos el boton logout
+	 *
+	 */
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	public ModelAndView cerrarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		return cambiarVista("usuario/login");
+	}
+	/***
+	 * 
 	 *@method ejecucion cuando pulsamos el boton de registro
 	 *
 	 */
