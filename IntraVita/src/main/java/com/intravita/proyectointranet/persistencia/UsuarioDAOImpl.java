@@ -39,22 +39,36 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 		return true;
 	}
-
+	/**
+	 * @method selectNombre
+	 * @param usuario
+	 * @return true si el nombre existe false si no existe
+	 */
+	public boolean selectNombre(Usuario usuario) {
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(usuario.getNombre()));
+		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
+		BsonDocument usuarioBson = resultado.first();
+		if (usuarioBson==null) {
+			return false;
+		}
+		return true;
+	}
 	/**
 	 * @method insercion de usuarios con y sin encriptar clave
 	 * @param usuario
 	 * @return true si se ha insertado en la bbdd false en caso opuesto
 	 */	
 	public boolean insert (Usuario usuario){
-		BsonDocument bso = new BsonDocument();
-		bso.append("nombre", new BsonString(usuario.getNombre()));
-		bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
-		bso.append("email", new BsonString(usuario.getEmail()));
-		MongoBroker broker = MongoBroker.get();
-		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-		FindIterable<BsonDocument> resultado=usuarios.find(bso);
-		BsonDocument usuarioBso = resultado.first();
-		if (usuarioBso==null) {
+		if(!selectNombre(usuario)) {
+			BsonDocument bso = new BsonDocument();
+			bso.append("nombre", new BsonString(usuario.getNombre()));
+			bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
+			bso.append("email", new BsonString(usuario.getEmail()));
+			MongoBroker broker = MongoBroker.get();
+			MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 			usuarios.insertOne(bso);
 			return true;
 		}

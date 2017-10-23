@@ -125,8 +125,10 @@ public class UsuarioServlet {
 		usuario.setEmail(email);
 		usuario.setClave(pwd1);
 		
-		if(!usuarioDao.insert(usuario))
+		if(!usuarioDao.insert(usuario)) {
+			model.addAttribute("alerta", "Nombre de usuario no disponible");
 			return cadenaUrl+="registrar";
+		}
 		return cadenaUrl+="login";
 	}
 	/***
