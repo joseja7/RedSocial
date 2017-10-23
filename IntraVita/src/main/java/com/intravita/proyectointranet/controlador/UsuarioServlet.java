@@ -137,10 +137,23 @@ public class UsuarioServlet {
 	 *
 	 */
 	@RequestMapping(value="/borrar", method = RequestMethod.POST)
-	public String borrar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	public String borrar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
 		String nombre=request.getParameter("txtUsuarioBorrar");
-		usuarioDao.delete(new Usuario(nombre));
+		Usuario usuario;
+		if(nombre.equals("admin")) {
+			model.addAttribute("alerta", "<t><h2><b> No puedes borrar al superadmin</b></h2>");
+		}else {
+			usuario=usuarioDao.selectNombre(nombre);
+			if(usuario==null) {
+				model.addAttribute("alerta", "<t><h2><b> No existe el usuario "+nombre+"</b></h2>");
+			}else {
+				usuarioDao.delete(usuario);
+				administradorDao.delete(new Administrador(nombre));
+			}
+
+		}
+		listarUsuario(request, response, model);
 		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
@@ -151,7 +164,7 @@ public class UsuarioServlet {
 	 *
 	 */
 	@RequestMapping(value="/promover", method = RequestMethod.POST)
-	public String promover(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	public String promover(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
 		String nombre=request.getParameter("txtUsuarioPromover");
 		Usuario usuario = new Usuario();
@@ -160,7 +173,10 @@ public class UsuarioServlet {
 		if(usuario!=null) {
 			Administrador admin=new Administrador(usuario.getNombre(), usuario.getClave(), usuario.getEmail());
 			administradorDao.insertSinEncrypt(admin);
+		}else{
+			model.addAttribute("alerta", "<t><h2><b>El usuario que intentas promover no existe</b></h2>");
 		}
+		listarUsuario(request, response, model);
 		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
@@ -170,34 +186,39 @@ public class UsuarioServlet {
 	 *
 	 */
 	@RequestMapping(value="/degradar", method = RequestMethod.POST)
-	public String degradar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	public String degradar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
 		String nombre=request.getParameter("txtAdminDegradar");
-		Administrador admin=new Administrador();
-		admin.setNombre(nombre);
-		administradorDao.delete(admin);
+		Administrador admin;
+		if(nombre.equals("admin")) {
+			model.addAttribute("alerta", "<t><h2><b>No puedes degradar al superadmin</b></h2>");
+		}else {
+			admin=administradorDao.selectNombre(nombre);
+			if(admin==null)
+				model.addAttribute("alerta", "<t><h2><b>El administrador que intentas degradar no existe</b></h2>");
+			else {
+				administradorDao.delete(admin);
+			}
+		}
+		listarUsuario(request, response, model);
 		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
 	
-	@RequestMapping(value="/eliminar", method = RequestMethod.GET)
-	public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		Usuario usuario = new Usuario();
-		usuario.setNombre(request.getParameter("txtUserDel"));
-		usuario.getClave();
-		
-		if (usuarioDao.select(usuario).getNombre()=="") {
-			response.getOutputStream().println("El usuario "+usuario.getNombre()+" no esta en la lista.");
-			//y hacemos para quedarnos en el mismo .jsp y modificar la pagina mediante sus acciones
-		}
-		
-		else {
-			usuarioDao.delete(usuario);
-			response.getOutputStream().println("El usuario "+usuario.getNombre()+" ha sido eliminado a su lista.");
-		}
-		
+	//@RequestMapping(value="/eliminar", method = RequestMethod.GET)
+	/***
+	 * 
+	 * @method actualiza la ventana de administrador para ver sus usuarios/administradores
+	 * 
+	 */
+	@RequestMapping(value="/listarUsuario", method = RequestMethod.POST)
+	public String listarUsuario(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+		String cadenaUrl="usuario/";
+		model.addAttribute("usuarios", usuarioDao.list());
+		model.addAttribute("administradores", administradorDao.list());
+		cadenaUrl+="inicioAdmin";		
+		return cadenaUrl;
 	}
-	
 	@RequestMapping(value="/bienvenido", method = RequestMethod.GET)
 	public String bienvenido(HttpServletRequest request, HttpServletResponse response) throws Exception  {
 		return "usuario/bienvenido";

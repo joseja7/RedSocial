@@ -73,5 +73,31 @@
 		</div>
 	</form>	
 	<br>
+    <form action="listarUsuario" method="post">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<button class="btn btn-info btn-block login" type="submit">Actualizar Lista</button>
+			</div>	  
+		</div>
+	</form>
+	<div class="row">
+		<div class="col-md-12">
+			${alerta}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="col-md-8 col-md-offset-4">
+				<h3>Usuarios</h3>
+			</div>
+				${usuarios}
+		</div>
+		<div class="col-md-6">
+			<div class="col-md-8 col-md-offset-4">
+				<h3>Administradores</h3>
+			</div>
+				${administradores}
+		</div>
+	</div>
 </body>
 </html>

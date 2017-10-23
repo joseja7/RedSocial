@@ -1,5 +1,6 @@
 package com.intravita.proyectointranet.persistencia;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -119,23 +120,31 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 		return result;
 	}
-
-	public Usuario select(Usuario generico) {
+	/***
+	 * @method select que devuelve todos los usuarios
+	 * @return texto con la lista de usuarios
+	 */
+	public String list() {
+		AdministradorDAOImpl administradorDao= new AdministradorDAOImpl();
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
-		BsonDocument criterio = new BsonDocument();
-		criterio.append("nombre", new BsonString(generico.getNombre()));
-		criterio.append("pwd", new BsonString(DigestUtils.md5Hex(generico.getClave())));
-		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
-		BsonDocument usuario = resultado.first();
-		Usuario result;
-		if (usuario==null) {
-			result=new Usuario("-","-");
+		FindIterable<BsonDocument> resultado=usuarios.find();
+		String texto="";
+		String nombre;
+		BsonDocument usuario;
+		Iterator<BsonDocument> lista=resultado.iterator();
+		while(lista.hasNext()) {
+			usuario=lista.next();
+			nombre=usuario.getString("nombre").getValue();
+			if(administradorDao.selectNombre(nombre)==null) {
+				texto+="<b>Usuario: </b>";
+				texto+=nombre;
+				texto+=" <b>Email: </b>";
+				texto+=usuario.getString("email").getValue();
+				texto+="<br>";
+			}
 		}
-		else {
-			result = new Usuario(generico.getNombre(),generico.getClave());
-		}
-		return result;
+		return texto;
 	}
 
 	public void delete (Usuario usuario){

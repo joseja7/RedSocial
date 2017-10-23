@@ -3,6 +3,7 @@ package com.intravita.proyectointranet.persistencia;
 import com.intravita.proyectointranet.modelo.Administrador;
 
 public interface AdministradorDAO {
+	 public String list() ;
 	 public void insert (Administrador administrador);
 	 public Administrador select(Administrador generico) ;
 	 public void delete (Administrador administrador);
