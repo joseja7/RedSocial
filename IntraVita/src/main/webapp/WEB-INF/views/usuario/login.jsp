@@ -19,9 +19,10 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-2 col-md-offset-2">
+			<img src="avatar.jpg" class="img-circle">
 			<h1>
-				Bienvenido a IntraVita
+				IntraVita
 			</h1>
 		</div>
 	</div>
@@ -40,7 +41,9 @@
 		</div>
 				<div class="row">
 			<div class="col-md-4 col-md-offset-4">
+				</br>
 				<button class="btn btn-info btn-block login" type="submit">Login</button>
+				<a href="#" onclick="enviar()">¿Olvidó su contraseña?</a>
 			</div>	  
 		</div>
 	</form>	
@@ -60,7 +63,7 @@
 	</div>
 	--%>
 	
-	<a href="#" onclick="enviar()">¿Olvido su contraseña?</a>
+	
 
 	<script language="JavaScript" type="text/javascript">
 		alert("${alerta}");
