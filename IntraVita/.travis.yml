@@ -5,3 +5,4 @@ jdk:
   branches:
     only:
     - herokuapp
+    - BDD
