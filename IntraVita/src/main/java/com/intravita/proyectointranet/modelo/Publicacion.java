@@ -9,6 +9,12 @@ public class Publicacion {
 		this.usuario = usuario;
 		this.texto = texto;
 	}
+	
+	public Publicacion() {
+		super();
+	}
+	
+	
 
 	public Usuario getUsuario() {
 		return usuario;

@@ -2,6 +2,7 @@ package com.intravita.proyectointranet.controlador;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.intravita.proyectointranet.modelo.Administrador;
+import com.intravita.proyectointranet.modelo.Publicacion;
 import com.intravita.proyectointranet.modelo.Usuario;
 import com.intravita.proyectointranet.persistencia.AdministradorDAOImpl;
+import com.intravita.proyectointranet.persistencia.PublicacionDAOImpl;
 import com.intravita.proyectointranet.persistencia.UsuarioDAOImpl;
 import com.intravita.proyectointranet.utlidades.utilidades;
 
@@ -32,6 +35,7 @@ public class UsuarioServlet {
 	@Autowired
 	UsuarioDAOImpl usuarioDao;
 	AdministradorDAOImpl administradorDao=new AdministradorDAOImpl();
+	PublicacionDAOImpl publicacionDao=new PublicacionDAOImpl();
 	
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioServlet.class);
 	
@@ -63,6 +67,17 @@ public class UsuarioServlet {
 		return cambiarVista("usuario/registrar");
 	}
 	
+	@RequestMapping(value="/irCrearPublicacion",method = RequestMethod.GET)
+	public ModelAndView irCrearPublicacion(HttpServletResponse response,HttpServletRequest request){
+		return cambiarVista("usuario/crearPublicacion");
+	}
+	
+	@RequestMapping(value="/irVerPublicaciones",method = RequestMethod.GET)
+	public ModelAndView irVerPublicaciones(HttpServletResponse response,HttpServletRequest request){
+		
+		return cambiarVista("usuario/verPublicaciones");
+	}
+	
 	/***
 	 * 
 	 *@method ejecucion cuando pulsamos el boton login
@@ -80,14 +95,20 @@ public class UsuarioServlet {
 		Administrador administrador= new Administrador();
 		administrador.setNombre(nombre);
 		administrador.setClave(clave);
-		if(administradorDao.login(administrador))
+		if(administradorDao.login(administrador) && request.getSession().getAttribute("administradorConectado")==null) {
+			request.getSession().setAttribute("administradorConectado", administrador);
 			return cadenaUrl+="inicioAdmin";
+		}
+			
 		
 		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);
 		usuario.setClave(clave);
-		if(usuarioDao.login(usuario))
+		if(usuarioDao.login(usuario) && request.getSession().getAttribute("usuarioConectado")==null) {
+			request.getSession().setAttribute("usuarioConectado", usuario);
 			return cadenaUrl+="bienvenido";
+		}
+			
 		model.addAttribute("alerta", "Error en las credenciales" );
 		return cadenaUrl+="login";
 	} 
@@ -98,6 +119,12 @@ public class UsuarioServlet {
 	 */
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public ModelAndView cerrarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception {
+		HttpSession sesion = request.getSession();
+		System.out.println("-----------------------------");
+		System.out.println("Sesion antes de invalidar: "+sesion);
+		sesion.invalidate();
+		System.out.println("Invalidamos la sesion: "+sesion);
+		System.out.println("-----------------------------");
 		return cambiarVista("usuario/login");
 	}
 	/***
@@ -219,6 +246,63 @@ public class UsuarioServlet {
 		cadenaUrl+="inicioAdmin";		
 		return cadenaUrl;
 	}
+	
+	/***
+	 * 
+	 * @method permite crear una publicación por parte de un usuario
+	 * 
+	 */
+	@RequestMapping(value="/crearPublicacion", method = RequestMethod.POST)
+	public String crearPublicacion(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+		String cadenaUrl="usuario/";
+		//String nombre=request.getSession().getAttribute("usuarioConectado");
+		Usuario usuario;
+		usuario=(Usuario) request.getSession().getAttribute("usuarioConectado");
+		
+		
+		String nombre=usuario.getNombre();
+		
+		model.addAttribute("usuario", usuarioDao.selectNombre(nombre));
+		String texto=request.getParameter("txtIntroducirTexto");
+
+		try {
+			utilidades.publicacionValida(nombre, texto);
+		}catch(Exception e) {
+			model.addAttribute("alerta", e.getMessage());
+			return cadenaUrl+="crearPublicacion";
+		}
+		
+		Publicacion publicacion= new Publicacion();
+		
+		publicacion.setUsuario(usuario);
+		publicacion.setTexto(texto);
+		
+		if(publicacionDao.existe(publicacion)) {
+			model.addAttribute("alerta", "Nombre de usuario no disponible");
+			return cadenaUrl+="crearPublicacion";
+		}
+		publicacionDao.insert(publicacion);
+		return cadenaUrl+="bienvenido";
+	}
+	/***
+	 * 
+	 * @method permite ver las publicaciones realizadas por un usuario(de momento, luego cambiar a según la visibilidad y amigos)
+	 * 
+	 */
+	@RequestMapping(value="/listarPublicacion", method = RequestMethod.POST)
+	public String listarPublicacion(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+		String cadenaUrl="usuario/";
+		model.addAttribute("usuarios", usuarioDao.list());
+		model.addAttribute("administradores", administradorDao.list());
+		cadenaUrl+="inicioAdmin";		
+		return cadenaUrl;
+	}
+	
+	/***
+	 * 
+	 *@method cambiar a la ventana "bienvenido" desde la vista de usuario
+	 *
+	 */
 	@RequestMapping(value="/bienvenido", method = RequestMethod.GET)
 	public String bienvenido(HttpServletRequest request, HttpServletResponse response) throws Exception  {
 		return "usuario/bienvenido";
@@ -226,7 +310,16 @@ public class UsuarioServlet {
 	
 	
 	
-	/*Este metodo sirve para controlar los cambios de vista por nombre(sting)*/
+	
+	
+	
+	
+	
+	/***
+	 * 
+	 *@method Esta función sirve para controlar los cambios de vista por nombre(string)
+	 *
+	 */
 	public ModelAndView cambiarVista(String nombreVista) {
 		ModelAndView vista =new ModelAndView(nombreVista);
 		return vista;

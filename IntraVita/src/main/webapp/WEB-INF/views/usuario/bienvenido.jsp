@@ -15,12 +15,25 @@
 </head>
 <body>
 	<h1> AQUI ESTA EL INICIO DE NUESTRA RED SOCIAL</h1>
-	<form action="usuario" method="get"></form>
+	<p>Datos del usuario conectado:</p>
+ 		<jsp:useBean id="usuarioConectado" scope="session" class="com.intravita.proyectointranet.modelo.Usuario"></jsp:useBean>
+ 
+ 	
+ 	<p>El nombre es: <jsp:getProperty name="usuarioConectado" property="nombre"/></p>
+ 	<p>El email es: <jsp:getProperty name="usuarioConectado" property="email"/></p>
 	
+	
+	
+	<form action="irCrearPublicacion" method="get">
+		<button class="btn btn-info btn-block login" type="submit">Crear Publicación</button>
+	</form>
+	
+	<form action="irVerPublicaciones" method="get">
+		<button class="btn btn-info btn-block login" type="submit">Ver Publicaciones</button>
+	</form>
 	
 	<form action="logout" method="GET">
 		<button class="btn btn-info btn-block login" type="submit">DESCONEXION</button>
 	</form>
-
 </body>
 </html>
