@@ -1,8 +1,3 @@
 languaje: java
 jdk:
-  + oraclejdk8
-  
-  branches:
-    only:
-    - herokuapp
-    - BDD
+  - "oraclejdk8"
