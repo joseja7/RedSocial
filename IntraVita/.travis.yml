@@ -1,4 +1,9 @@
 language: java
-node_js:
-  + oraclejdk8
-script: cd lib && npm install && npm test
+jdk:
+  - oraclejdk8
+sudo: false
+install: true
+git:
+  depth: 3
+
+script: mvn clean verify
