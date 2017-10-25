@@ -74,7 +74,6 @@ public class UsuarioServlet {
 	
 	@RequestMapping(value="/irVerPublicaciones",method = RequestMethod.GET)
 	public ModelAndView irVerPublicaciones(HttpServletResponse response,HttpServletRequest request){
-		
 		return cambiarVista("usuario/verPublicaciones");
 	}
 	
@@ -166,14 +165,14 @@ public class UsuarioServlet {
 	@RequestMapping(value="/borrar", method = RequestMethod.POST)
 	public String borrar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
-		String nombre=request.getParameter("txtUsuarioBorrar");
+		String nombre=request.getParameter("txtNombre");
 		Usuario usuario;
 		if(nombre.equals("admin")) {
-			model.addAttribute("alerta", "<t><h2><b> No puedes borrar al superadmin</b></h2>");
+			model.addAttribute("alerta", "No puedes borrar al superadmin");
 		}else {
 			usuario=usuarioDao.selectNombre(nombre);
 			if(usuario==null) {
-				model.addAttribute("alerta", "<t><h2><b> No existe el usuario "+nombre+"</b></h2>");
+				model.addAttribute("alerta", "No existe el usuario "+nombre);
 			}else {
 				usuarioDao.delete(usuario);
 				administradorDao.delete(new Administrador(nombre));
@@ -193,7 +192,7 @@ public class UsuarioServlet {
 	@RequestMapping(value="/promover", method = RequestMethod.POST)
 	public String promover(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
-		String nombre=request.getParameter("txtUsuarioPromover");
+		String nombre=request.getParameter("txtNombre");
 		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);	
 		usuario=usuarioDao.selectNombre(nombre);
@@ -201,7 +200,7 @@ public class UsuarioServlet {
 			Administrador admin=new Administrador(usuario.getNombre(), usuario.getClave(), usuario.getEmail());
 			administradorDao.insertSinEncrypt(admin);
 		}else{
-			model.addAttribute("alerta", "<t><h2><b>El usuario que intentas promover no existe</b></h2>");
+			model.addAttribute("alerta", "El usuario que intentas promover no existe");
 		}
 		listarUsuario(request, response, model);
 		cadenaUrl+="inicioAdmin";		
@@ -215,7 +214,7 @@ public class UsuarioServlet {
 	@RequestMapping(value="/degradar", method = RequestMethod.POST)
 	public String degradar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
-		String nombre=request.getParameter("txtAdminDegradar");
+		String nombre=request.getParameter("txtNombre");
 		Administrador admin;
 		if(nombre.equals("admin")) {
 			model.addAttribute("alerta", "<t><h2><b>No puedes degradar al superadmin</b></h2>");

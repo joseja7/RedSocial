@@ -30,61 +30,43 @@
 			</div>
 		</div>
 	</div>
+
 	
-    <form action="promover" method="post">
-    	<div class="row">
-	 		<div class="col-md-8 col-md-offset-2">
+	<form action="promover" method="post">
+	   <div class="row">
+	 		<div class="col-md-10 col-md-offset-1 ">
 	 			<label for="usr">Usuario:</label>
-				<input name="txtUsuarioPromover" type="text" class="form-control" id="usr" placeholder="usuario">
+				<input name="txtNombre" type="text" class="form-control" id="usr" placeholder="usuario">
 			</div>  
 		</div>
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<button class="btn btn-info btn-block login" type="submit">Promover</button>
+			<div class="col-md-2 col-md-offset-2">
+				<button class="btn btn-success btn-block login" type="submit">Promover</button>
+			</div>	  
+
+			<div class="col-md-2 col-md-offset-1">
+				<button class="btn btn-danger btn-block login" name="degradar" type="submit" formaction="degradar">Degradar</button>
+			</div>	  
+
+			<div class="col-md-2 col-md-offset-1">
+				<button class="btn btn-danger btn-block login" type="submit" formaction="borrar">Borrar</button>
 			</div>	  
 		</div>
 	</form>	
 	<br>
-    <form action="degradar" method="post">
-    	<div class="row">
-	 		<div class="col-md-8 col-md-offset-2">
-	 			<label for="usr">Administrador:</label>
-				<input name="txtAdminDegradar" type="text" class="form-control" id="usr" placeholder="administrador">
-			</div>  
+	<div class="row">
+		<div class="col-md-12">
+			<t><h2><b>${alerta}</b></h2></t>
 		</div>
-				<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<button class="btn btn-info btn-block login" type="submit">Degradar</button>
-			</div>	  
-		</div>
-	</form>	
-	<br>
-    <form action="borrar" method="post">
-    	<div class="row">
-	 		<div class="col-md-8 col-md-offset-2">
-	 			<label for="usr">Usuario:</label>
-				<input name="txtUsuarioBorrar" type="text" class="form-control" id="usr" placeholder="usuario">
-			</div>  
-		</div>
-				<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<button class="btn btn-info btn-block login" type="submit">Borrar</button>
-			</div>	  
-		</div>
-	</form>	
+	</div>
 	<br>
     <form action="listarUsuario" method="post">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
+			<div class="col-md-2 col-md-offset-5">
 				<button class="btn btn-info btn-block login" type="submit">Actualizar Lista</button>
 			</div>	  
 		</div>
 	</form>
-	<div class="row">
-		<div class="col-md-12">
-			${alerta}
-		</div>
-	</div>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="col-md-8 col-md-offset-4">

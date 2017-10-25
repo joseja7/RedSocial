@@ -25,8 +25,11 @@
 				IntraVita
 			</h1>
 		</div>
+		
 	</div>
-    <form action="login" method="post">
+  
+    
+    <form action="login" method="post" id="formlogin">
     	<div class="row">
 	 		<div class="col-md-8 col-md-offset-2">
 	 			<label for="usr">Usuario:</label>
@@ -39,14 +42,14 @@
 				<input type="password" name="txtUsuarioClave" class="form-control" id="pwd" placeholder="password">
 			</div>	  
 		</div>
-				<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				</br>
-				<button class="btn btn-info btn-block login" type="submit">Login</button>
-				<a href="#" onclick="enviar()">¿Olvidó su contraseña?</a>
-			</div>	  
-		</div>
 	</form>	
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			</br>
+			<button class="btn btn-info btn-block login" form="formlogin" type="submit">Login</button>
+			<a href="#" onclick="enviar()">¿Olvidó su contraseña?</a>
+		</div>	  
+	</div>
 	<br>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
