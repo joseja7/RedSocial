@@ -19,7 +19,9 @@ import com.intravita.proyectointranet.persistencia.UsuarioDAOImpl;
 import com.intravita.proyectointranet.utlidades.utilidades;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -249,7 +251,6 @@ public class UsuarioServlet {
 	@RequestMapping(value="/crearPublicacion", method = RequestMethod.POST)
 	public String crearPublicacion(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
-		//String nombre=request.getSession().getAttribute("usuarioConectado");
 		Usuario usuario;
 		usuario=(Usuario) request.getSession().getAttribute("usuarioConectado");
 		
@@ -263,19 +264,17 @@ public class UsuarioServlet {
 			utilidades.publicacionValida(nombre, texto);
 		}catch(Exception e) {
 			model.addAttribute("alerta", e.getMessage());
-			return cadenaUrl+="crearPublicacion";
+			return cadenaUrl+="bienvenido";
 		}
 		
-		Publicacion publicacion= new Publicacion();
-		
-		publicacion.setUsuario(usuario);
-		publicacion.setTexto(texto);
+		Publicacion publicacion= new Publicacion(usuario, texto);
 		
 		if(publicacionDao.existe(publicacion)) {
 			model.addAttribute("alerta", "Nombre de usuario no disponible");
-			return cadenaUrl+="crearPublicacion";
+			return cadenaUrl+="bienvenido";
 		}
 		publicacionDao.insert(publicacion);
+		listarPublicacion(request, response, model);
 		return cadenaUrl+="bienvenido";
 	}
 	/***
@@ -286,9 +285,24 @@ public class UsuarioServlet {
 	@RequestMapping(value="/listarPublicacion", method = RequestMethod.POST)
 	public String listarPublicacion(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
 		String cadenaUrl="usuario/";
-		model.addAttribute("usuarios", usuarioDao.list());
-		model.addAttribute("administradores", administradorDao.list());
-		cadenaUrl+="inicioAdmin";		
+		Usuario usuario;
+		usuario=(Usuario) request.getSession().getAttribute("usuarioConectado");
+		System.out.println(usuario.getNombre());
+		ArrayList<Publicacion> publicas=publicacionDao.selectPublicas(usuario);
+		ArrayList<Publicacion> privadas=publicacionDao.selectPrivadas(usuario);
+		System.out.println(publicas.toString());
+		System.out.println(publicas.get(1).toString());
+		ArrayList<Publicacion> todas=utilidades.mostrarPublicaciones(publicas, privadas);
+		String texto="";
+		Iterator <Publicacion> it=todas.iterator();
+		while(it.hasNext()) {
+			texto+=it.next().toString();
+			texto+="<br>";
+		}
+		System.out.print(texto);
+		model.addAttribute("publicaciones", texto);
+		
+		cadenaUrl+="bienvenido";		
 		return cadenaUrl;
 	}
 	

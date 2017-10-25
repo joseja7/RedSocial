@@ -1,5 +1,10 @@
 package com.intravita.proyectointranet.utlidades;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.intravita.proyectointranet.modelo.Publicacion;
+
 public class utilidades {
 	public static String extensionEmail="@alu.uclm.es";
 	/**
@@ -74,5 +79,40 @@ public class utilidades {
 		
 	}
 	
+	public static ArrayList<Publicacion> mostrarPublicaciones(ArrayList <Publicacion> publicas, ArrayList<Publicacion> privadas){
+		ArrayList<Publicacion> retorno=new ArrayList<Publicacion>();
+		Iterator <Publicacion> itPublicas=publicas.iterator();
+		Iterator <Publicacion> itPrivadas=privadas.iterator();
+		Publicacion publica=null,privada=null;
+		if(itPublicas.hasNext())
+			publica=itPublicas.next();
+		if(itPrivadas.hasNext())
+			privada=itPrivadas.next();
+
+		while(itPublicas.hasNext() && itPrivadas.hasNext()) {
+			if(publica.getFecha()>privada.getFecha()) {
+				retorno.add(publica);
+				publica=itPublicas.next();
+			}
+			else {
+				retorno.add(privada);
+				privada=itPrivadas.next();
+			}
+		}
+		if(itPrivadas.hasNext()) {
+			while(itPrivadas.hasNext()) {
+				retorno.add(privada);
+				privada=itPrivadas.next();
+			}
+			retorno.add(privada);
+		}else {
+			while(itPublicas.hasNext()) {
+				retorno.add(publica);
+				publica=itPublicas.next();
+			}
+			retorno.add(publica);
+		}
+		return retorno;
+	}
 	
 }

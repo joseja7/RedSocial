@@ -50,10 +50,12 @@
 		</div>
 	</form>
 	
-	<form action="irVerPublicaciones" method="get">
+	<form action="listarPublicacion" method="post">
 		<button class="btn btn-info btn-block login" type="submit">Ver Publicaciones</button>
 	</form>
-	
+	<div class="col-md-8 col-md-offset-2">
+		${publicaciones}
+	</div>
 
 </body>
 </html>
