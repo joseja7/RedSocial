@@ -14,26 +14,46 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1> AQUI ESTA EL INICIO DE NUESTRA RED SOCIAL</h1>
-	<p>Datos del usuario conectado:</p>
- 		<jsp:useBean id="usuarioConectado" scope="session" class="com.intravita.proyectointranet.modelo.Usuario"></jsp:useBean>
+ 	<jsp:useBean id="usuarioConectado" scope="session" class="com.intravita.proyectointranet.modelo.Usuario"></jsp:useBean>
  
- 	
- 	<p>El nombre es: <jsp:getProperty name="usuarioConectado" property="nombre"/></p>
- 	<p>El email es: <jsp:getProperty name="usuarioConectado" property="email"/></p>
+ 	<!--  
+	 	<p>El nombre es: <jsp:getProperty name="usuarioConectado" property="nombre"/></p>
+	 	<p>El email es: <jsp:getProperty name="usuarioConectado" property="email"/></p>
+	-->
+	<div class="row">
+		<div class="col-md-5 col-md-offset-1">
+			<h1>
+				Bienvenido <jsp:getProperty name="usuarioConectado" property="nombre"/>
+			</h1>
+		</div>
+		<div class="col-md-4 col-md-offset-2">
+			<form action="" method="GET">
+				<button class="btn btn-primary btn-block login" type="submit">Cambiar Rol</button>
+			</form>				
+			<form action="logout" method="GET">
+				<button class="btn btn-danger btn-block login" type="submit">Desconexion</button>
+			</form>		
+		</div>
+	</div>
 	
-	
-	
-	<form action="irCrearPublicacion" method="get">
-		<button class="btn btn-info btn-block login" type="submit">Crear Publicación</button>
+	 <form action="crearPublicacion" method="post" id="formlogin">
+    	<div class="row">
+	 		<div class="col-md-8 col-md-offset-2">
+			  <label for="comment">Mensaje:</label>
+			  <textarea name="txtIntroducirTexto" placeholder="¿Qué tal el día?" class="form-control" rows="5" id="comment"></textarea>
+			</div>  
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<button class="btn btn-info btn-block login" type="submit">Enviar</button>
+			</div>	  
+		</div>
 	</form>
 	
 	<form action="irVerPublicaciones" method="get">
 		<button class="btn btn-info btn-block login" type="submit">Ver Publicaciones</button>
 	</form>
 	
-	<form action="logout" method="GET">
-		<button class="btn btn-info btn-block login" type="submit">DESCONEXION</button>
-	</form>
+
 </body>
 </html>

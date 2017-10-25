@@ -67,11 +67,6 @@ public class UsuarioServlet {
 		return cambiarVista("usuario/registrar");
 	}
 	
-	@RequestMapping(value="/irCrearPublicacion",method = RequestMethod.GET)
-	public ModelAndView irCrearPublicacion(HttpServletResponse response,HttpServletRequest request){
-		return cambiarVista("usuario/crearPublicacion");
-	}
-	
 	@RequestMapping(value="/irVerPublicaciones",method = RequestMethod.GET)
 	public ModelAndView irVerPublicaciones(HttpServletResponse response,HttpServletRequest request){
 		return cambiarVista("usuario/verPublicaciones");
