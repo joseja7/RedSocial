@@ -12,6 +12,7 @@
 	
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
 </head>
 <body>
  	<jsp:useBean id="usuarioConectado" scope="session" class="com.intravita.proyectointranet.modelo.Usuario"></jsp:useBean>
@@ -20,42 +21,70 @@
 	 	<p>El nombre es: <jsp:getProperty name="usuarioConectado" property="nombre"/></p>
 	 	<p>El email es: <jsp:getProperty name="usuarioConectado" property="email"/></p>
 	-->
-	<div class="row">
+	<div class="row bg-primary">
 		<div class="col-md-5 col-md-offset-1">
 			<h1>
-				Bienvenido <jsp:getProperty name="usuarioConectado" property="nombre"/>
+				<img src="https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjsmL-WgYzXAhVC1xoKHVCBC-0QjBwIBA&url=https%3A%2F%2F0.gravatar.com%2Favatar%2F39ed65b29c37c5cf7f2861748f886a32%3Fs%3D128%26d%3Didenticon%26r%3DG&psig=AOvVaw2dTI6apPP8UfUsnp855VCZ&ust=1509028967551401" width="64px" height="64px" class="img-circle"> INTRAVITA
 			</h1>
 		</div>
-		<div class="col-md-4 col-md-offset-2">
-			<form action="" method="GET">
-				<button class="btn btn-primary btn-block login" type="submit">Cambiar Rol</button>
-			</form>				
-			<form action="logout" method="GET">
-				<button class="btn btn-danger btn-block login" type="submit">Desconexion</button>
-			</form>		
+		
+		<div class="col-md-2 col-md-offset-4">
+				<button type="button" class="btn btn-info btn-md">?</button>
 		</div>
 	</div>
+	
+	
+	<div class="row">
+		<div class="col-md-5 col-md-offset-1">
+			<h3>
+				<jsp:getProperty name="usuarioConectado" property="nombre"/>
+			</h3>
+		</div>
+
+		<br/>
+
+		<div class="col-md-1 col-md-offset-4">
+			<form action="logout" method="GET">
+				<button class="btn btn-danger btn-block btn-md login" type="submit">Desconexion</button>
+			</form>	
+			<br/>
+			<form action="" method="GET">
+				<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
+			</form>					
+		</div>
+	</div>
+	
 	
 	 <form action="crearPublicacion" method="post" id="formlogin">
     	<div class="row">
 	 		<div class="col-md-8 col-md-offset-2">
-			  <label for="comment">Mensaje:</label>
+			  <label for="comment">Realizar publicación</label>
 			  <textarea name="txtIntroducirTexto" placeholder="¿Qué tal el día?" class="form-control" rows="5" id="comment"></textarea>
 			</div>  
 		</div>
+		
+		<br/>
+		
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
+			<div class="col-md-1 col-md-offset-9">
 				<button class="btn btn-info btn-block login" type="submit">Enviar</button>
 			</div>	  
 		</div>
 	</form>
 	
+	<br/>
+	
 	<form action="listarPublicacion" method="post">
 		<button class="btn btn-info btn-block login" type="submit">Ver Publicaciones</button>
 	</form>
-	<div class="col-md-8 col-md-offset-2">
+	<div class="row">
 		${publicaciones}
 	</div>
+	
+	<div class="row">
+		<h1>Esto es para el copiright</h1>
+	</div>
+	
 
 </body>
 </html>
