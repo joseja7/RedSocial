@@ -48,6 +48,12 @@
 			  	<input type="password" class="form-control" id="pwd1" name="txtUsuarioClave1" placeholder="confirmacion password">	
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<label for="usr">¿Cual es tu mejor amigo/a de la infancia?</label>
+				<input name="txtRespuesta" type="text" class="form-control" id="usr" placeholder="respuesta" onFocus="if(this.value!='')this.value=''">
+			</div>
+		</div>
 		
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">

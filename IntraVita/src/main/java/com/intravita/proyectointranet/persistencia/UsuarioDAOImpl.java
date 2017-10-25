@@ -68,6 +68,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			bso.append("nombre", new BsonString(usuario.getNombre()));
 			bso.append("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave())));
 			bso.append("email", new BsonString(usuario.getEmail()));
+			bso.append("respuesta", new BsonString(usuario.getRespuesta()));
 			MongoBroker broker = MongoBroker.get();
 			MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 			usuarios.insertOne(bso);
@@ -116,7 +117,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			BsonValue email=usuario.get("email");
 			BsonString correo=email.asString();
 			String emailFinal=correo.getValue();
-			result = new Usuario(nombreFinal, pwdFinal, emailFinal);
+			
+			BsonValue respuesta=usuario.get("respuesta");
+			BsonString answer=respuesta.asString();
+			String respuestaFinal=answer.getValue();
+			
+			result = new Usuario(nombreFinal, pwdFinal, emailFinal, respuestaFinal);
 		}
 		return result;
 	}
@@ -185,6 +191,22 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return pwdFinal;
 	}
 
+	public void updatePwdEmail(Usuario usuario) throws Exception{//sera posible reutilizar este metodo para hacer updates
+		//preguntar a JA
+
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
+		BsonDocument criterio = new BsonDocument();
+		criterio.append("nombre", new BsonString(usuario.getNombre()));
+		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
+		BsonDocument usuarioBso = resultado.first();
+		if (usuarioBso==null)
+			throw new Exception("Falló la actualización de los datos del usuario.");
+
+		BsonDocument actualizacion= new BsonDocument("$set", new BsonDocument("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave()))));
+		usuarios.findOneAndUpdate(usuarioBso, actualizacion);
+	}
+	
 	
 	
 }

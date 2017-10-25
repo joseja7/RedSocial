@@ -4,11 +4,13 @@ public class Usuario {
 	private String nombre;
 	private String clave;
 	private String email;
+	private String respuesta;
 	
-	public Usuario(String nombre, String clave, String email) {
+	public Usuario(String nombre, String clave, String email, String respuesta) {
 		this.nombre=nombre;
 		this.clave=clave;
 		this.email=email;
+		this.respuesta=respuesta;
 	}
 	//Constructor de pass
 	public Usuario(String nombre, String clave) {
@@ -33,6 +35,12 @@ public class Usuario {
 	public String getClave() {
 		return this.clave;
 	}
+	public String getRespuesta() {
+		return respuesta;
+	}
+	public String getEmail() {
+		return email;
+	}
 	//Set atributos
 	public void setNombre(String nuevoNombre) {
 		this.nombre=nuevoNombre;
@@ -40,10 +48,12 @@ public class Usuario {
 	public void setClave(String nuevaClave) {
 		this.clave=nuevaClave;
 	}
-	public String getEmail() {
-		return email;
-	}
+	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public void setRespuesta(String respuesta) {
+		this.respuesta = respuesta;
 	}
 }

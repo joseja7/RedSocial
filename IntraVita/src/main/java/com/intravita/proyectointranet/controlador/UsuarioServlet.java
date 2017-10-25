@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.intravita.proyectointranet.email.MailSender;
 import com.intravita.proyectointranet.modelo.Administrador;
 import com.intravita.proyectointranet.modelo.Publicacion;
 import com.intravita.proyectointranet.modelo.Usuario;
@@ -135,6 +136,7 @@ public class UsuarioServlet {
 		String email=request.getParameter("txtEmail");
 		String pwd1=request.getParameter("txtUsuarioClave");
 		String pwd2=request.getParameter("txtUsuarioClave1");
+		String respuesta=request.getParameter("txtRespuesta");
 		
 		try {
 			utilidades.credencialesValidas(nombre, email, pwd1, pwd2);
@@ -147,6 +149,7 @@ public class UsuarioServlet {
 		usuario.setNombre(nombre);
 		usuario.setEmail(email);
 		usuario.setClave(pwd1);
+		usuario.setRespuesta(respuesta);
 		
 		if(!usuarioDao.insert(usuario)) {
 			model.addAttribute("alerta", "Nombre de usuario no disponible");
@@ -316,7 +319,53 @@ public class UsuarioServlet {
 		return "usuario/bienvenido";
 	}
 	
-	
+	//By JA
+		@RequestMapping(value="/irRecuperarCredenciales", method = RequestMethod.GET)
+		public ModelAndView irRecuperarCredenciales(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+			return cambiarVista("usuario/recuperarCredenciales");
+		}
+		
+		//By JA
+		@RequestMapping(value="/recuperarCredenciales", method = RequestMethod.POST)
+		public String recuperarCredenciales(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+			String nombre=request.getParameter("txtUsuarioNombre");
+			String respuesta=request.getParameter("txtRespuesta");
+			
+			
+			Usuario usuario = usuarioDao.selectNombre(nombre);
+			int pin = (int)(Math.random() * (9999-1000+1)+1000);
+			String pinEmail = "intravita"+String.valueOf(pin);
+			
+			try {
+				utilidades.comprobacionNombre(nombre);
+			}
+			
+			catch (Exception e) {
+				
+				model.addAttribute("alerta", e.getMessage());
+				return "usuario/recuperarCredenciales";
+				
+			}
+			
+				
+			if (usuario==null || (!respuesta.equals(usuario.getRespuesta()))) {
+				System.out.println("M");
+				//System.out.println(nombre+","+usuario.getNombre()+","+respuesta+","+usuario.getRespuesta());
+				return "usuario/recuperarCredenciales";
+			}
+			
+			else {
+				MailSender mailSender= new MailSender();
+				System.out.println("Estamos para mandar el correo");
+				
+				mailSender.sendMailRecoverPwd(usuario.getEmail() , pinEmail);
+				usuario.setClave(pinEmail);
+				usuarioDao.updatePwdEmail(usuario);
+			}
+			
+			return "usuario/login";
+			
+		}
 	
 	
 	

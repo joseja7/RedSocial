@@ -34,8 +34,9 @@ public class MailSender {
 			Message message = new MimeMessage(getSession());
 			message.setFrom(new InternetAddress(userName));
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(usuario));
-			message.setSubject("Servicio atencion al cliente de IntraVita - Recupera tu contraseña");
-			message.setText("La contraseña para acceder a tu cuenta es:"+pwd);
+			message.setSubject("Servicio de atencion al cliente de IntraVita - Contraseña temporal");
+			message.setText("Saludos, su nueva contraseña para acceder a su cuenta es: "+pwd+
+							"\nPor favor, para una mayor seguridad, cambie esta contraseña por una nueva dentro de la configuracion de su perfil.");
 			Transport.send(message);
 
 
@@ -44,3 +45,8 @@ public class MailSender {
 		}
 	}
 }
+
+
+
+
+

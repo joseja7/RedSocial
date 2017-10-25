@@ -72,7 +72,7 @@
 			</br>
 			<button class="btn login" type="submit">Login</button>
 			<br/>
-			<a href="#" onclick="enviar()">¿Olvidó su contraseña?</a>
+			<a href="irRecuperarCredenciales">¿Olvidó su contraseña?</a>
 		</div>	  
 	</div>
 	</form>	
