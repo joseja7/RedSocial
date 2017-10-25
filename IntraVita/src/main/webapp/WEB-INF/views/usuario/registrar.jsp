@@ -83,9 +83,11 @@
 		</div>
 	</div>
 	
-	<script language="JavaScript" type="text/javascript">
-		alert("${alerta}");
-	</script>
+	<div class="row">
+		<div class="col-md-12">
+			<t><h2><b>${alerta}</b></h2></t>
+		</div>
+	</div>
 	
 	
 	

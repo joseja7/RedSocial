@@ -42,14 +42,15 @@
 				<input type="password" name="txtUsuarioClave" class="form-control" id="pwd" placeholder="password">
 			</div>	  
 		</div>
-	</form>	
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			</br>
-			<button class="btn btn-info btn-block login" form="formlogin" type="submit">Login</button>
+			<button class="btn btn-info btn-block login" type="submit">Login</button>
 			<a href="#" onclick="enviar()">¿Olvidó su contraseña?</a>
 		</div>	  
 	</div>
+	</form>	
+
 	<br>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
@@ -66,11 +67,11 @@
 	</div>
 	--%>
 	
-	
-
-	<script language="JavaScript" type="text/javascript">
-		alert("${alerta}");
-	</script>
+	<div class="row">
+		<div class="col-md-12">
+			<t><h2><b>${alerta}</b></h2></t>
+		</div>
+	</div>
 
 </div>
 
