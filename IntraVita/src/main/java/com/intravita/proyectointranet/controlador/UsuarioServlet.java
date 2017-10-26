@@ -90,9 +90,10 @@ public class UsuarioServlet {
   String nombre=request.getParameter("txtUsuarioNombre");
   String clave=request.getParameter("txtUsuarioClave");
   if(clave=="" || nombre=="") {
-   model.addAttribute("alerta", "Por favor rellene los campos" );
-   return cadenaUrl+="login";
+	  model.addAttribute("alerta", "Por favor rellene los campos" );
+	  return cadenaUrl+="login";
   }
+ 
   Administrador administrador= new Administrador();
   administrador.setNombre(nombre);
   administrador.setClave(clave);
@@ -362,9 +363,13 @@ public class UsuarioServlet {
   Publicacion[] todas=utilidades.mostrarPublicaciones(publicas, privadas);
   String texto="";
   for(int i=0; i<todas.length; i++) {
-   texto+=todas[i].toString();
-   texto+="<br>";
-  }
+	  texto+="		<div class=\"panel panel-default\">\r\n" + 
+	  				"			 <div class=\"panel-body\">";
+	  texto+=todas[i].toString();
+	  texto+="<br>";
+	  texto+="		</div>	\r\n" + 
+	  			"	</div>";
+	   		}
   System.out.print(texto);
   model.addAttribute("publicaciones", texto);
   

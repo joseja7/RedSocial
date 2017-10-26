@@ -51,6 +51,7 @@
 	 		<div class="col-md-10 col-md-offset-1 ">
 	 			<label for="usr">Usuario:</label>
 				<input name="txtNombre" type="text" class="form-control" id="usr" placeholder="usuario">
+				<br>
 			</div>  
 		</div>
 		<div class="row">
@@ -76,25 +77,40 @@
 	<br>
     <form action="listarUsuario" method="post">
 		<div class="row">
-			<div class="col-md-2 col-md-offset-5">
-				<button class="btn btn-info btn-block login" type="submit">Actualizar Lista</button>
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<button class="btn btn-info btn-block login" type="submit">Actualizar Lista</button>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="col-md-12">
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<h3>Usuarios</h3>
+											${usuarios}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="col-md-12">
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<h3>Administradores</h3>
+											${administradores}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
 			</div>	  
 		</div>
 	</form>
-	<div class="row">
-		<div class="col-md-6">
-			<div class="col-md-8 col-md-offset-4">
-				<h3>Usuarios</h3>
-			</div>
-				${usuarios}
-		</div>
-		<div class="col-md-6">
-			<div class="col-md-8 col-md-offset-4">
-				<h3>Administradores</h3>
-			</div>
-				${administradores}
-		</div>
-	</div>
+	
 	
 	<div class="panel-footer">
 		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>
