@@ -326,8 +326,12 @@ public class UsuarioServlet {
 		Publicacion[] todas=utilidades.mostrarPublicaciones(publicas, privadas);
 		String texto="";
 		for(int i=0; i<todas.length; i++) {
+			texto+="		<div class=\"panel panel-default\">\r\n" + 
+					"			 <div class=\"panel-body\">";
 			texto+=todas[i].toString();
 			texto+="<br>";
+			texto+="		</div>	\r\n" + 
+					"	</div>";
 		}
 		System.out.print(texto);
 		model.addAttribute("publicaciones", texto);

@@ -63,7 +63,7 @@ public class Publicacion implements Comparable<Publicacion>{
 		this.fecha = fecha;
 	}
 	public String toString() {
-		return "<b>"+usuario.getNombre()+" </b>:"+ this.texto; 
+		return "<b>"+usuario.getNombre()+" </b>: <br>"+ this.texto; 
 	}
 	@Override
 	public int compareTo (Publicacion p2) {
