@@ -45,7 +45,7 @@
 
 		<div class="col-md-1 col-md-offset-4">
 			<form action="logout" method="GET">
-				<button class="btn btn-danger btn-block btn-md login" type="submit">Desconexion</button>
+				<button class="btn btn-danger btn-block btn-md login" type="submit">Salir</button>
 			</form>	
 			<br/>
 			<form action="" method="GET">
@@ -53,7 +53,7 @@
 			</form>
 			<form action="irBorradoCuenta" method="GET">
 				<button class="btn btn-primary btn-block btn-md login" type="submit">Borrar Cuenta</button>
-			</form>				
+			</form>			
 		</div>
 	</div>
 	
@@ -69,8 +69,8 @@
 		<br/>
 		
 		<div class="row">
-			<div class="col-md-2 col-md-offset-8">
-				<button class="btn btn-primary btn-block login" formaction="crearPublicacionPrivada" type="submit">Guardar en borradores</button>
+			<div class="col-md-1 col-md-offset-9">
+				<button class="btn btn-primary btn-block login" formaction="crearPublicacionPrivada" type="submit">Borrador</button>
 				<button class="btn btn-primary btn-block login" type="submit">Enviar</button>
 			</div>	  
 		</div>
@@ -78,15 +78,24 @@
 	
 	<br/>
 	
-	<form action="listarPublicacion" method="post">
-		<button class="btn btn-info btn-block login" type="submit" style="background-color:yellow;">Mostrar Publicaciones</button>
-	</form>
+	
 	<div class="row">
-		${publicaciones}
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default">
+				 <div class="panel-body">
+					<form action="listarPublicacion" method="post">
+						<button class="btn btn-success login" type="submit">Mostrar Publicaciones</button>
+					</form>
+				</div>
+				
+				${publicaciones}
+				
+			</div>	
+		</div>
 	</div>
 	
 	<div class="row">
-		<h1> Esto es para el copiright</h1>
+		&nbsp;<h1>Esto es para el copiright</h1>
 	</div>
 	
 
