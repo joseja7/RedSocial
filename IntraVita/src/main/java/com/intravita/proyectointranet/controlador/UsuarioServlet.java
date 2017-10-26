@@ -280,6 +280,35 @@ public class UsuarioServlet {
 		listarPublicacion(request, response, model);
 		return cadenaUrl+="bienvenido";
 	}
+	@RequestMapping(value="/crearPublicacionPrivada", method = RequestMethod.POST)
+	public String crearPublicacionPrivada(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+		String cadenaUrl="usuario/";
+		Usuario usuario;
+		usuario=(Usuario) request.getSession().getAttribute("usuarioConectado");
+		
+		
+		String nombre=usuario.getNombre();
+		
+		model.addAttribute("usuario", usuarioDao.selectNombre(nombre));
+		String texto=request.getParameter("txtIntroducirTexto");
+
+		try {
+			utilidades.publicacionValida(nombre, texto);
+		}catch(Exception e) {
+			model.addAttribute("alerta", e.getMessage());
+			return cadenaUrl+="bienvenido";
+		}
+		
+		Publicacion publicacion= new Publicacion(usuario, texto, "Privada");
+		
+		if(publicacionDao.existe(publicacion)) {
+			model.addAttribute("alerta", "Nombre de usuario no disponible");
+			return cadenaUrl+="bienvenido";
+		}
+		publicacionDao.insert(publicacion);
+		listarPublicacion(request, response, model);
+		return cadenaUrl+="bienvenido";
+	}
 	/***
 	 * 
 	 * @method permite ver las publicaciones realizadas por un usuario(de momento, luego cambiar a según la visibilidad y amigos)

@@ -104,13 +104,35 @@ public class utilidades {
 				retorno.add(privada);
 				privada=itPrivadas.next();
 			}
-			retorno.add(privada);
+			if(publica==null)
+				retorno.add(privada);
+			else {
+				if(publica.getFecha()>privada.getFecha()) {
+					retorno.add(publica);
+					retorno.add(privada);
+				}
+				else {
+					retorno.add(privada);
+					retorno.add(publica);
+				}
+			}
 		}else {
 			while(itPublicas.hasNext()) {
 				retorno.add(publica);
 				publica=itPublicas.next();
 			}
-			retorno.add(publica);
+			if(privada==null)
+				retorno.add(publica);
+			else {
+				if(publica.getFecha()>privada.getFecha()) {
+					retorno.add(publica);
+					retorno.add(privada);
+				}
+				else {
+					retorno.add(privada);
+					retorno.add(publica);
+				}
+			}
 		}
 		return retorno;
 	}

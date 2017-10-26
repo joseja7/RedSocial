@@ -66,7 +66,8 @@
 		<br/>
 		
 		<div class="row">
-			<div class="col-md-1 col-md-offset-9">
+			<div class="col-md-2 col-md-offset-8">
+				<button class="btn btn-primary btn-block login" formaction="crearPublicacionPrivada" type="submit">Guardar en borradores</button>
 				<button class="btn btn-primary btn-block login" type="submit">Enviar</button>
 			</div>	  
 		</div>
