@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,13 +39,22 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+spam {
+    padding: 20px;
+    color: #3629D3;
+    margin-left: 12px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
 </style>
 
 
 </head>
 <body style="background-color: #2CC8E7;">
 
-<img src="Logo.png" alt="Girl in a jacket" style="width:500px; height:600px;">
+<img src="Logo.png" alt="logo" style="width:500px; height:600px;">
 
 <div class="container">
 	<div class="row">
@@ -65,23 +75,23 @@
 			<div class="col-md-8 col-md-offset-2">
 				<label for="pwd" style="color:white; font-size:15px;">Contraseña:</label>
 				<input type="password" name="txtUsuarioClave" class="form-control" id="pwd" placeholder="password">
+				<a href="irRecuperarCredenciales" style="color: white";><em>¿Olvidó su contraseña?</em></a>
 			</div>	  
 		</div>
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-1 col-md-offset-5">
 			</br>
-			<button class="btn login" type="submit">Login</button>
+			<button class="btn login" type="submit">Iniciar Sesión</button>
 			<br/>
-			<br/>
-			<a href="irRecuperarCredenciales">¿Olvidó su contraseña?</a>
+
 		</div>	  
 	</div>
 	</form>	
-
+	
 	<br>
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<form action="irRegistrar" method="get"><button class="btn login" type="submit">Registrar</button></form>
+		<div class="col-md-1 col-md-offset-5">
+			<form action="irRegistrar" method="get"><button class="btn login" type="submit">&nbsp;&nbsp;   Regístrate   &nbsp;&nbsp;</button></form>
 		</div>
 	</div>
 	<br>
@@ -94,14 +104,13 @@
 	</div>
 	--%>
 	
+	
+	
 	<div class="row">
 		<div class="col-md-12">
-			<t><h2><b>${alerta}</b></h2></t>
+			<t><spam><em>${alerta}</em></spam></t>
 		</div>
 	</div>
-	
-	
-	
 </div>
 
 
