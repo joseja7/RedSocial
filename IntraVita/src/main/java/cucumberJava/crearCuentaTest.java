@@ -23,6 +23,7 @@ public class crearCuentaTest {
 	private String pwd1;
 	private String pwd2;
 	private String email;
+	private String respuesta="fernando";
 	UsuarioDAOImpl usuarioDao= new UsuarioDAOImpl();
 	
 	@Given("^Usuario en pagina de creacion$")
@@ -45,6 +46,7 @@ public class crearCuentaTest {
 		usuario.setNombre(nombre);
 		usuario.setClave(pwd1);
 		usuario.setEmail(email);
+		usuario.setRespuesta(respuesta);
 	}
 
 	@Then("^Mensaje de validacion y usuario insertado$")
