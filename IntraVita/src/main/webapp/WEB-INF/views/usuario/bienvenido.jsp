@@ -29,7 +29,7 @@
 		</div>
 		
 		<div class="col-md-2 col-md-offset-4">
-				<button type="button" class="btn btn-info btn-md">?</button>
+				<button type="button" class="btn btn-primary btn-md"  style="border-width: 10px;">?</button>
 		</div>
 	</div>
 	
@@ -67,7 +67,7 @@
 		
 		<div class="row">
 			<div class="col-md-1 col-md-offset-9">
-				<button class="btn btn-info btn-block login" type="submit">Enviar</button>
+				<button class="btn btn-primary btn-block login" type="submit">Enviar</button>
 			</div>	  
 		</div>
 	</form>
@@ -75,14 +75,14 @@
 	<br/>
 	
 	<form action="listarPublicacion" method="post">
-		<button class="btn btn-info btn-block login" type="submit">Ver Publicaciones</button>
+		<button class="btn btn-info btn-block login" type="submit" style="background-color:yellow;">Mostrar Publicaciones</button>
 	</form>
 	<div class="row">
 		${publicaciones}
 	</div>
 	
 	<div class="row">
-		<h1>Esto es para el copiright</h1>
+		<h1> Esto es para el copiright</h1>
 	</div>
 	
 

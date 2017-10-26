@@ -290,11 +290,10 @@ public class UsuarioServlet {
 		String cadenaUrl="usuario/";
 		Usuario usuario;
 		usuario=(Usuario) request.getSession().getAttribute("usuarioConectado");
-		System.out.println(usuario.getNombre());
+		
 		ArrayList<Publicacion> publicas=publicacionDao.selectPublicas(usuario);
 		ArrayList<Publicacion> privadas=publicacionDao.selectPrivadas(usuario);
-		System.out.println(publicas.toString());
-		System.out.println(publicas.get(1).toString());
+		
 		ArrayList<Publicacion> todas=utilidades.mostrarPublicaciones(publicas, privadas);
 		String texto="";
 		Iterator <Publicacion> it=todas.iterator();
