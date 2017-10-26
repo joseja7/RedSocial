@@ -48,6 +48,37 @@ public class PublicacionDAOImpl {
 		MongoCollection<BsonDocument> publicaciones = broker.getCollection("Publicaciones");
 		publicaciones.insertOne(bso);
 	}
+	/***
+	 * 
+	 * @method actualizar una publicacion en la base de datos
+	 * 
+	 */
+	public void update(Publicacion publicacion, String textoNuevo){		
+		BsonDocument bso = new BsonDocument();
+		bso.append("autor", new BsonString(publicacion.getUsuario().getNombre()));
+		bso.append("texto", new BsonString(publicacion.getTexto()));
+		bso.append("fecha", new BsonDateTime(publicacion.getFecha()));
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> publicaciones = broker.getCollection("Publicaciones");
+		BsonDocument actualizacion= new BsonDocument("$set", new BsonDocument("texto", new BsonString(textoNuevo)));
+		publicaciones.updateOne(bso,actualizacion);
+	}
+	/***
+	 * 
+	 * @method eliminar una publicacion en la base de datos
+	 * 
+	 */
+	public void remove(Publicacion publicacion){
+		MongoBroker broker = MongoBroker.get();
+		MongoCollection<BsonDocument> publicaciones = broker.getCollection("Publicaciones");
+		BsonDocument bso = new BsonDocument();
+		bso.append("autor", new BsonString(publicacion.getUsuario().getNombre()));
+		bso.append("texto", new BsonString(publicacion.getTexto()));
+		bso.append("fecha", new BsonDateTime(publicacion.getFecha()));
+		FindIterable<BsonDocument> resultado=publicaciones.find(bso);
+		BsonDocument publicacionBson = resultado.first();		
+		publicaciones.deleteOne(publicacionBson);
+	}
 	/**
 	 * 
 	 * @param usuario del que queremos obtener publicaciones publicas
