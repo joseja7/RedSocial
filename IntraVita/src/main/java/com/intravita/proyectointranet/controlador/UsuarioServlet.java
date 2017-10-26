@@ -323,11 +323,10 @@ public class UsuarioServlet {
 		ArrayList<Publicacion> publicas=publicacionDao.selectPublicas(usuario);
 		ArrayList<Publicacion> privadas=publicacionDao.selectPrivadas(usuario);
 		
-		ArrayList<Publicacion> todas=utilidades.mostrarPublicaciones(publicas, privadas);
+		Publicacion[] todas=utilidades.mostrarPublicaciones(publicas, privadas);
 		String texto="";
-		Iterator <Publicacion> it=todas.iterator();
-		while(it.hasNext()) {
-			texto+=it.next().toString();
+		for(int i=0; i<todas.length; i++) {
+			texto+=todas[i].toString();
 			texto+="<br>";
 		}
 		System.out.print(texto);

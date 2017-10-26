@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Publicacion {
+public class Publicacion implements Comparable<Publicacion>{
 
 	private Usuario usuario;
 	private String texto;
@@ -64,6 +64,14 @@ public class Publicacion {
 	}
 	public String toString() {
 		return "<b>"+usuario.getNombre()+" </b>:"+ this.texto; 
+	}
+	@Override
+	public int compareTo (Publicacion p2) {
+		if(this.getFecha()>p2.getFecha())
+			return -1;
+		if(this.getFecha()<p2.getFecha())
+			return 1;
+		return 0;
 	}
 	
 }
