@@ -17,19 +17,33 @@
 
 </head>
 <body>
-	<div class="container">
-		<div class="row">
+	
+	
+		
+		<div class="row bg-primary">
 			<div class="col-md-5 col-md-offset-1">
-				<h1>
-					Panel de administrador
+				<h1 style="color: white; font-family: Verdana; font-size:40px;">
+					<img src="https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjsmL-WgYzXAhVC1xoKHVCBC-0QjBwIBA&url=https%3A%2F%2F0.gravatar.com%2Favatar%2F39ed65b29c37c5cf7f2861748f886a32%3Fs%3D128%26d%3Didenticon%26r%3DG&psig=AOvVaw2dTI6apPP8UfUsnp855VCZ&ust=1509028967551401" width="64px" height="64px" class="img-circle"> INTRAVITA
 				</h1>
 			</div>
-			<div class="col-md-4 col-md-offset-2">
+			
+			<div class="col-md-2 col-md-offset-4">
+					<button type="button" class="btn btn-primary btn-md"  style="border-width: 10px;">?</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-5 col-md-offset-1">
+				<h3>
+					nombre administrador
+				</h3>
+			</div>
+			<div class="col-md-1 col-md-offset-4">
 				<br>
 				<button type="button" class="btn btn-primary">Cambiar ROL</button>
 			</div>
 		</div>
-	</div>
+
 
 	
 	<form action="promover" method="post">
@@ -81,5 +95,10 @@
 				${administradores}
 		</div>
 	</div>
+	
+	<div class="panel-footer">
+		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>
+	</div>
+	
 </body>
 </html>

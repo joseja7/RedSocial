@@ -54,12 +54,11 @@ spam {
 </head>
 <body style="background-color: #2CC8E7;">
 
-<img src="Logo.png" alt="logo" style="width:500px; height:600px;">
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-2 col-md-offset-2">
-			<strong></strong><h1 style="color: white; font-family: Verdana; font-size:60px;"><em><strong>IntraVita</strong></em></h1></strong>
+		<div class="col-md-6 col-md-offset-2">
+			<strong></strong><h1 style="color: white; font-family: Verdana; font-size:60px;"><em><strong>  <img src="Logo.png" style="width:64px; height:64px;" class="img-circle"> IntraVita</strong></em></h1></strong>
 		</div>
 	</div>
   
@@ -111,7 +110,12 @@ spam {
 			<t><spam><em>${alerta}</em></spam></t>
 		</div>
 	</div>
+	
 </div>
+
+	<div class="panel-footer">
+		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>
+	</div>
 
 
 

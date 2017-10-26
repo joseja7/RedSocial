@@ -23,7 +23,7 @@
 	-->
 	<div class="row bg-primary">
 		<div class="col-md-5 col-md-offset-1">
-			<h1>
+			<h1 style="color: white; font-family: Verdana; font-size:40px;">
 				<img src="https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjsmL-WgYzXAhVC1xoKHVCBC-0QjBwIBA&url=https%3A%2F%2F0.gravatar.com%2Favatar%2F39ed65b29c37c5cf7f2861748f886a32%3Fs%3D128%26d%3Didenticon%26r%3DG&psig=AOvVaw2dTI6apPP8UfUsnp855VCZ&ust=1509028967551401" width="64px" height="64px" class="img-circle"> INTRAVITA
 			</h1>
 		</div>
@@ -51,6 +51,7 @@
 			<form action="" method="GET">
 				<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
 			</form>
+			<br>
 			<form action="irBorradoCuenta" method="GET">
 				<button class="btn btn-primary btn-block btn-md login" type="submit">Borrar Cuenta</button>
 			</form>			
@@ -94,8 +95,8 @@
 		</div>
 	</div>
 	
-	<div class="row">
-		&nbsp;<h1>Esto es para el copiright</h1>
+	<div class="panel-footer">
+		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>
 	</div>
 	
 
