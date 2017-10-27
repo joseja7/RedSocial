@@ -79,6 +79,10 @@ public class UsuarioServlet {
  public ModelAndView irBorradoCuenta(HttpServletResponse response,HttpServletRequest request){
   return cambiarVista("usuario/borradoCuenta");
  }
+ @RequestMapping(value="/irBienvenido",method = RequestMethod.GET)
+ public ModelAndView irBienvenido(HttpServletResponse response,HttpServletRequest request){
+  return cambiarVista("usuario/bienvenido");
+ }
  /***
   * 
   *@method ejecucion cuando pulsamos el boton login

@@ -17,29 +17,59 @@
 
 </head>
 <body>
+
+	<div class="row bg-primary">
+		<div class="col-md-5 col-md-offset-1">
+			<h1 style="color: white; font-family: Verdana; font-size:40px;">
+				<img src="https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjsmL-WgYzXAhVC1xoKHVCBC-0QjBwIBA&url=https%3A%2F%2F0.gravatar.com%2Favatar%2F39ed65b29c37c5cf7f2861748f886a32%3Fs%3D128%26d%3Didenticon%26r%3DG&psig=AOvVaw2dTI6apPP8UfUsnp855VCZ&ust=1509028967551401" width="64px" height="64px" class="img-circle"> INTRAVITA
+			</h1>
+		</div>
+		
+		<div class="col-md-2 col-md-offset-4">
+				<button type="button" class="btn btn-primary btn-md"  style="border-width: 10px;">?</button>
+		</div>
+	</div>
+	
+
+	<div class="row">
+		<div class="col-md-1 col-md-offset-10">
+			<br>
+			<form action="irLogin" method="GET">
+				<button class="btn btn-danger btn-block btn-md login" type="submit">Volver</button>
+			</form>	
+					
+		<br/>
+		</div>
+	</div>
+
 	<form action="recuperarCredenciales" method="POST">
-	 	<div class="col-md-8 col-md-offset-2">
-	 		<label for="usr">Usuario:</label>
-			<input name="txtUsuarioNombre" type="text" class="form-control" id="usr" placeholder="usuario">
-		</div>  
+		<div class="row">
+		 	<div class="col-md-8 col-md-offset-2">
+		 		<label for="usr">Usuario:</label>
+				<input name="txtUsuarioNombre" type="text" class="form-control" id="usr" placeholder="usuario">
+				<br>
+			</div>  
+		</div>
 		
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<label for="usr">¿Cual es tu mejor amigo/a de la infancia?</label>
 				<input name="txtRespuesta" type="text" class="form-control" id="usr" placeholder="respuesta">
+				<br>
 			</div>
 		</div>
 		
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<button class="btn btn-info btn-block" type="submit" value="recuperar">Recuperar credenciales</button>
+			<div class="col-md-1 col-md-offset-9">
+				<button class="btn btn-info btn-block" type="submit" value="recuperar">Recuperar</button>
 			</div>	  
 		</div>
 	<br>
 	</form>
-	<script language="JavaScript" type="text/javascript">
-		alert("${alerta}");
-	</script>
+	
+	<div class="panel-footer">
+		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>
+	</div>
 	
 </body>
 </html>

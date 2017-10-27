@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Esto es la pantalla REGISTRAR</title>
+		<title>Registro</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -20,9 +20,32 @@
 </head>
 
 <body>
-<div class="container">
-	<div class="row">
+
+	<div class="row bg-primary">
+		<div class="col-md-5 col-md-offset-1">
+			<h1 style="color: white; font-family: Verdana; font-size:40px;">
+				<img src="https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjsmL-WgYzXAhVC1xoKHVCBC-0QjBwIBA&url=https%3A%2F%2F0.gravatar.com%2Favatar%2F39ed65b29c37c5cf7f2861748f886a32%3Fs%3D128%26d%3Didenticon%26r%3DG&psig=AOvVaw2dTI6apPP8UfUsnp855VCZ&ust=1509028967551401" width="64px" height="64px" class="img-circle"> INTRAVITA
+			</h1>
+		</div>
+		
+		<div class="col-md-2 col-md-offset-4">
+				<button type="button" class="btn btn-primary btn-md"  style="border-width: 10px;">?</button>
+		</div>
 	</div>
+	
+
+	<div class="row">
+		<div class="col-md-1 col-md-offset-10">
+			<br>
+			<form action="irLogin" method="GET">
+				<button class="btn btn-danger btn-block btn-md login" type="submit">Volver</button>
+			</form>	
+					
+		<br/>
+		</div>
+	</div>
+
+
 	<form action="registrar" method="POST"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
@@ -83,11 +106,6 @@
 	</form>
 
 	<br>
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<form action="irLogin" method="get"><button class="btn btn-info btn-block login" type="submit">Login</button></form>
-		</div>
-	</div>
 	
 	<div class="row">
 		<div class="col-md-12">
@@ -95,12 +113,11 @@
 		</div>
 	</div>
 	
-	
-	
-</div>
+	<div class="panel-footer">
+		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>
+	</div>
+
 
 </body>
-
-
 
 </html>

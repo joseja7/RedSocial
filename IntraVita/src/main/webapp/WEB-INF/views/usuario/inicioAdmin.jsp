@@ -40,7 +40,13 @@
 			</div>
 			<div class="col-md-1 col-md-offset-4">
 				<br>
-				<button type="button" class="btn btn-primary">Cambiar ROL</button>
+				<form action="logout" method="GET">
+					<button class="btn btn-danger btn-block btn-md login" type="submit">Salir</button>
+				</form>	
+				
+				<br/>
+				
+				<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
 			</div>
 		</div>
 

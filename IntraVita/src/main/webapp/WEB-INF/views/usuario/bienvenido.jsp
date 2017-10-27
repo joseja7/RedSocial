@@ -85,7 +85,7 @@
 			<div class="panel panel-default">
 				 <div class="panel-body">
 					<form action="listarPublicacion" method="post">
-						<button class="btn btn-success login" type="submit">Mostrar Publicaciones</button>
+						<button class="btn btn-info btn-block login" type="submit">Mostrar Publicaciones</button>
 					</form>
 				</div>
 				
