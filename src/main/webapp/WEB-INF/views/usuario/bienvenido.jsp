@@ -46,13 +46,24 @@
 				<button class="btn btn-danger btn-block btn-md login" type="submit">Salir</button>
 			</form>	
 			<br/>
-			<form action="" method="GET">
-				<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
-			</form>
-			<br>
-			<form action="irBorradoCuenta" method="GET">
-				<button class="btn btn-primary btn-block btn-md login" type="submit">Borrar Cuenta</button>
-			</form>			
+			
+			
+			<div class="btn-group">
+				<button type="button" class="btn btn-info btn-block btn-md">Ajustes</button>
+				<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><form action="" method="GET">
+							<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
+						</form>
+					<li><form action="irBorradoCuenta" method="GET">
+							<button class="btn btn-primary btn-block btn-md login" type="submit">Borrar Cuenta</button>
+						</form>	
+				</ul>
+			</div>
+			
+					
 		</div>
 	</div>
 	

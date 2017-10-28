@@ -44,7 +44,18 @@
 				
 				<br/>
 				
-				<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
+				<div class="btn-group">
+					<button type="button" class="btn btn-info btn-block btn-md">Ajustes</button>
+					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><form action="" method="GET">
+								<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
+							</form>
+					</ul>
+				</div>
+				
 			</div>
 		</div>
 
