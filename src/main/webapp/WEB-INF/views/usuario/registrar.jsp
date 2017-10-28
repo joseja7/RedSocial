@@ -19,13 +19,50 @@
 		
 </head>
 
-<body>
+<body style="background-color: #2CC8E7;">
+
+<style>
+.boton {
+  padding: 15px 35px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #166EE7;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px #999;
+}
+
+.boton:hover {background-color: #21DD27}
+
+.b:active {
+  background-color: #21DD27;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+spam {
+    padding: 20px;
+    color: #3629D3;
+    margin-left: 12px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+</style>
+
+
+
+
 
 	<div class="row bg-primary">
 		<div class="col-md-5 col-md-offset-1">
-			<h1 style="color: white; font-family: Verdana; font-size:40px;">
-				<img src="https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjsmL-WgYzXAhVC1xoKHVCBC-0QjBwIBA&url=https%3A%2F%2F0.gravatar.com%2Favatar%2F39ed65b29c37c5cf7f2861748f886a32%3Fs%3D128%26d%3Didenticon%26r%3DG&psig=AOvVaw2dTI6apPP8UfUsnp855VCZ&ust=1509028967551401" width="64px" height="64px" class="img-circle"> INTRAVITA
-			</h1>
+			<strong></strong><h1 style="color: white; font-family: Verdana; font-size:60px;"><em><strong>  
+				<img src="http://www.emprender-facil.com/wp-content/uploads/2014/09/La-red-social-LinkedIn-para-tu-negocio-texto1.png" style="width:64px; height:64px;" class="img-circle";> 
+				IntraVita
+			</strong></em></h1></strong>
 		</div>
 		
 		<div class="col-md-2 col-md-offset-4">
@@ -48,40 +85,40 @@
 
 	<form action="registrar" method="POST"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<label for="usr">Usuario:</label>
+			<div class="col-md-6 col-md-offset-3">
+				<label for="usr" style="color:white; font-size:15px;">Usuario:</label>
 				<input type="text" class="form-control" id="usr" name="txtUsuarioNombre" placeholder="usuario" onFocus="if(this.value!='')this.value=''"/>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<label for="email">Email:</label>
+			<div class="col-md-6 col-md-offset-3">
+				<label for="email" style="color:white; font-size:15px">Email:</label>
 				<input type="text" class="form-control" id="email" name="txtEmail" placeholder="@alu.uclm.es""/>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<label for="pwd">Contraseña:</label>
+			<div class="col-md-6 col-md-offset-3">
+				<label for="pwd" style="color:white; font-size:15px">Contraseña:</label>
 		  		<input type="password" class="form-control" id="pwd" name="txtUsuarioClave" placeholder="password">
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-			  	<label for="pwd1">Confirmar Contraseña:</label>
+			<div class="col-md-6 col-md-offset-3">
+			  	<label for="pwd1" style="color:white; font-size:15px">Confirmar Contraseña:</label>
 			  	<input type="password" class="form-control" id="pwd1" name="txtUsuarioClave1" placeholder="confirmacion password">	
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<label for="usr">¿Cual es tu mejor amigo/a de la infancia?</label>
+			<div class="col-md-6 col-md-offset-3">
+				<label for="usr" style="color:white; font-size:15px">¿Cual es tu mejor amigo/a de la infancia?</label>
 				<input name="txtRespuesta" type="text" class="form-control" id="usr" placeholder="respuesta" onFocus="if(this.value!='')this.value=''">
 			</div>
 		</div>
 		
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-			<label for="imagen">Avatar:</label>
-			<label class="control-label">Select File</label>
+			<div class="col-md-6 col-md-offset-3">
+			<label for="imagen" style="color:white; font-size:15px">Avatar:</label>
+			<label class="control-label" style="color:white; font-size:15px">Select File</label>
 			<input id="input-b5" name="input-b5[]" type="file" multiple>
 			
 			<script>
@@ -99,8 +136,8 @@
 		<br>
 		
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<button type="submit" class="btn btn-info btn-block" value="Registrar">Registrar</button>	
+			<div class="col-md-2 col-md-offset-5">
+				<button type="submit" class="boton btn-info btn-block" value="Registrar">Registrar</button>	
 			</div>
 		</div>		
 	</form>
@@ -109,9 +146,10 @@
 	
 	<div class="row">
 		<div class="col-md-12">
-			<t><h2><b>${alerta}</b></h2></t>
+			<t><spam><em>${alerta}</em></spam></t>
 		</div>
 	</div>
+
 	
 	<div class="panel-footer">
 		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>

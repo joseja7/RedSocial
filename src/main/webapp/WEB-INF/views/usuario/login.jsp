@@ -58,7 +58,10 @@ spam {
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-2">
-			<strong></strong><h1 style="color: white; font-family: Verdana; font-size:60px;"><em><strong>  <img src="Logo.png" style="width:64px; height:64px;" class="img-circle"> IntraVita</strong></em></h1></strong>
+			<strong></strong><h1 style="color: white; font-family: Verdana; font-size:60px;"><em><strong>  
+				<img src="http://www.emprender-facil.com/wp-content/uploads/2014/09/La-red-social-LinkedIn-para-tu-negocio-texto1.png" style="width:64px; height:64px;" class="img-circle";> 
+				IntraVita
+			</strong></em></h1></strong>
 		</div>
 	</div>
   
@@ -103,13 +106,14 @@ spam {
 	</div>
 	--%>
 	
-	
-	
+
+
 	<div class="row">
 		<div class="col-md-12">
 			<t><spam><em>${alerta}</em></spam></t>
 		</div>
 	</div>
+
 	
 </div>
 
