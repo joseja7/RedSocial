@@ -15,6 +15,47 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
+<style>
+body {
+background: url(http://www.color-hex.com/palettes/16811.png);
+background-size:100%;
+width: 100%;
+heigth: 100%;
+}
+
+
+.boton {
+  padding: 15px 35px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #166EE7;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px #999;
+}
+
+.boton:hover {background-color: #21DD27}
+
+.b:active {
+  background-color: #21DD27;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+spam {
+    padding: 20px;
+    color: #3629D3;
+    margin-left: 12px;
+	font-weight: bold;
+	font-size: 20px;
+}
+</style>
+
+
 </head>
 <body>
 
@@ -44,7 +85,7 @@
 	<form action="recuperarCredenciales" method="POST">
 		<div class="row">
 		 	<div class="col-md-8 col-md-offset-2">
-		 		<label for="usr">Usuario:</label>
+		 		<label for="usr" style="color:white; font-size:15px;">Usuario:</label>
 				<input name="txtUsuarioNombre" type="text" class="form-control" id="usr" placeholder="usuario">
 				<br>
 			</div>  
@@ -52,15 +93,15 @@
 		
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<label for="usr">¿Cual es tu mejor amigo/a de la infancia?</label>
+				<label for="usr" style="color:white; font-size:15px;">¿Quién fue tu mejor amigo/a de la infancia?</label>
 				<input name="txtRespuesta" type="text" class="form-control" id="usr" placeholder="respuesta">
 				<br>
 			</div>
 		</div>
 		
 		<div class="row">
-			<div class="col-md-1 col-md-offset-9">
-				<button class="btn btn-info btn-block" type="submit" value="recuperar">Recuperar</button>
+			<div class="col-md-2 col-md-offset-8">
+				<button class="boton btn-info btn-block" type="submit" value="recuperar">Recuperar</button>
 			</div>	  
 		</div>
 	<br>

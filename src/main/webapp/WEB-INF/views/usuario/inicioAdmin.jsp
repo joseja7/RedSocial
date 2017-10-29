@@ -16,7 +16,7 @@
 
 
 </head>
-<body>
+<body style="background-color: #FAFAFA;">
 	
 	
 		
@@ -26,7 +26,7 @@
 			</div>
 			
 			<div class="col-md-2 col-md-offset-4">
-					<button type="button" class="btn btn-primary btn-md"  style="border-width: 10px;">?</button>
+					<button type="button" class="btn btn-primary btn-md"  style="border-width: 10px;"><strong>?</strong></button>
 			</div>
 		</div>
 		
@@ -39,19 +39,19 @@
 			<div class="col-md-1 col-md-offset-4">
 				<br>
 				<form action="logout" method="GET">
-					<button class="btn btn-danger btn-block btn-md login" type="submit">Salir</button>
+					<button class="btn btn-danger btn-block btn-md login" type="submit"><strong>Salir</strong></button>
 				</form>	
 				
 				<br/>
 				
 				<div class="btn-group">
-					<button type="button" class="btn btn-info btn-block btn-md">Ajustes</button>
+					<button type="button" class="btn btn-info btn-block btn-md"><strong>Ajustes</strong></button>
 					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
 						<li><form action="" method="GET">
-								<button class="btn btn-primary btn-block btn-md login" type="submit">Cambiar Rol</button>
+								<button class="btn btn-primary btn-block btn-md login" type="submit"><strong>Cambiar Rol</strong></button>
 							</form>
 					</ul>
 				</div>
@@ -63,7 +63,7 @@
 	
 	<form action="promover" method="post">
 	   <div class="row">
-	 		<div class="col-md-10 col-md-offset-1 ">
+	 		<div class="col-md-8 col-md-offset-2 ">
 	 			<label for="usr">Usuario:</label>
 				<input name="txtNombre" type="text" class="form-control" id="usr" placeholder="usuario">
 				<br>
@@ -71,15 +71,15 @@
 		</div>
 		<div class="row">
 			<div class="col-md-2 col-md-offset-2">
-				<button class="btn btn-success btn-block login" type="submit">Promover</button>
+				<button class="btn btn-success btn-block login" type="submit"><strong>Promover</strong></button>
 			</div>	  
 
 			<div class="col-md-2 col-md-offset-1">
-				<button class="btn btn-danger btn-block login" name="degradar" type="submit" formaction="degradar">Degradar</button>
+				<button class="btn btn-danger btn-block login" name="degradar" type="submit" formaction="degradar"><strong>Degradar</strong></button>
 			</div>	  
 
 			<div class="col-md-2 col-md-offset-1">
-				<button class="btn btn-danger btn-block login" type="submit" formaction="borrar">Borrar</button>
+				<button class="btn btn-danger btn-block login" type="submit" formaction="borrar"><strong>Borrar</strong></button>
 			</div>	  
 		</div>
 	</form>	
@@ -92,17 +92,17 @@
 	<br>
     <form action="listarUsuario" method="post">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+	 		<div class="col-md-8 col-md-offset-2 ">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<button class="btn btn-info btn-block login" type="submit">Actualizar Lista</button>
-						
+						<button class="btn btn-info btn-block login" type="submit"><strong>Actualizar Lista</strong></button>
+						<br/>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="col-md-12">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<h3>Usuarios</h3>
+											<h3><strong><em>Usuarios</em></strong></h3>
 											${usuarios}
 										</div>
 									</div>
@@ -112,7 +112,7 @@
 								<div class="col-md-12">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<h3>Administradores</h3>
+											<h3><strong><em>Administradores</em></strong></h3>
 											${administradores}
 										</div>
 									</div>
