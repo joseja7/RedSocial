@@ -406,7 +406,7 @@ public class UsuarioServlet {
 	  		"		<form action=\"editarPubli\" method=\"POST\">	\r\n" + 
 	  		"			<b> "+ todas[i].getUsuario().getNombre() +" </b> \r\n" + 
 	  		"			<textarea name=\"txtIntroducirTexto\" placeholder=\"¿Qué tal el día?\" class=\"form-control\" rows=\"5\" id=\"comment\">"+ todas[i].getTexto()+"</textarea>\r\n" + 
-	  		"			<input name=\"txtIdPublicacion\" type=\"text\" class=\"form-control\" value=\""+todas[i].getId()+"\" id=\"usr\" placeholder=\"usuario\">" + 
+	  		"			<input name=\"txtIdPublicacion\" type=\"hidden\" class=\"form-control\" value=\""+todas[i].getId()+"\" id=\"usr\" placeholder=\"usuario\">" + 
 	  		"			<button class=\"btn btn-danger btn-block btn-md login\" type=\"submit\">Editar</button>\r\n" + 
 	  		"			<button class=\"btn btn-danger btn-block btn-md login\" formaction=\"eliminarPubli\" type=\"submit\">Eliminar</button>\r\n" + 
 	  		"		</form>\r\n" + 
