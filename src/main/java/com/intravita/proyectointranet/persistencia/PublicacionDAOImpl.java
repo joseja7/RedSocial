@@ -6,9 +6,11 @@ import java.util.Iterator;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.BsonDateTime;
 import org.bson.BsonDocument;
+import org.bson.BsonObjectId;
 import org.bson.BsonString;
 import org.bson.BsonValue;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import com.intravita.proyectointranet.modelo.Publicacion;
 import com.intravita.proyectointranet.modelo.Usuario;
@@ -53,11 +55,9 @@ public class PublicacionDAOImpl {
 	 * @method actualizar una publicacion en la base de datos
 	 * 
 	 */
-	public void update(Publicacion publicacion, String textoNuevo){		
+	public void update(String id, String textoNuevo){		
 		BsonDocument bso = new BsonDocument();
-		bso.append("autor", new BsonString(publicacion.getUsuario().getNombre()));
-		bso.append("texto", new BsonString(publicacion.getTexto()));
-		bso.append("fecha", new BsonDateTime(publicacion.getFecha()));
+		bso.append("_id", new BsonObjectId(new ObjectId(id)));
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> publicaciones = broker.getCollection("Publicaciones");
 		BsonDocument actualizacion= new BsonDocument("$set", new BsonDocument("texto", new BsonString(textoNuevo)));
@@ -68,13 +68,11 @@ public class PublicacionDAOImpl {
 	 * @method eliminar una publicacion en la base de datos
 	 * 
 	 */
-	public void remove(Publicacion publicacion){
+	public void remove(String id){
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> publicaciones = broker.getCollection("Publicaciones");
 		BsonDocument bso = new BsonDocument();
-		bso.append("autor", new BsonString(publicacion.getUsuario().getNombre()));
-		bso.append("texto", new BsonString(publicacion.getTexto()));
-		bso.append("fecha", new BsonDateTime(publicacion.getFecha()));
+		bso.append("_id", new BsonObjectId(new ObjectId(id)));
 		FindIterable<BsonDocument> resultado=publicaciones.find(bso);
 		BsonDocument publicacionBson = resultado.first();		
 		publicaciones.deleteOne(publicacionBson);
@@ -107,6 +105,7 @@ public class PublicacionDAOImpl {
 			privacidad=aux.getString("privacidad").getValue();
 			fecha=aux.getDateTime("fecha").getValue();
 			publicacion=new Publicacion(new Usuario(autor), texto, privacidad, fecha);
+			publicacion.setId(aux.getObjectId("_id").getValue().toString());
 			lista.add(publicacion);
 		}
 		return lista;
@@ -139,6 +138,7 @@ public class PublicacionDAOImpl {
 			privacidad=aux.getString("privacidad").getValue();
 			fecha=aux.getDateTime("fecha").getValue();
 			publicacion=new Publicacion(new Usuario(autor), texto, privacidad, fecha);
+			publicacion.setId(aux.getObjectId("_id").getValue().toString());
 			lista.add(publicacion);
 		}
 		return lista;

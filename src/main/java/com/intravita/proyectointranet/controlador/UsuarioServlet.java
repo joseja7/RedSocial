@@ -285,7 +285,34 @@ public class UsuarioServlet {
   cadenaUrl+="inicioAdmin";  
   return cadenaUrl;
  }
+ /**
+  * 
+  *@method borrar una publicacion dado un ID
+  */
+ @RequestMapping(value="/eliminarPubli", method = RequestMethod.POST)
+ public String eliminarPubli(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+  String cadenaUrl="usuario/";
+  String id=request.getParameter("txtIdPublicacion");
+  publicacionDao.remove(id);
+  listarPublicacion(request, response, model);
+  cadenaUrl+="bienvenido";  
+  return cadenaUrl;
+ }
  
+ /**
+  * 
+  *@method editar una publicacion dado un ID
+  */
+ @RequestMapping(value="/editarPubli", method = RequestMethod.POST)
+ public String editarPubli(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+  String cadenaUrl="usuario/";
+  String texto=request.getParameter("txtIntroducirTexto");
+  String id=request.getParameter("txtIdPublicacion");
+  publicacionDao.update(id, texto);
+  listarPublicacion(request, response, model);
+  cadenaUrl+="bienvenido";  
+  return cadenaUrl;
+ }
  /***
   * 
   * @method permite crear una publicación por parte de un usuario
@@ -367,13 +394,25 @@ public class UsuarioServlet {
   Publicacion[] todas=utilidades.mostrarPublicaciones(publicas, privadas);
   String texto="";
   for(int i=0; i<todas.length; i++) {
+	  /*
 	  texto+="		<div class=\"panel panel-default\">\r\n" + 
 	  				"			 <div class=\"panel-body\">";
 	  texto+=todas[i].toString();
 	  texto+="<br>";
 	  texto+="		</div>	\r\n" + 
-	  			"	</div>";
-	   		}
+	  			"	</div>";*/
+	  texto+="<div class=\"panel panel-default\">\r\n" + 
+	  		"	<div class=\"panel-body\">\r\n" + 
+	  		"		<form action=\"editarPubli\" method=\"POST\">	\r\n" + 
+	  		"			<b> "+ todas[i].getUsuario().getNombre() +" </b> \r\n" + 
+	  		"			<textarea name=\"txtIntroducirTexto\" placeholder=\"¿Qué tal el día?\" class=\"form-control\" rows=\"5\" id=\"comment\">"+ todas[i].getTexto()+"</textarea>\r\n" + 
+	  		"			<input name=\"txtIdPublicacion\" type=\"text\" class=\"form-control\" value=\""+todas[i].getId()+"\" id=\"usr\" placeholder=\"usuario\">" + 
+	  		"			<button class=\"btn btn-danger btn-block btn-md login\" type=\"submit\">Editar</button>\r\n" + 
+	  		"			<button class=\"btn btn-danger btn-block btn-md login\" formaction=\"eliminarPubli\" type=\"submit\">Eliminar</button>\r\n" + 
+	  		"		</form>\r\n" + 
+	  		"	</div>\r\n" + 
+	  		"</div>	";
+  }
   System.out.print(texto);
   model.addAttribute("publicaciones", texto);
   

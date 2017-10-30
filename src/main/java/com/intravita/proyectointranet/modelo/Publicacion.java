@@ -11,6 +11,7 @@ public class Publicacion implements Comparable<Publicacion>{
 	//Publica o Privada
 	private String privacidad;
 	private long fecha;
+	private String id;
 	final DateFormat formato=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 	
 	public Publicacion(Usuario usuario, String texto) {
@@ -63,7 +64,7 @@ public class Publicacion implements Comparable<Publicacion>{
 		this.fecha = fecha;
 	}
 	public String toString() {
-		return "<b>"+usuario.getNombre()+" </b>: <br>"+ this.texto; 
+		return "<b>"+usuario.getNombre()+" </b>: <br>"+ this.texto+ " id:"+this.id; 
 	}
 	@Override
 	public int compareTo (Publicacion p2) {
@@ -72,6 +73,12 @@ public class Publicacion implements Comparable<Publicacion>{
 		if(this.getFecha()<p2.getFecha())
 			return 1;
 		return 0;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }
