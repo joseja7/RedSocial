@@ -26,7 +26,23 @@
 			</div>
 			
 			<div class="col-md-2 col-md-offset-4">
-					<button type="button" class="btn btn-primary btn-md"  style="border-width: 10px;"><strong>?</strong></button>
+					<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#miModal" style="border-width: 10px;"><strong>?</strong></button>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Ayuda</h4>
+					</div>
+					<div class="modal-body">
+						Ayuda de la página del administrador
+					</div>
+				</div>
 			</div>
 		</div>
 		
