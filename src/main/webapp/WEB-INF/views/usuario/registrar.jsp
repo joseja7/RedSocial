@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  <% // inicio  %>
 <html>
 
 
@@ -8,13 +8,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Registro</title>
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <% // bien  %>
 
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <% // perfecto  %>
 		
 		
 </head>
@@ -80,7 +80,7 @@ spam {
 						<h4 class="modal-title" id="myModalLabel">Ayuda</h4>
 					</div>
 					<div class="modal-body">
-						Ayuda de la página de registro
+						Ayuda de la pï¿½gina de registro
 					</div>
 				</div>
 			</div>
@@ -90,7 +90,7 @@ spam {
 		<div class="col-md-1 col-md-offset-10">
 			<br>
 			<form action="irLogin" method="GET">
-				<button class="btn btn-danger btn-block btn-md login" type="submit">Volver</button>
+				<button class="btn btn-danger btn-block btn-md login" type="submit">Volver</button> <% // bien  %>
 			</form>	
 					
 		<br/>
@@ -113,19 +113,19 @@ spam {
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<label for="pwd" style="color:white; font-size:15px">Contraseña:</label>
+				<label for="pwd" style="color:white; font-size:15px">Contraseï¿½a:</label>
 		  		<input type="password" class="form-control" id="pwd" name="txtUsuarioClave" placeholder="password">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-			  	<label for="pwd1" style="color:white; font-size:15px">Confirmar Contraseña:</label>
+			  	<label for="pwd1" style="color:white; font-size:15px">Confirmar Contraseï¿½a:</label> <% // bien  %>
 			  	<input type="password" class="form-control" id="pwd1" name="txtUsuarioClave1" placeholder="confirmacion password">	
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<label for="usr" style="color:white; font-size:15px">¿Cual es tu mejor amigo/a de la infancia?</label>
+				<label for="usr" style="color:white; font-size:15px">ï¿½Cual es tu mejor amigo/a de la infancia?</label>
 				<input name="txtRespuesta" type="text" class="form-control" id="usr" placeholder="respuesta" onFocus="if(this.value!='')this.value=''">
 			</div>
 		</div>
@@ -167,7 +167,7 @@ spam {
 
 	
 	<div class="panel-footer">
-		<h5>© Copyright 2017 IntraVita. Todos los derechos reservados.</h5>
+		<h5>ï¿½ Copyright 2017 IntraVita. Todos los derechos reservados.</h5> <% // fin  %>
 	</div>
 
 
