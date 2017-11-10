@@ -17,10 +17,10 @@ public class utilidades {
 	 * @return 
 	 * @throws Exception 
 	 */
-	static //Vector con las "malasPalabras" que el sistema reconocer�
-	 String [] diccionario = {"cabron", "cabronazo", "maricon", "gilipollas", "tonto", "capullo", "idiota", "fuck", "fucking", "huevon", "polla", "pollon", "co�o"};
+	static //Vector con las "malasPalabras" que el sistema reconocer
+	 String [] diccionario = {"cabron", "cabronazo", "maricon", "gilipollas", "tonto", "capullo", "idiota", "fuck", "fucking", "huevon", "polla", "pollon", "co�o"};/* Vector de palabaras*/
 	 
-	 public static void credencialesValidas(String nombre, String email, String pwd1, String pwd2) throws Exception {
+	 public static void credencialesValidas(String nombre, String email, String pwd1, String pwd2) throws Exception { /*Metodo credenciales*/
 	  if(nombre.equals("") ||email.equals("")|| pwd1.equals("")|| pwd2.equals(""))
 	   throw new Exception ("Por favor rellene todos los campos");
 	  comprobacionNombre(nombre);
@@ -38,7 +38,7 @@ public class utilidades {
 	  seguridadPassword(pwd1);
 	  
 	 }
-	 public static void comprobacionNombre(String nombre) throws Exception{
+	 public static void comprobacionNombre(String nombre) throws Exception{ /*Metodo comprobacion*/
 	  if(!nombre.contains("."))
 	   throw new Exception("Formato nombre invalido"); 
 	  int posicion=nombre.indexOf('.');
@@ -48,14 +48,14 @@ public class utilidades {
 	  palabrasMalas(nombre, diccionario);
 	 }
 	 
-	 public static void palabrasMalas(String nombre, String [] diccionario)throws Exception{
+	 public static void palabrasMalas(String nombre, String [] diccionario)throws Exception{ /*Metodo malas palabras*/
 	  for(int i=0;i<diccionario.length;i++) {
 	   if(nombre.contains(diccionario[i]))
 	    throw new Exception("Formato del nombre y/o email invalido, contiene palabras malsonantes");
 	  }
 	 }
 	
-	public static void seguridadPassword(String pwd) throws Exception{
+	public static void seguridadPassword(String pwd) throws Exception{ /*Metodo seguridad*/
 		if(pwd.length()<8)
 			throw new Exception("Password poco segura (minimo 8 caracteres, con numeros y letras)");
 		boolean caracter=false;
@@ -74,13 +74,13 @@ public class utilidades {
 			throw new Exception("Password poco segura (minimo 8 caracteres, con numeros y letras)");
 	}
 	
-	public static void publicacionValida(String nombre, String texto) throws Exception {
+	public static void publicacionValida(String nombre, String texto) throws Exception { /*Metodo publicacion*/
 		if(nombre.equals("") ||texto.equals(""))
 			throw new Exception ("Por favor rellene texto para guardar la publicaci�n");
 		
 	}
 	
-	public static Publicacion[] mostrarPublicaciones(ArrayList <Publicacion> publicas, ArrayList<Publicacion> privadas){
+	public static Publicacion[] mostrarPublicaciones(ArrayList <Publicacion> publicas, ArrayList<Publicacion> privadas){ /*Metodo mostrar*/
 		ArrayList<Publicacion> retorno=new ArrayList<Publicacion>();
 		retorno=publicas;
 		int longitud=privadas.size();
