@@ -93,7 +93,7 @@ public class UsuarioServlet {
   String cadenaUrl="usuario/";
   String nombre=request.getParameter("txtUsuarioNombre");
   String clave=request.getParameter("txtUsuarioClave");
-  if(clave=="" || nombre=="") {
+  if(clave.equals("") || nombre.equals("")) {
 	  model.addAttribute("alerta", "Por favor rellene los campos" );
 	  return cadenaUrl+="login";
   }
@@ -101,7 +101,7 @@ public class UsuarioServlet {
   Administrador administrador= new Administrador();
   administrador.setNombre(nombre);
   administrador.setClave(clave);
-  if(administradorDao.login(administrador) && request.getSession().getAttribute("administradorConectado")==null) {
+  if(administradorDao.login(administrador) && request.getSession().getAttribute("administradorConectado").equals(null)) {
    request.getSession().setAttribute("administradorConectado", administrador);
    return cadenaUrl+="inicioAdmin";
   }
@@ -110,7 +110,7 @@ public class UsuarioServlet {
   Usuario usuario = new Usuario();
   usuario.setNombre(nombre);
   usuario.setClave(clave);
-  if(usuarioDao.login(usuario) && request.getSession().getAttribute("usuarioConectado")==null) {
+  if(usuarioDao.login(usuario) && request.getSession().getAttribute("usuarioConectado").equals(null)) {
    request.getSession().setAttribute("usuarioConectado", usuario);
    return cadenaUrl+="bienvenido";
   }
@@ -211,7 +211,7 @@ public class UsuarioServlet {
    model.addAttribute("alerta", "No puedes borrar al superadmin");
   }else {
    usuario=usuarioDao.selectNombre(nombre);
-   if(usuario==null) {
+   if(usuario.equals(null)) {
     model.addAttribute("alerta", "No existe el usuario "+nombre);
    }else {
     usuarioDao.delete(usuario);
@@ -260,7 +260,7 @@ public class UsuarioServlet {
    model.addAttribute("alerta", "<t><h2><b>No puedes degradar al superadmin</b></h2>");
   }else {
    admin=administradorDao.selectNombre(nombre);
-   if(admin==null)
+   if(admin.equals(null))
     model.addAttribute("alerta", "<t><h2><b>El administrador que intentas degradar no existe</b></h2>");
    else {
     administradorDao.delete(admin);
@@ -315,7 +315,7 @@ public class UsuarioServlet {
  }
  /***
   * 
-  * @method permite crear una publicación por parte de un usuario
+  * @method permite crear una publicaciï¿½n por parte de un usuario
   * 
   */
  @RequestMapping(value="/crearPublicacion", method = RequestMethod.POST)
@@ -379,7 +379,7 @@ public class UsuarioServlet {
  /***
   * 
   * @method permite ver las publicac
- iones realizadas por un usuario(de momento, luego cambiar a según la visibilidad y amigos)
+ iones realizadas por un usuario(de momento, luego cambiar a segï¿½n la visibilidad y amigos)
   * 
   */
  @RequestMapping(value="/listarPublicacion", method = RequestMethod.POST)
@@ -405,7 +405,7 @@ public class UsuarioServlet {
 	  		"	<div class=\"panel-body\">\r\n" + 
 	  		"		<form action=\"editarPubli\" method=\"POST\">	\r\n" + 
 	  		"			<b> "+ todas[i].getUsuario().getNombre() +" </b> \r\n" + 
-	  		"			<textarea name=\"txtIntroducirTexto\" placeholder=\"¿Qué tal el día?\" class=\"form-control\" rows=\"5\" id=\"comment\">"+ todas[i].getTexto()+"</textarea>\r\n" + 
+	  		"			<textarea name=\"txtIntroducirTexto\" placeholder=\"ï¿½Quï¿½ tal el dï¿½a?\" class=\"form-control\" rows=\"5\" id=\"comment\">"+ todas[i].getTexto()+"</textarea>\r\n" + 
 	  		"			<input name=\"txtIdPublicacion\" type=\"hidden\" class=\"form-control\" value=\""+todas[i].getId()+"\" id=\"usr\" placeholder=\"usuario\">" + 
 	  		"			<button class=\"btn btn-danger btn-block btn-md login\" type=\"submit\">Editar</button>\r\n" + 
 	  		"			<button class=\"btn btn-danger btn-block btn-md login\" formaction=\"eliminarPubli\" type=\"submit\">Eliminar</button>\r\n" + 
@@ -459,7 +459,7 @@ public class UsuarioServlet {
    }
    
     
-   if (usuario==null || (!respuesta.equals(usuario.getRespuesta()))) {
+   if (usuario.equals(null) || (!respuesta.equals(usuario.getRespuesta()))) {
     System.out.println("M");
     //System.out.println(nombre+","+usuario.getNombre()+","+respuesta+","+usuario.getRespuesta());
     return "usuario/recuperarCredenciales";
@@ -485,7 +485,7 @@ public class UsuarioServlet {
  
  /***
   * 
-  *@method Esta función sirve para controlar los cambios de vista por nombre(string)
+  *@method Esta funciï¿½n sirve para controlar los cambios de vista por nombre(string)
   *
   */
  public ModelAndView cambiarVista(String nombreVista) {

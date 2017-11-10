@@ -7,7 +7,7 @@ import java.util.Iterator;
 import com.intravita.proyectointranet.modelo.Publicacion;
 
 public class utilidades {
-	public static String extensionEmail="@alu.uclm.es";
+	public static String extensionEmail="@alu.uclm.es"; /*Esta es la extension de email*/
 	/**
 	 * @method comprobacion de credenciales validas para el registro
 	 * @param nombre
@@ -17,8 +17,8 @@ public class utilidades {
 	 * @return 
 	 * @throws Exception 
 	 */
-	static //Vector con las "malasPalabras" que el sistema reconocerá
-	 String [] diccionario = {"cabron", "cabronazo", "maricon", "gilipollas", "tonto", "capullo", "idiota", "fuck", "fucking", "huevon", "polla", "pollon", "coño"};
+	static //Vector con las "malasPalabras" que el sistema reconocerï¿½
+	 String [] diccionario = {"cabron", "cabronazo", "maricon", "gilipollas", "tonto", "capullo", "idiota", "fuck", "fucking", "huevon", "polla", "pollon", "coï¿½o"};
 	 
 	 public static void credencialesValidas(String nombre, String email, String pwd1, String pwd2) throws Exception {
 	  if(nombre.equals("") ||email.equals("")|| pwd1.equals("")|| pwd2.equals(""))
@@ -76,7 +76,7 @@ public class utilidades {
 	
 	public static void publicacionValida(String nombre, String texto) throws Exception {
 		if(nombre.equals("") ||texto.equals(""))
-			throw new Exception ("Por favor rellene texto para guardar la publicación");
+			throw new Exception ("Por favor rellene texto para guardar la publicaciï¿½n");
 		
 	}
 	
