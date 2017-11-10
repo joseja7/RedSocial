@@ -11,25 +11,25 @@ CucumberHTML.DOMFormatter = function(rootNode) {
   var $templates = $(CucumberHTML.templates);
 
   this.uri = function(uri) {
-    currentUri = uri;
+   var currentUri = uri;
   };
 
   this.feature = function(feature) {
-    currentFeature = blockElement(rootNode, feature, 'feature');
+   var currentFeature = blockElement(rootNode, feature, 'feature');
   };
 
   this.background = function(background) {
-    currentElement = featureElement(background, 'background');
+   var currentElement = featureElement(background, 'background');
     currentStepIndex = 1;
   };
 
   this.scenario = function(scenario) {
-    currentElement = featureElement(scenario, 'scenario');
+   var currentElement = featureElement(scenario, 'scenario');
     currentStepIndex = 1;
   };
 
   this.scenarioOutline = function(scenarioOutline) {
-    currentElement = featureElement(scenarioOutline, 'scenario_outline');
+   var currentElement = featureElement(scenarioOutline, 'scenario_outline');
     currentStepIndex = 1;
   };
 
@@ -39,13 +39,13 @@ CucumberHTML.DOMFormatter = function(rootNode) {
     populate(stepElement, step, 'step');
 
     if (step.doc_string) {
-      docString = $('.doc_string', $templates).clone();
+      var docString = $('.doc_string', $templates).clone();
       docString.appendTo(stepElement);
       // TODO: use a syntax highlighter based on the content_type
       docString.text(step.doc_string.value);
     }
     if (step.rows) {
-      dataTable = $('.data_table', $templates).clone();
+      var dataTable = $('.data_table', $templates).clone();
       dataTable.appendTo(stepElement);
       var tBody = dataTable.find('tbody');
       $.each(step.rows, function(index, row) {
@@ -72,7 +72,7 @@ CucumberHTML.DOMFormatter = function(rootNode) {
   };
 
   this.match = function(match) {
-    currentStep = currentSteps.find('li:nth-child(' + currentStepIndex + ')');
+   var currentStep = currentSteps.find('li:nth-child(' + currentStepIndex + ')');
     currentStepIndex++;
   };
 
@@ -97,7 +97,7 @@ CucumberHTML.DOMFormatter = function(rootNode) {
   function featureElement(statement, itemtype) {
     var e = blockElement(currentFeature.children('details'), statement, itemtype);
 
-    currentSteps = $('.steps', $templates).clone();
+   var currentSteps = $('.steps', $templates).clone();
     currentSteps.appendTo(e.children('details'));
 
     return e;
