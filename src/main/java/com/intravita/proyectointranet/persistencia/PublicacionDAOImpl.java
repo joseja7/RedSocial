@@ -3,12 +3,10 @@ package com.intravita.proyectointranet.persistencia;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.BsonDateTime;
 import org.bson.BsonDocument;
 import org.bson.BsonObjectId;
 import org.bson.BsonString;
-import org.bson.BsonValue;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -142,5 +140,13 @@ public class PublicacionDAOImpl {
 			lista.add(publicacion);
 		}
 		return lista;
+	}
+	public void remove(Publicacion publicacion) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void update(Publicacion publicacion, String textoNuevo) {
+		// TODO Auto-generated method stub
+		
 	}
 }

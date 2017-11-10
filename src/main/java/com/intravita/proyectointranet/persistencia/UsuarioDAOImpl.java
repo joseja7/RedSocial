@@ -1,7 +1,6 @@
 package com.intravita.proyectointranet.persistencia;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.BsonDocument;
@@ -11,10 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-
 import com.intravita.proyectointranet.modelo.Usuario;
-import com.intravita.proyectointranet.persistencia.MongoBroker;
-import com.intravita.proyectointranet.persistencia.UsuarioDAO;
 
 @Component
 public class UsuarioDAOImpl implements UsuarioDAO {
@@ -201,7 +197,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		FindIterable<BsonDocument> resultado=usuarios.find(criterio);
 		BsonDocument usuarioBso = resultado.first();
 		if (usuarioBso==null)
-			throw new Exception("Falló la actualización de los datos del usuario.");
+			throw new Exception("Fallï¿½ la actualizaciï¿½n de los datos del usuario.");
 
 		BsonDocument actualizacion= new BsonDocument("$set", new BsonDocument("pwd", new BsonString(DigestUtils.md5Hex(usuario.getClave()))));
 		usuarios.findOneAndUpdate(usuarioBso, actualizacion);
