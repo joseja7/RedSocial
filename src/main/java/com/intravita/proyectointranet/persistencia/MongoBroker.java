@@ -17,21 +17,21 @@ public class MongoBroker {
 	private MongoClient mongoClient;
 	private MongoDatabase db;
 
-	private MongoBroker(){//En el constructor MongoBroker ha sido modificado con los parametros de mongoLab
+	private MongoBroker(){/*En el constructor MongoBroker ha sido modificado con los parametros de mongoLab*/
 		this.uri= new MongoClientURI("mongodb://daniel:1234@ds113435.mlab.com:13435/redsocial");
 		this.mongoClient= new MongoClient(uri);
 		this.db=mongoClient.getDatabase(uri.getDatabase());
 	}
 
 
-	public static MongoBroker get(){
+	public static MongoBroker get(){ /*Clase get*/
 		if (yo==null){
 			yo = new MongoBroker();
 		}
 		return yo;
 	}
 
-	public MongoCollection<BsonDocument> getCollection (String collection){
+	public MongoCollection<BsonDocument> getCollection (String collection){ /*Clase coleccion*/
 		MongoCollection <BsonDocument> result=db.getCollection(collection, BsonDocument.class);
 
 		if(result==null){

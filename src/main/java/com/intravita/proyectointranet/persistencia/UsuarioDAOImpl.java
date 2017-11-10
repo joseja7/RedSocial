@@ -41,7 +41,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	 * @param usuario
 	 * @return true si el nombre existe false si no existe
 	 */
-	public boolean selectNombre(Usuario usuario) {
+	public boolean selectNombre(Usuario usuario) { /*Clase selecionar nombre*/
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
 		BsonDocument criterio = new BsonDocument();
@@ -58,7 +58,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	 * @param usuario
 	 * @return true si se ha insertado en la bbdd false en caso opuesto
 	 */	
-	public boolean insert (Usuario usuario){
+	public boolean insert (Usuario usuario){ /*Clase insertar*/
 		if(!selectNombre(usuario)) {
 			BsonDocument bso = new BsonDocument();
 			bso.append("nombre", new BsonString(usuario.getNombre()));
@@ -126,7 +126,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	 * @method select que devuelve todos los usuarios
 	 * @return texto con la lista de usuarios
 	 */
-	public String list() {
+	public String list() { /*Clase 1ista*/
 		AdministradorDAOImpl administradorDao= new AdministradorDAOImpl();
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");
@@ -149,7 +149,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return texto;
 	}
 
-	public void delete (Usuario usuario){
+	public void delete (Usuario usuario){ /*Clase eliminar*/
 		BsonDocument bso = new BsonDocument();
 		bso.append("nombre", new BsonString(usuario.getNombre()));
 
@@ -159,7 +159,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	}
 	
-	public void update(String nombre, String pwdAntigua, String pwdNueva){
+	public void update(String nombre, String pwdAntigua, String pwdNueva){ /*Clase actualizar*/
 
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> usuarios = broker.getCollection("Usuarios");

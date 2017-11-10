@@ -34,7 +34,7 @@ import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping({"/usuario","/"})
-public class UsuarioServlet {
+public class UsuarioServlet { 
  @Autowired
  UsuarioDAOImpl usuarioDao;
  AdministradorDAOImpl administradorDao=new AdministradorDAOImpl();
@@ -43,7 +43,7 @@ public class UsuarioServlet {
  private static final Logger logger = LoggerFactory.getLogger(UsuarioServlet.class);
  
  @RequestMapping(method = RequestMethod.GET)
- public String home(Locale locale, Model model) {
+ public String home(Locale locale, Model model) {/*Clase home*/
   logger.info("Welcome home! The client locale is {}.", locale);
   
   Date date = new Date();
@@ -60,26 +60,26 @@ public class UsuarioServlet {
   * @method metodos de navegacion entre jsp's
   */
  @RequestMapping(value="/irLogin",method = RequestMethod.GET)
- public ModelAndView irLogin(HttpServletResponse response,HttpServletRequest request){
+ public ModelAndView irLogin(HttpServletResponse response,HttpServletRequest request){ /*Clase irlogin*/
   return cambiarVista("usuario/login");
  }
  
  @RequestMapping(value="/irRegistrar",method = RequestMethod.GET)
- public ModelAndView irRegistrar(HttpServletResponse response,HttpServletRequest request){
+ public ModelAndView irRegistrar(HttpServletResponse response,HttpServletRequest request){ /*Clase irRegistrar*/
   
   return cambiarVista("usuario/registrar");
  }
  
  @RequestMapping(value="/irVerPublicaciones",method = RequestMethod.GET)
- public ModelAndView irVerPublicaciones(HttpServletResponse response,HttpServletRequest request){
+ public ModelAndView irVerPublicaciones(HttpServletResponse response,HttpServletRequest request){ /*Clase irverpaublicaciones*/
   return cambiarVista("usuario/verPublicaciones");
  }
  @RequestMapping(value="/irBorradoCuenta",method = RequestMethod.GET)
- public ModelAndView irBorradoCuenta(HttpServletResponse response,HttpServletRequest request){
+ public ModelAndView irBorradoCuenta(HttpServletResponse response,HttpServletRequest request){ /*Clase borrado*/
   return cambiarVista("usuario/borradoCuenta");
  }
  @RequestMapping(value="/irBienvenido",method = RequestMethod.GET)
- public ModelAndView irBienvenido(HttpServletResponse response,HttpServletRequest request){
+ public ModelAndView irBienvenido(HttpServletResponse response,HttpServletRequest request){ /*Clase bienvenido*/
   return cambiarVista("usuario/bienvenido");
  }
  /***
@@ -88,7 +88,7 @@ public class UsuarioServlet {
   *
   */
  @RequestMapping(value="/login", method = RequestMethod.POST)
- public String iniciarSesion(HttpServletResponse response, HttpServletRequest request, Model model) throws Exception {
+ public String iniciarSesion(HttpServletResponse response, HttpServletRequest request, Model model) throws Exception { /*Clase iniciarsesion*/
   String cadenaUrl="usuario/";
   String nombre=request.getParameter("txtUsuarioNombre");
   String clave=request.getParameter("txtUsuarioClave");
@@ -123,7 +123,7 @@ public class UsuarioServlet {
   *
   */
  @RequestMapping(value="/logout", method = RequestMethod.GET)
- public ModelAndView cerrarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception {
+ public ModelAndView cerrarSesion(HttpServletResponse response, HttpServletRequest request) throws Exception { /*Clase cerrarsesion*/
   HttpSession sesion = request.getSession();
   System.out.println("-----------------------------");
   System.out.println("Sesion antes de invalidar: "+sesion);
@@ -138,7 +138,7 @@ public class UsuarioServlet {
   *
   */
  @RequestMapping(value="/borrarCuenta", method = RequestMethod.POST)
- public ModelAndView borrarCuenta(HttpServletResponse response, HttpServletRequest request, Model model) throws Exception {
+ public ModelAndView borrarCuenta(HttpServletResponse response, HttpServletRequest request, Model model) throws Exception { /*Clase borrarcuenta*/
   Usuario usuario=(Usuario) request.getSession().getAttribute("usuarioConectado");
   String nombre=usuario.getNombre();
   Usuario aux=usuarioDao.selectNombre(nombre);
@@ -169,7 +169,7 @@ public class UsuarioServlet {
   *
   */
  @RequestMapping(value="/registrar", method = RequestMethod.POST)
- public String registrar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+ public String registrar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  { /*Clase registrar*/
   String cadenaUrl="usuario/";
   String nombre=request.getParameter("txtUsuarioNombre");
   String email=request.getParameter("txtEmail");
@@ -202,7 +202,7 @@ public class UsuarioServlet {
   *
   */
  @RequestMapping(value="/borrar", method = RequestMethod.POST)
- public String borrar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  {
+ public String borrar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception  { /*Clase borrar*/
   String cadenaUrl="usuario/";
   String nombre=request.getParameter("txtNombre");
   Usuario usuario;

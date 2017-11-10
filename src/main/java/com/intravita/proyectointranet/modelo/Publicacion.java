@@ -8,19 +8,19 @@ public class Publicacion implements Comparable<Publicacion>{
 
 	private Usuario usuario;
 	private String texto;
-	//Publica o Privada
+	/*Publica o Privada*/
 	private String privacidad;
 	private long fecha;
 	private String id;
 	final DateFormat formato=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 	
-	public Publicacion(Usuario usuario, String texto) {
+	public Publicacion(Usuario usuario, String texto) { /*Clase publicacion*/
 		this.usuario=usuario;
 		this.texto=texto;
 		this.privacidad="Publica";
 		this.fecha=new Date().getTime();
 	}
-	public Publicacion(Usuario usuario, String texto, String privacidad) {
+	public Publicacion(Usuario usuario, String texto, String privacidad) { /*Clase publicación privada*/
 		this.usuario = usuario;
 		this.texto = texto;
 		this.privacidad=privacidad;

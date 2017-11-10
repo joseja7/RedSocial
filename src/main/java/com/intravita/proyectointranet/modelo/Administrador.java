@@ -5,7 +5,7 @@ public class Administrador {
 	 private String clave;
 	 private String email;
  
- //Constructor de pass
+ /*Constructor de pass*/
 	 public Administrador(String nombre, String clave) {
 	  this.nombre=nombre;
 	  this.clave=clave;
@@ -16,17 +16,17 @@ public class Administrador {
   this.email=email;
  }
  
-	 //Constructor sin pass
+	 /*Constructor sin pass*/
 	 public Administrador(String nombre) {
 	  this.nombre=nombre;
 	 }
 	 
-	 //Constructor vacio
+	 /*Constructor vacio*/
 	 public Administrador() {
 	  super();
 	 } 
 	 
-	 //Get atributos
+	 /*Get atributos*/
 	 public String getNombre() {
 	  return this.nombre;
 	 }
@@ -36,7 +36,7 @@ public class Administrador {
 	 public String getEmail() {
 	  return this.email;
 	 }
-	 //Set atributos
+	 /*Set atributos*/
 	 public void setNombre(String nuevoNombre) {
 	  this.nombre=nuevoNombre;
 	 }

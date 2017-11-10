@@ -20,7 +20,7 @@ public class AdministradorDAOImpl {
 	 * @method select que devuelve todos los administradores
 	 * @return texto con la lista de administradores
 	 */
-	public String list() {
+	public String list() { /*Clase 1ista*/
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
 		FindIterable<BsonDocument> resultado=administradores.find();
@@ -42,7 +42,7 @@ public class AdministradorDAOImpl {
 	 * @param administrador
 	 * @return true si login es correcto, false en caso opuesto
 	 */
-	public boolean login(Administrador administrador) {
+	public boolean login(Administrador administrador) { /*Clase 1ogin*/
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
 		BsonDocument criterio = new BsonDocument();
@@ -62,7 +62,7 @@ public class AdministradorDAOImpl {
 	 * @param administrador
 	 * @method metodos de insercion con y sin encriptar la password
 	 */
-	 public void insert (Administrador administrador) {
+	 public void insert (Administrador administrador) { /*Clase insertar*/
 		  BsonDocument bso = new BsonDocument();
 		  bso.append("nombre", new BsonString(administrador.getNombre()));
 		  bso.append("pwd", new BsonString(DigestUtils.md5Hex(administrador.getClave())));
@@ -94,7 +94,7 @@ public class AdministradorDAOImpl {
 		 * @param nombre
 		 * @return admin completo
 		 */
-		public Administrador selectNombre(String nombreParam) {
+		public Administrador selectNombre(String nombreParam) { /*Clase seleccionar nombre*/
 			MongoBroker broker = MongoBroker.get();
 			MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
 			BsonDocument criterio = new BsonDocument();
@@ -121,7 +121,7 @@ public class AdministradorDAOImpl {
 			}
 			return result;
 		}
-	 public Administrador select(Administrador generico) {
+	 public Administrador select(Administrador generico) { /*Clase select*/
 		  MongoBroker broker = MongoBroker.get();
 		  MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
 		  BsonDocument criterio = new BsonDocument();
@@ -138,14 +138,14 @@ public class AdministradorDAOImpl {
 		  }
 		  return result;
 	 }
-	 public void delete (Administrador administrador) {
+	 public void delete (Administrador administrador) { /*Clase borrar*/
 		  BsonDocument bso = new BsonDocument();
 		  bso.append("nombre", new BsonString(administrador.getNombre()));
 		  MongoBroker broker = MongoBroker.get();
 		  MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
 		  administradores.deleteOne(bso);
 	 }
-	 public void update(String nombre, String pwdAntigua, String pwdNueva) {
+	 public void update(String nombre, String pwdAntigua, String pwdNueva) { /*Clase actualizar*/
 		  MongoBroker broker = MongoBroker.get();
 		  MongoCollection<BsonDocument> administradores = broker.getCollection("Administradores");
 		  BsonDocument criterio = new BsonDocument();

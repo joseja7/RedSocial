@@ -12,23 +12,23 @@ public class Usuario {
 		this.email=email;
 		this.respuesta=respuesta;
 	}
-	//Constructor de pass
+	/*Constructor de pass*/
 	public Usuario(String nombre, String clave) {
 		this.nombre=nombre;
 		this.clave=clave;
 	}
 	
-	//Constructor sin pass
+	/*Constructor sin pass*/
 	public Usuario(String nombre) {
 		this.nombre=nombre;
 	}
 	
-	//Constructor vacio
+	/*Constructor vacio*/
 	public Usuario() {
 		super();
 	}	
 	
-	//Get atributos
+	/*Get atributos*/
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -41,7 +41,7 @@ public class Usuario {
 	public String getEmail() {
 		return email;
 	}
-	//Set atributos
+	/*Set atributos*/
 	public void setNombre(String nuevoNombre) {
 		this.nombre=nuevoNombre;
 	}

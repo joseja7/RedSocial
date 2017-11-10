@@ -37,7 +37,7 @@ public class PublicacionDAOImpl {
 	 * @method insertar una publicacion en la base de datos
 	 * 
 	 */
-	public void insert(Publicacion publicacion) {
+	public void insert(Publicacion publicacion) { /*Clase insetar*/
 		BsonDocument bso = new BsonDocument();
 		bso.append("autor", new BsonString(publicacion.getUsuario().getNombre()));
 		bso.append("texto", new BsonString(publicacion.getTexto()));
@@ -53,7 +53,7 @@ public class PublicacionDAOImpl {
 	 * @method actualizar una publicacion en la base de datos
 	 * 
 	 */
-	public void update(String id, String textoNuevo){		
+	public void update(String id, String textoNuevo){	/*Clase actulizar*/	
 		BsonDocument bso = new BsonDocument();
 		bso.append("_id", new BsonObjectId(new ObjectId(id)));
 		MongoBroker broker = MongoBroker.get();
@@ -66,7 +66,7 @@ public class PublicacionDAOImpl {
 	 * @method eliminar una publicacion en la base de datos
 	 * 
 	 */
-	public void remove(String id){
+	public void remove(String id){ /*Clase eliminar*/
 		MongoBroker broker = MongoBroker.get();
 		MongoCollection<BsonDocument> publicaciones = broker.getCollection("Publicaciones");
 		BsonDocument bso = new BsonDocument();
@@ -142,11 +142,11 @@ public class PublicacionDAOImpl {
 		return lista;
 	}
 	public void remove(Publicacion publicacion) {
-		// TODO Auto-generated method stub
+		/* TODO Auto-generated method stub*/
 		
 	}
 	public void update(Publicacion publicacion, String textoNuevo) {
-		// TODO Auto-generated method stub
+		/*TODO Auto-generated method stub*/
 		
 	}
 }
