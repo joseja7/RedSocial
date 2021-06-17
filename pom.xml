@@ -9,7 +9,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.6</java-version>
-		<org.springframework-version>4.3.18.RELEASE</org.springframework-version>
+		<org.springframework-version>5.2.15.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
@@ -136,7 +136,7 @@
 	<dependency>
 		<groupId>commons-codec</groupId>
 		<artifactId>commons-codec</artifactId>
-		<version>1.10</version>
+		<version>1.13</version>
 	</dependency>
 		<dependency>
 			  <groupId>junit</groupId>
@@ -147,7 +147,7 @@
 	 	<dependency>
 			  <groupId>org.seleniumhq.selenium</groupId>
 			  <artifactId>selenium-java</artifactId>
-			  <version>3.1.0</version>
+			  <version>3.2.0</version>
 		 </dependency>
 	 	<dependency>
 			  <groupId>info.cukes</groupId>
